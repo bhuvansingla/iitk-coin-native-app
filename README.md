@@ -1,6 +1,8 @@
 # IITK Coin - Native App
+![made-with-TypeScript](https://img.shields.io/badge/Made%20with-TypeScript-2f74c0.svg)
+![License](https://img.shields.io/github/license/bhuvansingla/iitk-coin)
 
-[IITK Coin](https://github.com/bhuvansingla/iitk-coin)'s React Native application.
+This repository holds the codebase for [IITK Coin](https://github.com/bhuvansingla/iitk-coin)'s React Native application.
 
 ## Steps to run the application
 
