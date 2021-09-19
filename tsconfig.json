@@ -6,11 +6,11 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "*": ["app/*"],
-      "components/*": ["app/components/*"],
-      "constant/*": ["app/constant/*"],
-      "style/*": ["app/style/*"], 
-      "utils/*": ["app/utils/*"],
+      "*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "constant/*": ["src/constant/*"],
+      "styles/*": ["src/styles/*"], 
+      "utils/*": ["src/utils/*"],
     }
   }
 }

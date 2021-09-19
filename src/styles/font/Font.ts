@@ -1,4 +1,4 @@
-import { Layout } from "constant";
+import { Layout } from "src/constant";
 
 const FontWeight = {
   Head: "MerriweatherSans-ExtraBold",
