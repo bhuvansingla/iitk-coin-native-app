@@ -1,6 +1,16 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "moduleResolution": "node",
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["app/*"],
+      "components/*": ["app/components/*"],
+      "constant/*": ["app/constant/*"],
+      "style/*": ["app/style/*"], 
+      "utils/*": ["app/utils/*"],
+    }
   }
 }
