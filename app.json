@@ -4,6 +4,7 @@
     "slug": "iitk-coin-native-app",
     "version": "1.0.0",
     "orientation": "portrait",
+    "entryPoint": "./src/App.tsx",
     "icon": "./src/assets/icon.png",
     "splash": {
       "image": "./src/assets/splash.png",
