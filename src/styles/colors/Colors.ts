@@ -1,7 +1,9 @@
 export default {
 	mainbg : "#002E6E",
-	teal: "#329691", 
-	grey: "#C4C4C4", // 50%
+	darkgrey : "#474747",
+	teal: "#329691",
+	darkteal:"#008080",
+	grey: "#E5E5E5", 
 	link: "#082452",
 	white: "#FFFFFF",
 	black: "#000000",
