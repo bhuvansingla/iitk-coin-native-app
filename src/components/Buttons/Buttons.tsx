@@ -2,8 +2,7 @@ import React from "react";
 
 import Text from "../Text";
 import { Colors } from "styles";
-import styles from "./Sample.styles";
-
+import styles from "./Buttons.styles";
 
 import Ripple from "react-native-material-ripple";
 import  AppLoading  from "expo-app-loading";
@@ -36,7 +35,6 @@ const sample: React.FC<Props> = (props) => {
 	} else 
 	{
 		return (
-		
             
 			<Ripple	rippleOpacity={0.25}
 				rippleCentered={true} 

@@ -25,7 +25,6 @@ export default StyleSheet.create({
 		flexDirection: "row",
 		opacity:1,
 		fontSize:Font.FontSize.H3,
-		
 		fontWeight:"700"
 	},
 

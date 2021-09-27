@@ -19,7 +19,7 @@ export default StyleSheet.create({
 		borderRadius: 20,
 		backgroundColor: Colors.grey,
 
-		fontFamily:Font.FontWeight.SemiBold,
+		fontFamily:Font.FontWeight.Bold,
 		color:Colors.black,
 		fontSize:Font.FontSize.H3,
 		fontWeight:"600",
