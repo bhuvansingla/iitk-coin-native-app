@@ -10,21 +10,27 @@
     "lint-fix": "eslint --ext .tsx --ext .ts --ext .js --ext .jsx . --fix"
   },
   "dependencies": {
+    "@expo-google-fonts/merriweather-sans": "^0.2.0",
+    "@expo-google-fonts/open-sans": "^0.2.0",
     "@expo/ngrok": "^4.1.0",
     "@gorhom/bottom-sheet": "^4.1.0",
     "expo": "~42.0.1",
+    "expo-app-loading": "^1.1.2",
     "expo-status-bar": "~1.0.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-svg": "^12.1.1",
     "react-native-svg-transformer": "^0.14.3",
+    "react-native-material-kit": "^0.6.0-beta.1",
+    "react-native-material-ripple": "^0.9.1",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
+    "@types/react-native-material-ripple": "^0.9.2",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
     "eslint": "^7.32.0",

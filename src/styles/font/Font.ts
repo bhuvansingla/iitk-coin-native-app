@@ -1,16 +1,16 @@
-import { Layout } from "src/constant";
+import { Layout } from "constant";
 
 const FontWeight = {
-	Head: "MerriweatherSans-ExtraBold",
-	Bold: "OpenSans-Bold",
-	SemiBold: "OpenSans-SemiBold",
-	Regular: "OpenSans-Regular",
+	Head: "MerriweatherSans_800ExtraBold",
+	Bold: "OpenSans_700Bold",
+	SemiBold: "OpenSans_600SemiBold",
+	Regular: "OpenSans_400Regular",
 };
 
 const FontSizeNormalDevice = {
 	Header: 20,
 	H1: 28,
-	H2: 26,
+	H2: 24,
 	H3: 22,
 	Primary: 18,
 	Secondary: 16,

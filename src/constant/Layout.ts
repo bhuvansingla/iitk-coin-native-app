@@ -8,7 +8,6 @@ const SPACING = {
 	DOUBLE: 16,
 	TRIPLE: 24,
 };
-const PADDING_HORIZONTAL = SPACING.DOUBLE;
 
 const isSmallDevice = width < 375;
 
@@ -17,4 +16,4 @@ const screen = {
 	height,
 };
 
-export { screen, isSmallDevice, PADDING_HORIZONTAL, SPACING };
+export { screen, isSmallDevice, SPACING };
