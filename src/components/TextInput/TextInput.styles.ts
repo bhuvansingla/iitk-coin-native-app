@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { Colors, Font } from "styles";
 
 export default StyleSheet.create({
+	
 	container: {
 		marginTop: 5,
 		marginHorizontal: 16,
