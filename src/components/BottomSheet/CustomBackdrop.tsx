@@ -36,7 +36,7 @@ const CustomBackdropGenerator: GeneratorType =
 				() => [
 					style,
 					{
-						backgroundColor: Colors.mainbg,
+						backgroundColor: Colors.MainBG,
 					},
 					containerAnimatedStyle,
 				],

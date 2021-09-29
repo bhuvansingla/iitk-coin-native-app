@@ -21,7 +21,7 @@ const Button: React.FC<Props> = (props) => {
 		<Ripple	rippleOpacity={0.25}
 			rippleCentered={true} 
 			rippleSize={3500}
-			rippleColor = {Colors.darkteal}
+			rippleColor = {Colors.DarkTeal}
 			rippleDuration={1300}
 			rippleContainerBorderRadius = {20}
 			onPress={onPress} style={styles.container}>

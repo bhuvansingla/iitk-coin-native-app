@@ -7,11 +7,11 @@ export default StyleSheet.create({
 		borderRadius:20,
 
 		shadowRadius:5,
-		shadowColor:Colors.black,
+		shadowColor:Colors.Black,
 		shadowOpacity:0.25,
 		shadowOffset:{width:0, height:4},
 		elevation:10,
-		backgroundColor: Colors.teal,
+		backgroundColor: Colors.Teal,
 		paddingVertical: 12,
 
 		width: "100%",

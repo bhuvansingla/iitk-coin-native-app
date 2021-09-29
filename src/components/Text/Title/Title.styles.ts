@@ -4,7 +4,7 @@ import { Font, Colors } from "styles";
 
 export default StyleSheet.create({
 	default: {
-		color: Colors.black,
+		color: Colors.Black,
 		opacity:0.65,
 		fontFamily: Font.FontWeight.Regular,
 		fontSize: Font.FontSize.Secondary,

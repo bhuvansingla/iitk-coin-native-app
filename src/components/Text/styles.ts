@@ -4,31 +4,31 @@ import { Colors, Font } from "styles";
 
 export default StyleSheet.create({
 	teal: {
-		color: Colors.teal,
+		color: Colors.Teal,
 	},
 	grey: {
-		color: Colors.grey,
+		color: Colors.Grey,
 	},
 	link: {
-		color: Colors.link,
+		color: Colors.Link,
 	},
 	white: {
-		color: Colors.white,
+		color: Colors.White,
 	},
 	black: {
-		color: Colors.black,
+		color: Colors.Black,
 	},
 	darkgrey: {
-		color: Colors.darkgrey,
+		color: Colors.Darkgrey,
 	},
 	red: {
-		color: Colors.red,
+		color: Colors.Red,
 	},
 	green: {
-		color: Colors.green,
+		color: Colors.Green,
 	},
 	yellow: {
-		color: Colors.yellow,
+		color: Colors.Yellow,
 	},
 	Head: {
 		fontFamily: Font.FontWeight.Head,
