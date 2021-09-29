@@ -2,51 +2,71 @@
 import { registerRootComponent } from "expo";
 import React,{useCallback,useState} from "react";
 import { StyleSheet, View } from "react-native";
-import Txt from "components/Text";
-import { Header,TextInput, Footer } from "components";
+import { TextInput, Text } from "components";
 import { Colors } from "styles";
-import Buttons from "components/Buttons";
 
+import  AppLoading  from "expo-app-loading";
+
+import { 
+	useFonts,
+	OpenSans_400Regular,
+	OpenSans_600SemiBold,
+	OpenSans_700Bold,   
+} from "@expo-google-fonts/open-sans";
 
 function App() {
 
 	const [Name, setName] = useState<string>("");
-	const [Roll, setRoll] = useState<string>("");
+	const [Rollno, setRollno] = useState<string>("");
 	const onChangeName = useCallback((name: string) => {
 		if (name.length < 50) {
 			setName(name);
 		}    
 	}, []);
-	const onChangeRoll = useCallback((name: string) => {
+
+	const onChangeRollno = useCallback((name: string) => {
 		if (name.length < 50) {
-			setRoll(name);
+			setRollno(name);
 		}    
 	}, []);
+
+	const [fontsLoaded] = useFonts({
+		OpenSans_400Regular,
+		OpenSans_600SemiBold,
+		OpenSans_700Bold,  
+	});
+
+	if (!fontsLoaded) {
+		return <AppLoading />;
+	} else 
 
 	{
 		return (
 			<View style={styles.container}>
-				<Txt.title>IIT KANPUR</Txt.title>
-				<Header title ="CREATE A WALLET"/>
+				<Text.Title>IIT KANPUR</Text.Title>
+				<Text.Heading Title ="CREATE A WALLET"/>
 				<TextInput
 					placeholder="Enter roll no. here"
-					title="IITK Roll No."
-					onChangeText={onChangeRoll}
-					value={Roll}
+					Title="IITK Roll No."
+					onChangeText={onChangeRollno}
+					value={Rollno}
 				/>
+
 				<TextInput
 					placeholder="Enter Name"
-					title="Name"
+					Title="Name"
 					onChangeText={onChangeName}
 					value={Name}
 				/>
-				<Buttons title="Sign in" onPress={()=>{}}/>
 
-				<Footer
+				{/* <Button Title="Sign in" onPress={()=>{}}/>
+
+				<Text.Footer
 					onPress={() => {}}
-					title="Don't have a wallet? "
-					titlebold="Create now"
-				/>
+					Title="Don't have a wallet? "
+					Link="Create now"
+				/> */}
+
 			</View>
 
 		);
@@ -56,7 +76,7 @@ function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor:" #000",
+		backgroundColor:Colors.white,
 		alignItems: "center",
 		justifyContent: "center",
 	},

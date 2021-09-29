@@ -1,28 +1,32 @@
 import React from "react";
 import { Text, StyleProp, TextStyle } from "react-native";
 
-import styles from "./title.styles";
+import styles from "./Title.styles";
 import mainStyle from "../styles";
 
 interface Props {
   style?: StyleProp<TextStyle>;
   children: string | React.ReactNode;
   black?: boolean;
+  link?: boolean;
+  darkgrey?: boolean;
+  white?:boolean;
   center?: boolean;
   bold?:boolean;
   semibold?: boolean;
   footer?: boolean;
-  link?: boolean;
-  darkgrey?: boolean;
-  white?:boolean;
 }
 
-export default function H1(props: Props): React.ReactElement {
+export default function Title(props: Props): React.ReactElement {
 	const customStyle = [styles.default, props.style];
-	const {black, center,semibold,footer,link,darkgrey,bold,white}=props;
+	const {black, link, darkgrey, bold, white, center, semibold, footer} = props;
 
 	if (black) {
 		customStyle.push(mainStyle.black);
+	}
+
+	if(link) {
+		customStyle.push(mainStyle.link);
 	}
 
 	if(darkgrey) {
@@ -48,10 +52,7 @@ export default function H1(props: Props): React.ReactElement {
 	if(footer) {
 		customStyle.push(mainStyle.primary);
 	}
-	if(link) {
-		customStyle.push(mainStyle.link);
-	}
+
 	return <Text {...props} style={customStyle} />;
 }
 
-H1.displayName = "H3";

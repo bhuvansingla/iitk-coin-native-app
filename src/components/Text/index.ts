@@ -1,3 +1,5 @@
-import title from "./title";
+import Title from "./Title";
+import Heading from "./Heading";
+import Footer from "./Footer";
 
-export default {title};
+export default {Title, Heading, Footer};

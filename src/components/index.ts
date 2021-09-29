@@ -1,13 +1,9 @@
 import TextInput from "./TextInput";
-import Txt from "./Text";
-import Footer from "./Footer";
-import Button from "./Buttons";
-import Header from "./Header";
+import Text from "./Text";
+import Button from "./Button";
 
 export {
 	TextInput,
-	Txt,
-	Footer,
+	Text,
 	Button,
-	Header,
 };

@@ -1,14 +1,4 @@
 import { Layout } from "constant";
-import { 
-	MerriweatherSans_800ExtraBold,  
-} from "@expo-google-fonts/merriweather-sans";
-
-import { 
-	useFonts,
-	OpenSans_400Regular,
-	OpenSans_600SemiBold,
-	OpenSans_700Bold,  
-} from "@expo-google-fonts/open-sans";
 
 const FontWeight = {
 	Head: "MerriweatherSans_800ExtraBold",

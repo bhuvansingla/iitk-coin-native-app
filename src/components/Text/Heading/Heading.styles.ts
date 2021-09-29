@@ -1,13 +1,10 @@
 import { StyleSheet } from "react-native";
-
-import { Layout } from "constant";
 import { Colors,Font } from "styles";
 
 export default StyleSheet.create({
 	container: {
 		marginTop: 10,
 		marginBottom: 10,
-		
 		width: "100%",
 	},
 
@@ -19,6 +16,5 @@ export default StyleSheet.create({
 		fontSize:Font.FontSize.H2,
 		textAlign:"left",
 	},
-
 	
 });

@@ -1,21 +1,18 @@
 import { StyleSheet } from "react-native";
-
-import { Layout } from "constant";
 import { Colors, Font } from "styles";
 
-const PADDING_VERTICAL = 12;
 export default StyleSheet.create({
 	container: {
 		marginTop: 5,
-		marginHorizontal: Layout.PADDING_HORIZONTAL,
+		marginHorizontal: 16,
 		width:"100%",    
 	},
 
 	input: {
 		marginTop:2,
 		marginBottom: 20,
-		paddingHorizontal: Layout.PADDING_HORIZONTAL,
-		paddingVertical: PADDING_VERTICAL,
+		paddingHorizontal: 16,
+		paddingVertical: 12,
 		borderRadius: 20,
 		backgroundColor: Colors.grey,
 
@@ -31,7 +28,7 @@ export default StyleSheet.create({
     
 	},
 
-	containerOptionalTitle: {
+	containerTitle: {
 		marginBottom: 7,
 		flexDirection: "row",
 	},
