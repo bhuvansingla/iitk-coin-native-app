@@ -15,15 +15,15 @@ export default StyleSheet.create({
 		paddingHorizontal: 16,
 		paddingVertical: 12,
 		borderRadius: 20,
-		backgroundColor: Colors.grey,
+		backgroundColor: Colors.Grey,
 
 		fontFamily:Font.FontWeight.Bold,
-		color:Colors.black,
+		color:Colors.Black,
 		fontSize:Font.FontSize.H3,
 		fontWeight:"600",
 
 		shadowRadius:4,
-		shadowColor:Colors.black,
+		shadowColor:Colors.Black,
 		shadowOpacity:0.25,
 		shadowOffset:{width:0, height:4},
     

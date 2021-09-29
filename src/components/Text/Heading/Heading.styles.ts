@@ -12,7 +12,7 @@ export default StyleSheet.create({
 		marginBottom: 7,
 		flexDirection: "row",
 		opacity:1,
-		color:Colors.black,
+		color:Colors.Black,
 		fontSize:Font.FontSize.H2,
 		textAlign:"left",
 	},
