@@ -14,6 +14,8 @@ export default StyleSheet.create({
 	},
 	white: {
 		color: Colors.White,
+		opacity: 1,
+		fontSize: Font.FontSize.Primary,
 	},
 	black: {
 		color: Colors.Black,
@@ -54,5 +56,4 @@ export default StyleSheet.create({
 	H2: {
 		fontSize: Font.FontSize.H2,
 	},
-	
 });
