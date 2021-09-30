@@ -19,14 +19,14 @@ const MyBottomSheet: React.FC<Props> = ({
 	const bottomSheetRef = useRef<BottomSheet>(null);
 
 	// variables
-	const snapPoints = useMemo(() => ["60%", "87%"], []);
+	const snapPoints = useMemo(() => ["71%", "94%"], []);
 
 	// custom backdrop
 	const CustomBackdrop = CustomBackdropGenerator(shrinkedHeader);
 
 	// callbacks
 	const handleSheetChanges = useCallback((index: number) => {
-		console.log("handleSheetChanges", index);
+		isNaN(index);
 	}, []);
 
 	// render
@@ -49,7 +49,6 @@ const MyBottomSheet: React.FC<Props> = ({
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		padding: 24,
 		backgroundColor: Colors.MainBG,
 	},
 });
