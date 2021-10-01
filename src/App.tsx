@@ -52,22 +52,22 @@ function App() {
 		return (
 			<View style={styles.container}>
 				<Text.Title>IIT KANPUR</Text.Title>
-				<Text.Heading Title="CREATE A WALLET" />
+				<Text.Heading title="CREATE A WALLET" />
 				<TextInput
 					placeholder="Enter roll no. here"
-					Title="IITK Roll No."
+					title="IITK Roll No."
 					onChangeText={onChangeRollno}
 					value={Rollno}
 				/>
 
 				<TextInput
 					placeholder="Enter Name"
-					Title="Name"
+					title="Name"
 					onChangeText={onChangeName}
 					value={Name}
 				/>
 
-				{<Button Title={isAuthenticated ? "Sign out" : "Sign in"} onPress={() => { dispatch(setIsAuthenticated(!isAuthenticated)); }} />}
+				{<Button title={isAuthenticated ? "Sign out" : "Sign in"} onPress={() => { dispatch(setIsAuthenticated(!isAuthenticated)); }} />}
 
 				{/* <Button Title="Sign in" onPress={()=>{}}/>
 
