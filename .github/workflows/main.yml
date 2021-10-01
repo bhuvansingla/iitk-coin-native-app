@@ -10,6 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install Packages
-        run: npm ci
+        run: npm i
       - name: Lint Check
         run: npm run lint
