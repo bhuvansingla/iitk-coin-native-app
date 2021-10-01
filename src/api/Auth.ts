@@ -1,31 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { BASE_URL } from "../constant";
+import { BASE_URL } from "constant";
 
 // Interfaces
-export interface OTPParams {
+interface OTPParams {
     Rollno: string;
 }
 
-export interface SignupParams {
+interface SignupParams {
     Rollno: string;
     Password: string;
     OTP: string;
 }
 
-export interface LoginParams {
+interface LoginParams {
     Rollno: string;
     Password: string;
 }
 
-export interface Response {
+interface Response {
     Payload : any;
     Status : any;
     Token ?: any;
 }
 
 // API
-export const postOTP = async (params: OTPParams) : Promise<Response> => {
+const postOTP = async (params: OTPParams) : Promise<Response> => {
 	let payload, status;
 	await axios.post(`${BASE_URL}/auth/otp`, {
 		Rollno: params.Rollno,
@@ -44,7 +44,7 @@ export const postOTP = async (params: OTPParams) : Promise<Response> => {
 	return response;
 };
 
-export const postSignup = async (params: SignupParams) : Promise<Response> => {
+const postSignup = async (params: SignupParams) : Promise<Response> => {
 	let payload, status;
 	await axios.post(`${BASE_URL}/auth/signup`, {
 		Rollno: params.Rollno,
@@ -64,7 +64,7 @@ export const postSignup = async (params: SignupParams) : Promise<Response> => {
 	return response;
 };
 
-export const postLogin = async (params: LoginParams) : Promise<Response> => {
+const postLogin = async (params: LoginParams) : Promise<Response> => {
 	let payload, status;
 	let token : any;
 	await axios.post(`${BASE_URL}/auth/login`, {
@@ -86,7 +86,7 @@ export const postLogin = async (params: LoginParams) : Promise<Response> => {
 	return response;
 };
 
-export const postLogout = async (token: string) : Promise<Response> => {
+const postLogout = async (token: string) : Promise<Response> => {
 	let payload, status;
 	await axios.post(`${BASE_URL}/auth/logout`, {}, {
 		headers: {
@@ -104,4 +104,14 @@ export const postLogout = async (token: string) : Promise<Response> => {
 		Status : status
 	};
 	return response;
+};
+
+export {
+	OTPParams,
+	SignupParams,
+	LoginParams,
+	postOTP,
+	postSignup,
+	postLogin,
+	postLogout
 };

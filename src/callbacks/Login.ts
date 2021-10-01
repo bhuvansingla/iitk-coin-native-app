@@ -1,9 +1,8 @@
-import { saveToken } from "../secure-store/login/LoginToken";
-import { LoginParams, postLogin } from "../api/Auth";
+import { saveToken } from "secureStore/login";
+import { auth } from "api";
 
-export const loginCallback = async (params : LoginParams) : Promise<boolean> => {
-	const response = await postLogin(params);
-
+export const loginCallback = async (params : auth.LoginParams) : Promise<boolean> => {
+	const response = await auth.postLogin(params);
 	if (response.Status === 200) {
 		const tokenArr = response.Token.split(";");
 		if (tokenArr.length > 0) {
