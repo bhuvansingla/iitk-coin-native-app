@@ -1,3 +1,3 @@
-import {saveToken, getToken, deleteToken} from "./login/LoginToken";
+import { saveToken, getToken, deleteToken } from "./login/loginToken";
 
-export {saveToken, getToken, deleteToken};
+export { saveToken, getToken, deleteToken };

@@ -4,28 +4,28 @@ import { BASE_URL } from "constant";
 
 // Interfaces
 interface OTPParams {
-    Rollno: string;
+	Rollno: string;
 }
 
 interface SignupParams {
-    Rollno: string;
-    Password: string;
-    OTP: string;
+	Rollno: string;
+	Password: string;
+	OTP: string;
 }
 
 interface LoginParams {
-    Rollno: string;
-    Password: string;
+	Rollno: string;
+	Password: string;
 }
 
 interface Response {
-    Payload : any;
-    Status : any;
-    Token ?: any;
+	Payload: any;
+	Status: any;
+	Token?: any;
 }
 
 // API
-const postOTP = async (params: OTPParams) : Promise<Response> => {
+const postOTP = async (params: OTPParams): Promise<Response> => {
 	let payload, status;
 	await axios.post(`${BASE_URL}/auth/otp`, {
 		Rollno: params.Rollno,
@@ -37,14 +37,14 @@ const postOTP = async (params: OTPParams) : Promise<Response> => {
 		status = err.response.status;
 	});
 
-	const response : Response = {
-		Payload : payload,
-		Status : status
+	const response: Response = {
+		Payload: payload,
+		Status: status
 	};
 	return response;
 };
 
-const postSignup = async (params: SignupParams) : Promise<Response> => {
+const postSignup = async (params: SignupParams): Promise<Response> => {
 	let payload, status;
 	await axios.post(`${BASE_URL}/auth/signup`, {
 		Rollno: params.Rollno,
@@ -57,16 +57,16 @@ const postSignup = async (params: SignupParams) : Promise<Response> => {
 		payload = err.response.data;
 		status = err.response.status;
 	});
-	const response : Response = {
-		Payload : payload,
-		Status : status
+	const response: Response = {
+		Payload: payload,
+		Status: status
 	};
 	return response;
 };
 
-const postLogin = async (params: LoginParams) : Promise<Response> => {
+const postLogin = async (params: LoginParams): Promise<Response> => {
 	let payload, status;
-	let token : any;
+	let token: any;
 	await axios.post(`${BASE_URL}/auth/login`, {
 		Rollno: params.Rollno,
 		Password: params.Password
@@ -78,15 +78,15 @@ const postLogin = async (params: LoginParams) : Promise<Response> => {
 		payload = err.response.data;
 		status = err.response.status;
 	});
-	const response : Response = {
-		Payload : payload,
-		Status : status,
-		Token : token
+	const response: Response = {
+		Payload: payload,
+		Status: status,
+		Token: token
 	};
 	return response;
 };
 
-const postLogout = async (token: string) : Promise<Response> => {
+const postLogout = async (token: string): Promise<Response> => {
 	let payload, status;
 	await axios.post(`${BASE_URL}/auth/logout`, {}, {
 		headers: {
@@ -99,9 +99,9 @@ const postLogout = async (token: string) : Promise<Response> => {
 		payload = err.response.data;
 		status = err.response.status;
 	});
-	const response : Response = {
-		Payload : payload,
-		Status : status
+	const response: Response = {
+		Payload: payload,
+		Status: status
 	};
 	return response;
 };

@@ -1,32 +1,32 @@
 import { StyleSheet } from "react-native";
-import { Colors, Font } from "styles";
+import { COLORS, FONT } from "styles";
 
 export default StyleSheet.create({
-	
+
 	container: {
 		marginTop: 5,
 		marginHorizontal: 16,
-		width:"100%",    
+		width: "100%",
 	},
 
 	input: {
-		marginTop:2,
+		marginTop: 2,
 		marginBottom: 20,
 		paddingHorizontal: 16,
 		paddingVertical: 12,
 		borderRadius: 20,
-		backgroundColor: Colors.Grey,
+		backgroundColor: COLORS.GREY,
 
-		fontFamily:Font.FontWeight.Bold,
-		color:Colors.Black,
-		fontSize:Font.FontSize.H3,
-		fontWeight:"600",
+		fontFamily: FONT.WEIGHT.BOLD,
+		color: COLORS.BLACK,
+		fontSize: FONT.SIZE.H3,
+		fontWeight: "600",
 
-		shadowRadius:4,
-		shadowColor:Colors.Black,
-		shadowOpacity:0.25,
-		shadowOffset:{width:0, height:4},
-    
+		shadowRadius: 4,
+		shadowColor: COLORS.BLACK,
+		shadowOpacity: 0.25,
+		shadowOffset: { width: 0, height: 4 },
+
 	},
 
 	containerTitle: {

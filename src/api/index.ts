@@ -1,3 +1,3 @@
-import * as auth from "./Auth";
+import * as auth from "./auth";
 
 export { auth };

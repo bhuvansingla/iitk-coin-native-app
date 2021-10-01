@@ -1,5 +1,5 @@
-import { Colors } from "./colors";
-import { Font } from "./font";
+import { COLORS } from "./colors";
+import { FONT } from "./font";
+import { LAYOUT } from "./layout";
 
-
-export { Colors, Font };
+export { COLORS, FONT, LAYOUT };

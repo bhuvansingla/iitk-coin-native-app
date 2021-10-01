@@ -1,7 +1,7 @@
 import React from "react";
 
 import Text from "../Text";
-import { Colors } from "styles";
+import { COLORS } from "styles";
 import styles from "./Button.styles";
 
 import Ripple from "react-native-material-ripple";
@@ -21,7 +21,7 @@ const Button: React.FC<Props> = (props) => {
 		<Ripple rippleOpacity={0.25}
 			rippleCentered={true}
 			rippleSize={3500}
-			rippleColor={Colors.DarkTeal}
+			rippleColor={COLORS.DARK_TEAL}
 			rippleDuration={1300}
 			rippleContainerBorderRadius={20}
 			onPress={onPress} style={styles.container}>

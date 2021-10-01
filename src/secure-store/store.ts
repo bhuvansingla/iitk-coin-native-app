@@ -1,10 +1,10 @@
 import * as SecureStore from "expo-secure-store";
 
-export const Save = async (key:string, value:string) :  Promise<void> => {
+export const saveByKeyAndValue = async (key: string, value: string): Promise<void> => {
 	await SecureStore.setItemAsync(key, value);
 };
 
-export const Retrieve = async (key:string) : Promise<string | null>=> {
+export const retrieveByKey = async (key: string): Promise<string | null> => {
 	const result = await SecureStore.getItemAsync(key);
 	if (result) {
 		return result;
@@ -14,6 +14,6 @@ export const Retrieve = async (key:string) : Promise<string | null>=> {
 	}
 };
 
-export const Delete = async (key:string) : Promise<void> => {
+export const deleteByKey = async (key: string): Promise<void> => {
 	await SecureStore.deleteItemAsync(key);
 };

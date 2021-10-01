@@ -6,7 +6,7 @@ import Animated, {
 	useAnimatedStyle,
 } from "react-native-reanimated";
 
-import { Colors } from "styles";
+import { COLORS } from "styles";
 
 interface BackdropType {
 	(prop: BottomSheetBackdropProps): JSX.Element;
@@ -36,7 +36,7 @@ const CustomBackdropGenerator: GeneratorType =
 				() => [
 					style,
 					{
-						backgroundColor: Colors.MainBG,
+						backgroundColor: COLORS.MAIN_BG,
 					},
 					containerAnimatedStyle,
 				],
@@ -52,7 +52,7 @@ const CustomBackdropGenerator: GeneratorType =
 /* SAMPLE
   let head = (
   <View style={{ flex: 1, alignItems: "center", padding: "10%" }}>
-    <IMAGE name="coin" size={0.07} />
+	<IMAGE name="coin" size={0.07} />
   </View>
   );
 
