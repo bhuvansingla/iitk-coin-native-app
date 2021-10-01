@@ -14,6 +14,8 @@ module.exports = function(api) {
 						styles: "./src/styles",
 						["redux-store"]: "./src/redux-store",
 						utils: "./src/utils",
+						api: "./src/api",
+						["secure-store"]: "./src/secure-store",
 					},
 				},
 			],
