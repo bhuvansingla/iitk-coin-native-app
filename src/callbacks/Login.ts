@@ -1,4 +1,4 @@
-import { saveToken } from "secure-store/login";
+import { saveToken } from "secure-store";
 import { auth } from "api";
 
 export const loginCallback = async (params : auth.LoginParams) : Promise<boolean> => {
