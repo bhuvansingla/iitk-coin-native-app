@@ -14,7 +14,7 @@ module.exports = function(api) {
 						styles: "./src/styles",
 						utils: "./src/utils",
 						api: "./src/api",
-						secureStore: "./src/secure-store",
+						["secure-store"]: "./src/secure-store",
 					},
 				},
 			],
