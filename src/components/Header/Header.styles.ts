@@ -1,21 +1,20 @@
 import { StyleSheet } from "react-native";
 
-import { Colors } from "styles";
-import { Layout } from "constant";
+import { COLORS, LAYOUT } from "styles";
 
 const styles = StyleSheet.create({
 	expanded: {
 		width: "100%",
-		height: Layout.screen.height * 0.3,
+		height: LAYOUT.SCREEN.HEIGHT * 0.3,
 		alignItems: "center",
-		backgroundColor: Colors.MainBG,
+		backgroundColor: COLORS.MAIN_BG,
 		top: 0,
 	},
 	shrinked: {
 		alignItems: "center",
 		width: "100%",
-		height: Layout.screen.height * 0.06,
-		backgroundColor: Colors.MainBG,
+		height: LAYOUT.SCREEN.HEIGHT * 0.06,
+		backgroundColor: COLORS.MAIN_BG,
 	},
 	container: {
 		flex: 1,
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
 	},
 	about: {
 		borderBottomWidth: 1,
-		borderColor: Colors.White,
+		borderColor: COLORS.WHITE,
 		margin: 5,
 		padding: 2,
 	},

@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo, useRef } from "react";
 import { View, StyleSheet } from "react-native";
 import BottomSheet from "@gorhom/bottom-sheet";
-import { Colors } from "styles";
+import { COLORS } from "styles";
 import CustomBackdropGenerator from "./CustomBackdrop";
 
 interface Props {
-  shrinkedHeader: React.ReactNode;
-  expandedHeader: React.ReactNode;
-  children: React.ReactNode;
+	shrinkedHeader: React.ReactNode;
+	expandedHeader: React.ReactNode;
+	children: React.ReactNode;
 }
 
 const MyBottomSheet: React.FC<Props> = ({
@@ -49,7 +49,7 @@ const MyBottomSheet: React.FC<Props> = ({
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: Colors.MainBG,
+		backgroundColor: COLORS.MAIN_BG,
 	},
 });
 

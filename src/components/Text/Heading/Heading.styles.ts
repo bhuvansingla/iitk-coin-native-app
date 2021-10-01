@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { Colors,Font } from "styles";
+import { COLORS, FONT } from "styles";
 
 export default StyleSheet.create({
 	container: {
@@ -11,10 +11,10 @@ export default StyleSheet.create({
 	text: {
 		marginBottom: 7,
 		flexDirection: "row",
-		opacity:1,
-		color:Colors.Black,
-		fontSize:Font.FontSize.H2,
-		textAlign:"left",
+		opacity: 1,
+		color: COLORS.BLACK,
+		fontSize: FONT.SIZE.H2,
+		textAlign: "left",
 	},
-	
+
 });

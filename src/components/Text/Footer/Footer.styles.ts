@@ -1,23 +1,23 @@
 import { StyleSheet } from "react-native";
-import { Font } from "styles";
+import { FONT } from "styles";
 
 export default StyleSheet.create({
 	container: {
 		marginTop: 20,
 		marginBottom: 20,
-		marginHorizontal: 16,  
+		marginHorizontal: 16,
 	},
 
 	text: {
 		marginBottom: 7,
 		flexDirection: "row",
-		opacity:1,
+		opacity: 1,
 	},
 
 	link: {
 		flexDirection: "row",
-		fontSize:Font.FontSize.Primary,
-		opacity:1,      
+		fontSize: FONT.SIZE.PRIMARY,
+		opacity: 1,
 	},
 
 	fullWidth: {

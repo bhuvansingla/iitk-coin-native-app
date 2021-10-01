@@ -1,48 +1,48 @@
 import { StyleSheet } from "react-native";
 
-import { Colors, Font } from "styles";
+import { COLORS, FONT } from "styles";
 
 export default StyleSheet.create({
 	teal: {
-		color: Colors.Teal,
+		color: COLORS.TEAL,
 	},
 	grey: {
-		color: Colors.Grey,
+		color: COLORS.GREY,
 	},
 	link: {
-		color: Colors.Link,
+		color: COLORS.LINK,
 	},
 	white: {
-		color: Colors.White,
+		color: COLORS.WHITE,
 		opacity: 1,
-		fontSize: Font.FontSize.Primary,
+		fontSize: FONT.SIZE.PRIMARY,
 	},
 	black: {
-		color: Colors.Black,
+		color: COLORS.BLACK,
 	},
 	darkgrey: {
-		color: Colors.Darkgrey,
+		color: COLORS.DARK_GREY,
 	},
 	red: {
-		color: Colors.Red,
+		color: COLORS.RED,
 	},
 	green: {
-		color: Colors.Green,
+		color: COLORS.GREEN,
 	},
 	yellow: {
-		color: Colors.Yellow,
+		color: COLORS.YELLOW,
 	},
 	Head: {
-		fontFamily: Font.FontWeight.Head,
+		fontFamily: FONT.WEIGHT.HEAD,
 	},
 	Bold: {
-		fontFamily: Font.FontWeight.Bold,
+		fontFamily: FONT.WEIGHT.BOLD,
 	},
 	SemiBold: {
-		fontFamily: Font.FontWeight.SemiBold,
+		fontFamily: FONT.WEIGHT.SEMI_BOLD,
 	},
 	Regular: {
-		fontFamily: Font.FontWeight.Regular,
+		fontFamily: FONT.WEIGHT.REGULAR,
 	},
 	center: {
 		textAlign: "center",
@@ -51,9 +51,9 @@ export default StyleSheet.create({
 		textAlign: "left",
 	},
 	primary: {
-		fontSize: Font.FontSize.Primary,
+		fontSize: FONT.SIZE.PRIMARY,
 	},
 	H2: {
-		fontSize: Font.FontSize.H2,
+		fontSize: FONT.SIZE.H2,
 	},
 });

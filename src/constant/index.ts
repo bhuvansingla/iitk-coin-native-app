@@ -1,4 +1,3 @@
-import * as Layout from "./Layout";
-import { BASE_URL } from "./API";
+import { BASE_URL } from "./api";
 
-export { Layout, BASE_URL };
+export { BASE_URL };

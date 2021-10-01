@@ -4,7 +4,7 @@ import React, { useCallback, useState } from "react";
 
 import { StyleSheet, View } from "react-native";
 import { TextInput, Text, Button } from "components";
-import { Colors } from "styles";
+import { COLORS } from "styles";
 import AppLoading from "expo-app-loading";
 
 import { AppState } from "redux-store/reducers";
@@ -86,7 +86,7 @@ function App() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: Colors.White,
+		backgroundColor: COLORS.WHITE,
 		alignItems: "center",
 		justifyContent: "center",
 	},

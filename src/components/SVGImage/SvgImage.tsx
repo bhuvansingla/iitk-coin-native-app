@@ -1,20 +1,20 @@
 import React from "react";
 import { StyleProp, ImageStyle, View } from "react-native";
 
-import source from "./image.source";
-import styles from "./image.styles";
+import source from "./SvgImage.source";
+import styles from "./SvgImage.styles";
 
 interface Prop {
-  name: "CoinLogo" | "CoinTypographyLogo" | "Crow";
-  size?: string;
-  style?: StyleProp<ImageStyle>;
+	name: "CoinLogo" | "CoinTypographyLogo" | "Crow";
+	size?: string;
+	style?: StyleProp<ImageStyle>;
 }
 
 const SImage: React.FC<Prop> = (props) => {
 	const { name, size, style } = props;
-  
+
 	// SVG Tag
-	let SVG = source.Crow;
+	let SVG = source.crow;
 
 	const height = size || "100%";
 
@@ -23,7 +23,7 @@ const SImage: React.FC<Prop> = (props) => {
 	}
 
 	if (name === "CoinTypographyLogo") {
-		SVG = source.CoinTypographyLogo;
+		SVG = source.coinTypographyLogo;
 		return (
 			<SVG
 				height={height}
@@ -33,7 +33,7 @@ const SImage: React.FC<Prop> = (props) => {
 	}
 
 	if (name === "CoinLogo") {
-		SVG = source.CoinLogo;
+		SVG = source.coinLogo;
 		return (
 			<SVG height={height} style={[styles.default, styles.coinLogo, style]} />
 		);
