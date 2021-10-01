@@ -7,33 +7,33 @@ import styles from "./Button.styles";
 import Ripple from "react-native-material-ripple";
 
 interface Props {
-  Title: string;
-  onPress: () => void;
+	title: string;
+	onPress: () => void;
 
 }
 
 const Button: React.FC<Props> = (props) => {
 
-	const {onPress, Title} = props;
-	
+	const { onPress, title } = props;
+
 	return (
-            
-		<Ripple	rippleOpacity={0.25}
-			rippleCentered={true} 
+
+		<Ripple rippleOpacity={0.25}
+			rippleCentered={true}
 			rippleSize={3500}
-			rippleColor = {Colors.DarkTeal}
+			rippleColor={Colors.DarkTeal}
 			rippleDuration={1300}
-			rippleContainerBorderRadius = {20}
+			rippleContainerBorderRadius={20}
 			onPress={onPress} style={styles.container}>
-                 
-			<Text.Title white bold style ={styles.text}>
-				{Title}	
+
+			<Text.Title white bold style={styles.text}>
+				{title}
 			</Text.Title>
-                   
+
 		</Ripple>
-			
+
 	);
-	
+
 };
 
 export default Button;

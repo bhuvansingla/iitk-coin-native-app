@@ -1,21 +1,21 @@
 import React from "react";
-import {View} from "react-native";
+import { View } from "react-native";
 
 import Text from "../Title";
 import styles from "./Heading.styles";
 interface Props {
-  Title: string;
+	title: string;
 }
 
 const Heading: React.FC<Props> = (props) => {
 
-	const {Title} = props;
+	const { title } = props;
 
 	return (
 		<View style={styles.container}>
-			<Text bold style ={styles.text}>
-				{Title}
-			</Text>	
+			<Text bold style={styles.text}>
+				{title}
+			</Text>
 		</View>
 	);
 };
