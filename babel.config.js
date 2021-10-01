@@ -13,6 +13,8 @@ module.exports = function(api) {
 						constant: "./src/constant",
 						styles: "./src/styles",
 						utils: "./src/utils",
+						api: "./src/api",
+						["secure-store"]: "./src/secure-store",
 					},
 				},
 			],
