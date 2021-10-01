@@ -12,6 +12,7 @@ module.exports = function(api) {
 						components: "./src/components",
 						constant: "./src/constant",
 						styles: "./src/styles",
+						"redux-store": "./src/redux-store",
 						utils: "./src/utils",
 					},
 				},
