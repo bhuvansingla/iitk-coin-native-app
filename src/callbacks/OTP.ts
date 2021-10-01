@@ -1,11 +1,10 @@
-import { OTP, PostOTP } from "../api/Auth";
+import { OTPParams, postOTP } from "../api/Auth";
 
-export const OTPCallback = async (input: OTP) : Promise<boolean> => {
-	const response = await PostOTP(input);
+export const otpCallback = async (params: OTPParams) : Promise<boolean> => {
+	const response = await postOTP(params);
 	if (response.Status == 200) {
 		return true;
 	}else {
-		console.error(response.Payload);
 		return false;
 	}
 };

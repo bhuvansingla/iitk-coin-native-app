@@ -1,11 +1,10 @@
-import { Signup, PostSignup } from "../api/Auth";
+import { SignupParams, postSignup } from "../api/Auth";
 
-export const SignupCallback = async (input : Signup) : Promise<boolean> => {
-	const response = await PostSignup(input);
+export const signupCallback = async (params : SignupParams) : Promise<boolean> => {
+	const response = await postSignup(params);
 	if (response.Status === 200) {
 		return true;
-	}else {
-		console.error(response.Payload);
+	} else {
 		return false;
 	}
 };

@@ -1,16 +1,17 @@
 import { Save, Retrieve, Delete } from "../Store";
 
-export const SaveToken = async (token: string) : Promise<void> => {
-	await Save("token", token);
+const keyName = "token";
+
+export const saveToken = async (token: string) : Promise<void> => {
+	await Save(keyName, token);
 };
 
-export const GetToken = async () : Promise<string | null> => {
-	const s = await Retrieve("token");
+export const getToken = async () : Promise<string | null> => {
+	const s = await Retrieve(keyName);
 	if(s === null) return null;
 	return s.split(";")[0];
 };
 
-
-export const DeleteToken = async () :  Promise<void>=> {
-	await Delete("token");
+export const deleteToken = async () : Promise<void> => {
+	await Delete(keyName);
 };
