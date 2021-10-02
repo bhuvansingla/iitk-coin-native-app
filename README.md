@@ -9,6 +9,11 @@ This repository holds the codebase for [IITK Coin](https://github.com/bhuvansing
 ```sh
 cd iitk-coin-native-app
 
+# Install nvm from https://github.com/nvm-sh/nvm#installation-and-update
+# Use the required node version from .nvmrc
+nvm use
+nmv install
+
 # If EXPO CLI is not installed, run:
 npm install -g expo-cli
 
