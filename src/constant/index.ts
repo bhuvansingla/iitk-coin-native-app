@@ -1,3 +1,3 @@
-import { BASE_URL } from "./api";
+import * as API from "./api";
 
-export { BASE_URL };
+export { API };

@@ -1,1 +1,12 @@
-export const BASE_URL = "http://5ab4-223-190-106-94.ngrok.io";
+const BACKEND = {
+	BASE_URL: "",
+	ENDPOINT: {
+		"OTP": "/auth/otp",
+		"SIGNUP": "/auth/signup",
+		"LOGIN": "/auth/login",
+		"LOGOUT": "/auth/logout",
+		"CHECK_LOGIN": "/auth/check"
+	}
+};
+
+export { BACKEND };
