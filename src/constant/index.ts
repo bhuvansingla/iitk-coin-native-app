@@ -1,3 +1,3 @@
-import {BACKEND} from "./api";
+import * as API from "./api";
 
-export { BACKEND };
+export { API };

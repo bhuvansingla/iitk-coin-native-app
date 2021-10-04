@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { BACKEND } from "constant";
+import { API } from "constant";
 
 // Interfaces
 interface OTPParams {
@@ -27,7 +27,7 @@ interface Response {
 // API
 const postOTP = async (params: OTPParams): Promise<Response> => {
 	let payload, status;
-	await axios.post(BACKEND.BASE_URL + BACKEND.ENDPOINT["OTP"], {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.OTP, {
 		Rollno: params.Rollno,
 	}).then(res => {
 		payload = res.data;
@@ -46,7 +46,7 @@ const postOTP = async (params: OTPParams): Promise<Response> => {
 
 const postSignup = async (params: SignupParams): Promise<Response> => {
 	let payload, status;
-	await axios.post(BACKEND.BASE_URL + BACKEND.ENDPOINT["SIGNUP"], {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.SIGNUP, {
 		Rollno: params.Rollno,
 		Password: params.Password,
 		OTP: params.OTP
@@ -67,7 +67,7 @@ const postSignup = async (params: SignupParams): Promise<Response> => {
 const postLogin = async (params: LoginParams): Promise<Response> => {
 	let payload, status;
 	let token: any;
-	await axios.post(BACKEND.BASE_URL + BACKEND.ENDPOINT["LOGIN"], {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.LOGIN, {
 		Rollno: params.Rollno,
 		Password: params.Password
 	}).then(res => {
@@ -88,7 +88,7 @@ const postLogin = async (params: LoginParams): Promise<Response> => {
 
 const postLogout = async (token: string): Promise<Response> => {
 	let payload, status;
-	await axios.post(BACKEND.BASE_URL + BACKEND.ENDPOINT["LOGOUT"], {}, {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.LOGOUT, {}, {
 		headers: {
 			"cookie": token
 		}
@@ -108,7 +108,7 @@ const postLogout = async (token: string): Promise<Response> => {
 
 const postLoginStatus = async (token: string): Promise<Response> => {
 	let payload, status;
-	await axios.post(BACKEND.BASE_URL + BACKEND.ENDPOINT["CHECK_LOGIN"], {}, {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.CHECK_LOGIN, {}, {
 		headers: {
 			"cookie": token
 		}
