@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { BASE_URL } from "constant";
+import { API } from "constant";
 
 // Interfaces
 interface OTPParams {
@@ -27,7 +27,7 @@ interface Response {
 // API
 const postOTP = async (params: OTPParams): Promise<Response> => {
 	let payload, status;
-	await axios.post(`${BASE_URL}/auth/otp`, {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.OTP, {
 		Rollno: params.Rollno,
 	}).then(res => {
 		payload = res.data;
@@ -46,7 +46,7 @@ const postOTP = async (params: OTPParams): Promise<Response> => {
 
 const postSignup = async (params: SignupParams): Promise<Response> => {
 	let payload, status;
-	await axios.post(`${BASE_URL}/auth/signup`, {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.SIGNUP, {
 		Rollno: params.Rollno,
 		Password: params.Password,
 		OTP: params.OTP
@@ -67,7 +67,7 @@ const postSignup = async (params: SignupParams): Promise<Response> => {
 const postLogin = async (params: LoginParams): Promise<Response> => {
 	let payload, status;
 	let token: any;
-	await axios.post(`${BASE_URL}/auth/login`, {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.LOGIN, {
 		Rollno: params.Rollno,
 		Password: params.Password
 	}).then(res => {
@@ -88,9 +88,29 @@ const postLogin = async (params: LoginParams): Promise<Response> => {
 
 const postLogout = async (token: string): Promise<Response> => {
 	let payload, status;
-	await axios.post(`${BASE_URL}/auth/logout`, {}, {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.LOGOUT, {}, {
 		headers: {
-			"Cookie": token
+			"cookie": token
+		}
+	}).then(res => {
+		payload = res.data;
+		status = res.status;
+	}).catch(err => {
+		payload = err.response.data;
+		status = err.response.status;
+	});
+	const response: Response = {
+		Payload: payload,
+		Status: status
+	};
+	return response;
+};
+
+const postLoginStatus = async (token: string): Promise<Response> => {
+	let payload, status;
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.CHECK_LOGIN, {}, {
+		headers: {
+			"cookie": token
 		}
 	}).then(res => {
 		payload = res.data;
@@ -113,5 +133,6 @@ export {
 	postOTP,
 	postSignup,
 	postLogin,
-	postLogout
+	postLogout,
+	postLoginStatus
 };

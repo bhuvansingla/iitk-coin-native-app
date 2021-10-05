@@ -1,6 +1,8 @@
 import { setIsAuthenticated } from "redux-store/actions/auth";
+import { setName, setRollNo } from "redux-store/actions/user";
 
 export {
-	setIsAuthenticated
+	setIsAuthenticated,
+	setName,
+	setRollNo
 };
-
