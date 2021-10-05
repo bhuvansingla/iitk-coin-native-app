@@ -3,8 +3,8 @@ import { COLORS, FONT } from "styles";
 
 export default StyleSheet.create({
 	container: {
-		marginTop: 10,
-		marginBottom: 10,
+		marginTop: 20,
+		marginBottom: 17,
 		width: "100%",
 	},
 
