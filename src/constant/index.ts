@@ -1,4 +1,5 @@
-import { BASE_URL } from "./api";
-import { LABELS, LENGTH } from "./labels";
+import * as API from "./api";
+import { LABELS } from "./labels";
+import { LENGTH } from "./length";
 
-export { BASE_URL, LABELS, LENGTH };
+export { API, LABELS, LENGTH };

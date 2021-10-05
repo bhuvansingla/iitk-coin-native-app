@@ -32,10 +32,4 @@ const LABELS = {
 
 };
 
-const LENGTH = {
-	"OTP": 7,
-	"NAME": 50,
-	"ROLL_NO":10,
-};
-
-export { LABELS, LENGTH };
+export { LABELS };

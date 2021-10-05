@@ -5,25 +5,25 @@ import OtpForm from "./Otp";
 import { View } from "react-native";
 
 interface Props {
-    name: "Login" | "SignUp" | "OTP"
+    form: "Login" | "SignUp" | "OTP"
 }
 
-const Forms: React.FC<Props> = ({ name }) => {
+const Forms: React.FC<Props> = ({ form }) => {
 	
-	if (name == "Login") {
+	if (form == "Login") {
 		return <LoginForm />;
 	}
 
-	if (name == "SignUp") {
+	if (form == "SignUp") {
 		return <SignUpForm />;
 	}
 
-	if (name == "OTP") {
+	if (form == "OTP") {
 		return <OtpForm />;
 	}
 
 	return <View />;
+	
 };
 
 export default Forms;
-

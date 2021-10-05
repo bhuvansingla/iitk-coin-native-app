@@ -2,15 +2,9 @@ import React, { useState } from "react";
 import { View } from "react-native";
 import { TextInput, Button } from "components";
 import { LABELS, LENGTH } from "constant";
-import { AppState } from "redux-store/reducers";
-
-import { useDispatch, useSelector } from "react-redux";
-import { setIsAuthenticated } from "redux-store/actions";
 
 const SignUpForm: () => JSX.Element = () => {
 
-	const dispatch = useDispatch();
-	const isAuthenticated: boolean = useSelector((state: AppState) => state.auth.isAuthenticated);
 	const [name, setName] = useState<string>("");
 	const [rollNo, setRollNo] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
@@ -21,15 +15,15 @@ const SignUpForm: () => JSX.Element = () => {
 		}
 	};
 
-	const onChangeRollNo = (name: string) => {
-		if (name.length < LENGTH.ROLL_NO) {
-			setRollNo(name);
+	const onChangeRollNo = (rollNo: string) => {
+		if (rollNo.length < LENGTH.ROLL_NO) {
+			setRollNo(rollNo);
 		}
 	};
 
-	const onChangePassword = (name: string) => {
-		if (name.length < LENGTH.NAME) {
-			setPassword(name);
+	const onChangePassword = (password: string) => {
+		if (password.length < LENGTH.PASSWORD) {
+			setPassword(password);
 		}
 	};
 	
@@ -37,6 +31,7 @@ const SignUpForm: () => JSX.Element = () => {
 	const signUpForm = (
 
 		<View>
+			
 			<TextInput
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
@@ -58,7 +53,8 @@ const SignUpForm: () => JSX.Element = () => {
 				value={password}
 			/>
 
-			<Button title={isAuthenticated ? LABELS.SIGNOUT_BUTTON_TEXT : LABELS.SIGNUP_BUTTON_TEXT} onPress={() => { dispatch(setIsAuthenticated(!isAuthenticated)); }} />
+			<Button title= {LABELS.SIGNUP_BUTTON_TEXT} onPress={() => {console.log(rollNo);}}/>
+
 		</View>
 	);
 
@@ -66,6 +62,7 @@ const SignUpForm: () => JSX.Element = () => {
 	return (
 		signUpForm 
 	);
+
 };
 
 export default SignUpForm;

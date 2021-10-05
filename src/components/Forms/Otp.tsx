@@ -7,9 +7,9 @@ const OtpForm: () => JSX.Element = () => {
 
 	const [OTP, setOTP] = useState<string>("");
 
-	const onChangeOTP = (name: string) => {
-		if (name.length < LENGTH.OTP) {
-			setOTP(name);
+	const onChangeOTP = (OTP: string) => {
+		if (OTP.length < LENGTH.OTP) {
+			setOTP(OTP);
 		}
 	};
 
@@ -34,6 +34,7 @@ const OtpForm: () => JSX.Element = () => {
 	return (
 		verifyOtpForm
 	);
+	
 };
 
 export default OtpForm;

@@ -23,11 +23,12 @@ function App() {
 	});
 
 	return (
+
 		(!fontsLoaded) ? <AppLoading />
 			: (
 				<View style={styles.container}>
 					{/* input "Login" or "SignUp" or "OTP*/}
-					<Screen name= "OTP" />	
+					<Screen.OTP />	
 				</View>
 			)
 	);

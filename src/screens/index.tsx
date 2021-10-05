@@ -3,32 +3,35 @@ import React from "react";
 import LoginPage from "./Login/LoginScreen";
 import SignUpPage from "./SignUp/SignUpScreen";
 import OtpPage from "./Otp/OtpScreen";
-import { View } from "react-native";
-interface Props {
-    name: "Login" | "SignUp" | "OTP"
-}
 
-const whatever: React.FC<Props> = ({ name }) => {
-	const shead = <Header.Shrinked />;
-	const fhead = <Header.Expanded />;
+const shrinkedHeader = <Header.Shrinked />;
+const expandedHeader = <Header.Expanded />;
 
-	let body= <View/>;
-
-	if (name == "Login") {
-		body = <LoginPage />;
-	}
-	if (name == "SignUp") {
-		body= <SignUpPage />;
-	}
-	if (name == "OTP") {
-		body= <OtpPage />;
-	}
+const Login: () => JSX.Element = () => {
 
 	return (
-		<BottomSheet expandedHeader={fhead} shrinkedHeader={shead}>
-			{body}
+		<BottomSheet expandedHeader={expandedHeader} shrinkedHeader={shrinkedHeader}>
+			<LoginPage/>
 		</BottomSheet>
 	);
 };
 
-export default whatever;
+const SignUp: () => JSX.Element = () => {
+
+	return (
+		<BottomSheet expandedHeader={expandedHeader} shrinkedHeader={shrinkedHeader}>
+			<SignUpPage/>
+		</BottomSheet>
+	);
+};
+
+const OTP: () => JSX.Element = () => {
+
+	return (
+		<BottomSheet expandedHeader={expandedHeader} shrinkedHeader={shrinkedHeader}>
+			<OtpPage/>
+		</BottomSheet>
+	);
+};
+
+export default { Login, SignUp, OTP };

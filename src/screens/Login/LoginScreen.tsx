@@ -13,18 +13,23 @@ const LoginPage: () => JSX.Element = () => {
 		<View style={styles.contentContainer}>
 
 			<Text.Heading title={LABELS.SIGNIN_FORM_TITLE} />
+
 			<View style={styles.formContainer}>
+
 				<LoginForm/>
 				<Text.Footer title={LABELS.CREATE_WALLET_FOOTER} link={LABELS.CREATE_WALLET_LINK} onPress={() => {console.log("Create Wallet");}} />
+
 			</View>
 
 		</View>
+		
 	);
 
 	// render
 	return (
 		loginPage
 	);
+
 };
 
 export default LoginPage;

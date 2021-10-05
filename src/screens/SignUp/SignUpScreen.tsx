@@ -13,9 +13,12 @@ const SignUpPage: () => JSX.Element = () => {
 		<View style={styles.contentContainer}>
             
 			<Text.Heading title={LABELS.SIGNUP_FORM_TITLE} />
+
 			<View style={styles.formContainer}>
+
 				<SignUpForm />
 				<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => { console.log("Go to Sign In Page"); }} />
+			
 			</View>
 			
 		</View>
@@ -25,6 +28,7 @@ const SignUpPage: () => JSX.Element = () => {
 	return (
 		signUpPage
 	);
+
 };
 
 export default SignUpPage;

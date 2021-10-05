@@ -13,7 +13,9 @@ const OtpPage: () => JSX.Element = () => {
 		<View style={styles.contentContainer}>
 
 			<Text.Heading title={LABELS.VERIFY_OTP_FORM_TITLE} />
+
 			<View style={styles.formContainer}>
+				
 				<OtpForm/>
 				<Text.Footer title={LABELS.OTP_INPUT_FOOTER} link={LABELS.OTP_INPUT_LINK} onPress={() => { console.log("Generating OTP"); }} />
 		
@@ -26,6 +28,7 @@ const OtpPage: () => JSX.Element = () => {
 	return (
 		otpPage
 	);
+
 };
 
 export default OtpPage;
