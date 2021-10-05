@@ -4,6 +4,7 @@ import Button from "./Button";
 import BottomSheet from "./BottomSheet";
 import Image from "./SVGImage";
 import Header from "./Header";
+import Forms from "./Forms";
 
 export {
 	TextInput,
@@ -12,4 +13,5 @@ export {
 	BottomSheet,
 	Image,
 	Header,
+	Forms,
 };

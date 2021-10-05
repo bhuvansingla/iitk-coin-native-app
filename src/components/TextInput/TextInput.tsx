@@ -7,12 +7,13 @@ interface Props {
 	placeholder?: string;
 	title: string;
 	value: string;
+	password?:boolean;
 	onChangeText: (text: string) => void;
 }
 
 const TextInput: React.FC<Props> = (props) => {
 
-	const { onChangeText, value, placeholder, title } = props;
+	const { onChangeText, value, placeholder, title, password } = props;
 
 	return (
 
@@ -23,6 +24,7 @@ const TextInput: React.FC<Props> = (props) => {
 			<TextInputRN
 				placeholder={placeholder}
 				style={styles.input}
+				secureTextEntry={password}
 				onChangeText={onChangeText}
 				value={value}
 			/>

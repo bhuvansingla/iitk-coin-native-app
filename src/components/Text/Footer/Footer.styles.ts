@@ -3,9 +3,8 @@ import { FONT } from "styles";
 
 export default StyleSheet.create({
 	container: {
-		marginTop: 20,
+		marginTop: 27,
 		marginBottom: 20,
-		marginHorizontal: 16,
 	},
 
 	text: {
@@ -16,13 +15,8 @@ export default StyleSheet.create({
 
 	link: {
 		flexDirection: "row",
-		fontSize: FONT.SIZE.PRIMARY,
+		fontSize: FONT.SIZE.SECONDARY,
 		opacity: 1,
 	},
 
-	fullWidth: {
-		width: "100%",
-		alignItems: "center",
-		paddingHorizontal: 0,
-	},
 });

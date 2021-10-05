@@ -50,7 +50,7 @@ export default function Title(props: Props): React.ReactElement {
 	}
 
 	if(footer) {
-		customStyle.push(mainStyle.primary);
+		customStyle.push(mainStyle.secondary);
 	}
 
 	return <Text {...props} style={customStyle} />;

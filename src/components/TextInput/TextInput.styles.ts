@@ -4,22 +4,21 @@ import { COLORS, FONT } from "styles";
 export default StyleSheet.create({
 
 	container: {
-		marginTop: 5,
-		marginHorizontal: 16,
+		marginTop: 1,
 		width: "100%",
 	},
 
 	input: {
 		marginTop: 2,
-		marginBottom: 20,
+		marginBottom: 10,
 		paddingHorizontal: 16,
-		paddingVertical: 12,
+		paddingVertical: 10,
 		borderRadius: 20,
 		backgroundColor: COLORS.GREY,
 
-		fontFamily: FONT.WEIGHT.BOLD,
+		fontFamily: FONT.WEIGHT.REGULAR,
 		color: COLORS.BLACK,
-		fontSize: FONT.SIZE.H3,
+		fontSize: FONT.SIZE.PRIMARY,
 		fontWeight: "600",
 
 		shadowRadius: 4,
@@ -30,13 +29,8 @@ export default StyleSheet.create({
 	},
 
 	containerTitle: {
-		marginBottom: 7,
+		marginBottom: 4,
 		flexDirection: "row",
 	},
 
-	fullWidth: {
-		width: "100%",
-		alignItems: "center",
-		paddingHorizontal: 0,
-	},
 });

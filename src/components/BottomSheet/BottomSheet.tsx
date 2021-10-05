@@ -49,6 +49,9 @@ const MyBottomSheet: React.FC<Props> = ({
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		width: "100%",
+		margin: 0,
+		padding: 0,
 		backgroundColor: COLORS.MAIN_BG,
 	},
 });

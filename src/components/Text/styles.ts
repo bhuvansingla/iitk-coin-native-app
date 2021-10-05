@@ -15,7 +15,6 @@ export default StyleSheet.create({
 	white: {
 		color: COLORS.WHITE,
 		opacity: 1,
-		fontSize: FONT.SIZE.PRIMARY,
 	},
 	black: {
 		color: COLORS.BLACK,
@@ -52,6 +51,9 @@ export default StyleSheet.create({
 	},
 	primary: {
 		fontSize: FONT.SIZE.PRIMARY,
+	},
+	secondary: {
+		fontSize: FONT.SIZE.SECONDARY,
 	},
 	H2: {
 		fontSize: FONT.SIZE.H2,
