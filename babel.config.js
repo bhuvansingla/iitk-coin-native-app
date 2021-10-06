@@ -16,6 +16,7 @@ module.exports = function(api) {
 						utils: "./src/utils",
 						api: "./src/api",
 						["secure-store"]: "./src/secure-store",
+						screens: "./src/screens"
 					},
 				},
 			],
