@@ -5,7 +5,7 @@ import styles from "../screen.styles";
 import { LABELS } from "constant";
 import SignUpForm from "components/Forms/SignUp";
 
-const SignUpPage: () => JSX.Element = () => {
+const SignupScreen: () => JSX.Element = () => {
 
 	// Sign Up form
 	const signUpPage = (
@@ -31,4 +31,4 @@ const SignUpPage: () => JSX.Element = () => {
 
 };
 
-export default SignUpPage;
+export default SignupScreen;

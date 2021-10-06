@@ -5,7 +5,7 @@ import styles from "../screen.styles";
 import { LABELS} from "constant";
 import LoginForm from "components/Forms/Login";
 
-const LoginPage: () => JSX.Element = () => {
+const LoginScreen: () => JSX.Element = () => {
 
 	// Login form
 	const loginPage = (
@@ -32,4 +32,4 @@ const LoginPage: () => JSX.Element = () => {
 
 };
 
-export default LoginPage;
+export default LoginScreen;
