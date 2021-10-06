@@ -5,7 +5,7 @@ import SignupScreen from "./Signup/SignupScreen";
 import { ScreenType } from "./screen.types";
 import { useSelector } from "react-redux";
 import { AppState } from "redux-store/reducers";
-import { View } from "react-native";
+import HomeScreen from "./Home/HomeScreen";
 
 const RootScreen: () => JSX.Element = () => {
 
@@ -24,7 +24,7 @@ const RootScreen: () => JSX.Element = () => {
 				</React.Fragment>
 				:
 				<React.Fragment>
-					{currentScreen === ScreenType.HOME && "Logged In"}
+					{currentScreen === ScreenType.HOME && <HomeScreen />}
 				</React.Fragment>
 			}
 		</BottomSheet>
