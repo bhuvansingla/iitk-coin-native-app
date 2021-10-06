@@ -1,37 +1,34 @@
 import { BottomSheet, Header } from "components";
 import React from "react";
-import LoginPage from "./Login/LoginScreen";
-import SignUpPage from "./SignUp/SignUpScreen";
-import OtpPage from "./Otp/OtpScreen";
+import LoginScreen from "./Login/LoginScreen";
+import SignupScreen from "./Signup/SignupScreen";
+import { ScreenType } from "./screen.types";
+import { useSelector } from "react-redux";
+import { AppState } from "redux-store/reducers";
+import HomeScreen from "./Home/HomeScreen";
 
-const shrinkedHeader = <Header.Shrinked />;
-const expandedHeader = <Header.Expanded />;
+const RootScreen: () => JSX.Element = () => {
 
-const Login: () => JSX.Element = () => {
+	const shrinkedHeader = <Header.Shrinked />;
+	const expandedHeader = <Header.Expanded />;
+
+	const currentScreen: ScreenType = useSelector((state: AppState) => state.display.currentScreen);
+	const isAuthenticated: boolean = useSelector((state: AppState) => state.auth.isAuthenticated);
 
 	return (
 		<BottomSheet expandedHeader={expandedHeader} shrinkedHeader={shrinkedHeader}>
-			<LoginPage/>
+			{!isAuthenticated ?
+				<React.Fragment>
+					{currentScreen === ScreenType.LOGIN && <LoginScreen />}
+					{currentScreen === ScreenType.SIGNUP && <SignupScreen />}
+				</React.Fragment>
+				:
+				<React.Fragment>
+					{currentScreen === ScreenType.HOME && <HomeScreen />}
+				</React.Fragment>
+			}
 		</BottomSheet>
 	);
 };
 
-const SignUp: () => JSX.Element = () => {
-
-	return (
-		<BottomSheet expandedHeader={expandedHeader} shrinkedHeader={shrinkedHeader}>
-			<SignUpPage/>
-		</BottomSheet>
-	);
-};
-
-const OTP: () => JSX.Element = () => {
-
-	return (
-		<BottomSheet expandedHeader={expandedHeader} shrinkedHeader={shrinkedHeader}>
-			<OtpPage/>
-		</BottomSheet>
-	);
-};
-
-export default { Login, SignUp, OTP };
+export default RootScreen;

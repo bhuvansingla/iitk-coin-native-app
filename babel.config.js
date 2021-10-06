@@ -11,11 +11,13 @@ module.exports = function(api) {
 					alias: {
 						components: "./src/components",
 						constant: "./src/constant",
+						callbacks: "./src/callbacks",
 						styles: "./src/styles",
 						["redux-store"]: "./src/redux-store",
 						utils: "./src/utils",
 						api: "./src/api",
 						["secure-store"]: "./src/secure-store",
+						screens: "./src/screens"
 					},
 				},
 			],

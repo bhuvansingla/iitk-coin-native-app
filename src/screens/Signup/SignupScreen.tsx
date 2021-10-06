@@ -5,7 +5,7 @@ import { setCurrentScreen } from "redux-store/actions";
 
 import { View } from "react-native";
 import { Text } from "components";
-import LoginForm from "components/Forms/Login";
+import SignupForm from "components/Forms/SignUp";
 
 import styles from "../screen.styles";
 
@@ -13,28 +13,28 @@ import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 
 
-const LoginScreen: () => JSX.Element = () => {
+const SignupScreen: () => JSX.Element = () => {
 
 	const dispatch = useDispatch();
 
 	const onPressFooter = () => {
-		dispatch(setCurrentScreen(ScreenType.SIGNUP));
+		dispatch(setCurrentScreen(ScreenType.LOGIN));
 	};
 
 	return (
 		<View style={styles.contentContainer}>
 
-			<Text.Heading title={LABELS.SIGNIN_FORM_TITLE} />
+			<Text.Heading title={LABELS.SIGNUP_FORM_TITLE} />
 
 			<View style={styles.formContainer}>
 
-				<LoginForm />
+				<SignupForm />
 
-				<Text.Footer title={LABELS.CREATE_WALLET_FOOTER} link={LABELS.CREATE_WALLET_LINK} onPress={() => onPressFooter()} />
+				<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 
 			</View>
 		</View>
 	);
 };
 
-export default LoginScreen;
+export default SignupScreen;
