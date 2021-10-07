@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { View } from "react-native";
 import { TextInput, Button } from "components";
 import { LABELS, LENGTH } from "constant";
-import { LoginParams } from "api/auth";
-import { loginCallback } from "callbacks/login";
-import { useDispatch } from "react-redux";
-import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
-import { ScreenType } from "screens/screen.types";
-const LoginForm: () => JSX.Element = () => {
 
-	const [password, setPassword] = useState<string>("");
-	const [rollNo, setRollNo] = useState<string>("");
 
-	const dispatch = useDispatch();
+interface Props {
+	setPassword: (password: string) => void;
+	setRollNo: (rollNo: string) => void;
+	onPressSignin: () => void;
+}
+
+const LoginForm: React.FC<Props> = (props) => {
+
+	const { setPassword, setRollNo, onPressSignin } = props;
+
+	// const [password, setPassword] = useState<string>("");
+	// const [rollNo, setRollNo] = useState<string>("");
+
+	// const dispatch = useDispatch();
 
 	const onChangePassword = (password: string) => {
 		if (password.length < LENGTH.NAME) {
@@ -27,18 +32,17 @@ const LoginForm: () => JSX.Element = () => {
 
 	};
 
-	const onPressSignin = () => {
-		const loginParams: LoginParams = { Rollno: rollNo, Password: password };
-		loginCallback(loginParams).then((success) => {
-			if (success) {
-				dispatch(setIsAuthenticated(true));
-				dispatch(setCurrentScreen(ScreenType.HOME));
-			}
-		});
-	};
+	// const onPressSignin = () => {
+	// 	const loginParams: LoginParams = { Rollno: rollNo, Password: password };
+	// 	loginCallback(loginParams).then((success) => {
+	// 		if (success) {
+	// 			dispatch(setIsAuthenticated(true));
+	// 			dispatch(setCurrentScreen(ScreenType.HOME));
+	// 		}
+	// 	});
+	// };
 
-	// Login form
-	const loginForm = (
+	return (
 
 		<View>
 
@@ -46,7 +50,6 @@ const LoginForm: () => JSX.Element = () => {
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRollNo}
-				value={rollNo}
 			/>
 
 			<TextInput
@@ -54,7 +57,6 @@ const LoginForm: () => JSX.Element = () => {
 				title={LABELS.PASSWORD_INPUT_FIELD_TITLE}
 				password={true}
 				onChangeText={onChangePassword}
-				value={password}
 			/>
 
 			<Button title={LABELS.SIGNIN_BUTTON_TEXT} onPress={() => onPressSignin()} />
@@ -62,12 +64,6 @@ const LoginForm: () => JSX.Element = () => {
 		</View>
 
 	);
-
-	// render
-	return (
-		loginForm
-	);
-
 };
 
 export default LoginForm;
