@@ -18,13 +18,13 @@ import { ScreenType } from "screens/screen.types";
 const SignupScreen: () => JSX.Element = () => {
 
 	const enum SignupStage {
-		SIGNUP_FORM = "SIGNUP FORM",
+		SIGNUP_DETAILS = "SIGNUP DETAILS",
 		VERIFY_OTP = "VERIFY OTP"
 	}
 
 	const dispatch = useDispatch();
 
-	const [signupStage, setSignupStage] = useState<SignupStage>(SignupStage.SIGNUP_FORM);
+	const [signupStage, setSignupStage] = useState<SignupStage>(SignupStage.SIGNUP_DETAILS);
 
 	const [name, setName] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
@@ -48,7 +48,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 	return (
 		<View style={styles.contentContainer}>
-			{signupStage === SignupStage.SIGNUP_FORM &&
+			{signupStage === SignupStage.SIGNUP_DETAILS &&
 				<React.Fragment>
 
 					<Text.Heading title={LABELS.SIGNUP_FORM_TITLE} />
