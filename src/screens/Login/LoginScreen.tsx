@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { setCurrentScreen } from "redux-store/actions";
+import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
 
 import { View } from "react-native";
 import { Text } from "components";
@@ -11,14 +11,29 @@ import styles from "../screen.styles";
 
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
+import { LoginParams } from "api/auth";
+import { loginCallback } from "callbacks/login";
 
 
 const LoginScreen: () => JSX.Element = () => {
 
 	const dispatch = useDispatch();
 
+	const [password, setPassword] = useState<string>("");
+	const [rollNo, setRollNo] = useState<string>("");
+
 	const onPressFooter = () => {
 		dispatch(setCurrentScreen(ScreenType.SIGNUP));
+	};
+
+	const onPressSignin = () => {
+		const loginParams: LoginParams = { Rollno: rollNo, Password: password };
+		loginCallback(loginParams).then((success) => {
+			if (success) {
+				dispatch(setIsAuthenticated(true));
+				dispatch(setCurrentScreen(ScreenType.HOME));
+			}
+		});
 	};
 
 	return (
@@ -28,7 +43,7 @@ const LoginScreen: () => JSX.Element = () => {
 
 			<View style={styles.formContainer}>
 
-				<LoginForm />
+				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} />
 
 				<Text.Footer title={LABELS.CREATE_WALLET_FOOTER} link={LABELS.CREATE_WALLET_LINK} onPress={() => onPressFooter()} />
 
