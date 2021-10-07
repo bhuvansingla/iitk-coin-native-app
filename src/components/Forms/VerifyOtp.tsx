@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { View } from "react-native";
 import { TextInput, Button } from "components";
 import { LABELS, LENGTH } from "constant";
 
-const OtpForm: () => JSX.Element = () => {
 
-	const [OTP, setOTP] = useState<string>("");
+interface Props {
+	setOTP: (otp: string) => void
+	onPressSubmit: () => void
+}
+
+const VerifyOtpForm: React.FC<Props> = (props) => {
+
+	const { setOTP: setOTP, onPressSubmit } = props;
 
 	const onChangeOTP = (OTP: string) => {
 		if (OTP.length < LENGTH.OTP) {
@@ -13,8 +19,7 @@ const OtpForm: () => JSX.Element = () => {
 		}
 	};
 
-	// Verify OTP form
-	const verifyOtpForm = (
+	return (
 
 		<View>
 
@@ -22,19 +27,13 @@ const OtpForm: () => JSX.Element = () => {
 				placeholder={LABELS.OTP_PLACEHOLDER}
 				title={LABELS.OTP_INPUT_FIELD_TITLE}
 				onChangeText={onChangeOTP}
-				value={OTP}
 			/>
 
-			<Button title= {LABELS.VERIFY_OTP_BUTTON_TEXT} onPress={() => {console.log(OTP);}}/>
-			
+			<Button title={LABELS.VERIFY_OTP_BUTTON_TEXT} onPress={() => onPressSubmit()} />
+
 		</View>
 	);
 
-	// render
-	return (
-		verifyOtpForm
-	);
-	
 };
 
-export default OtpForm;
+export default VerifyOtpForm;
