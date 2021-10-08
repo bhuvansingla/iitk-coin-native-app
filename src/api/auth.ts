@@ -18,6 +18,12 @@ interface LoginParams {
 	Password: string;
 }
 
+interface TransferCoinParams {
+	Rollno: string;
+	Amount: string;
+	Remark: string;
+}
+
 interface Response {
 	Payload: any;
 	Status: any;
@@ -130,6 +136,7 @@ export {
 	OTPParams,
 	SignupParams,
 	LoginParams,
+	TransferCoinParams,
 	postOTP,
 	postSignup,
 	postLogin,

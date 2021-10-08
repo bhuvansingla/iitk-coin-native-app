@@ -6,6 +6,7 @@ import { ScreenType } from "./screen.types";
 import { useSelector } from "react-redux";
 import { AppState } from "redux-store/reducers";
 import HomeScreen from "./Home/HomeScreen";
+import TransferScreen from "./Transfer/TransferScreen";
 
 const RootScreen: () => JSX.Element = () => {
 
@@ -21,6 +22,7 @@ const RootScreen: () => JSX.Element = () => {
 				<React.Fragment>
 					{currentScreen === ScreenType.LOGIN && <LoginScreen />}
 					{currentScreen === ScreenType.SIGNUP && <SignupScreen />}
+					{currentScreen === ScreenType.TRANSFER && <TransferScreen/>}
 				</React.Fragment>
 				:
 				<React.Fragment>

@@ -1,8 +1,7 @@
 import React from "react";
 import { View } from "react-native";
-import { TextInput, Button } from "components";
+import { NumericInput, Button } from "components";
 import { LABELS, LENGTH } from "constant";
-
 
 interface Props {
 	setOTP: (otp: string) => void
@@ -23,7 +22,7 @@ const VerifyOtpForm: React.FC<Props> = (props) => {
 
 		<View>
 
-			<TextInput
+			<NumericInput
 				placeholder={LABELS.OTP_PLACEHOLDER}
 				title={LABELS.OTP_INPUT_FIELD_TITLE}
 				onChangeText={onChangeOTP}
