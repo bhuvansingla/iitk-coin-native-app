@@ -1,3 +1,3 @@
-import Image from "./SvgImage";
+import Image from "./SVGImage";
 
 export default Image;
