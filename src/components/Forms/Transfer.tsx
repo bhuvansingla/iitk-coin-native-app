@@ -7,18 +7,18 @@ import { StyleSheet } from "react-native";
 
 interface Props {
 	setRemark: (password: string) => void;
-	setRollNo: (rollNo: string) => void;
+	setRollno: (rollno: string) => void;
 	setAmount: (amount: string) => void;
 	onPressSend: () => void;
 }
 
 const TransferForm: React.FC<Props> = (props) => {
 
-	const { setRemark, setRollNo, setAmount, onPressSend } = props;
+	const { setRemark, setRollno: setRollno, setAmount, onPressSend } = props;
 
-	const onChangeRollNo = (rollNo: string) => {
-		if (rollNo.length < LENGTH.ROLL_NO) {
-			setRollNo(rollNo);
+	const onChangeRollno = (rollno: string) => {
+		if (rollno.length < LENGTH.ROLL_NO) {
+			setRollno(rollno);
 		}
 	};
 
@@ -32,15 +32,14 @@ const TransferForm: React.FC<Props> = (props) => {
 		}
 	};
 	
-	// Transfer Coin form
-	const transferForm = (
+	return (
 
 		<View>
 			
 			<TextInput
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
-				onChangeText={onChangeRollNo}
+				onChangeText={onChangeRollno}
 			/>
 
 			<View style={styles.amountContainer}>	 
@@ -60,14 +59,9 @@ const TransferForm: React.FC<Props> = (props) => {
 
 			<Button title= {LABELS.TRANSFER_BUTTON_TEXT} onPress={() => onPressSend()}/>
 
-		</View>
-	);
+		</View>	
 
-	// render
-	return (
-		transferForm 
 	);
-
 };
 
 const styles =StyleSheet.create({

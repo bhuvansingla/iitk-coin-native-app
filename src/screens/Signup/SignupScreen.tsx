@@ -13,8 +13,6 @@ import styles from "../screen.styles";
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 
-
-
 const SignupScreen: () => JSX.Element = () => {
 
 	const enum SignupStage {
@@ -28,7 +26,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const [name, setName] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [rollNo, setRollNo] = useState<string>("");
+	const [rollno, setRollno] = useState<string>("");
 	const [otp, setOTP] = useState<string>("");
 
 	const onPressFooter = () => {
@@ -42,7 +40,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const onPressVerifyOtp = () => {
 		// Make the signup API call here.
-		console.log(name, password, rollNo, otp);
+		console.log(name, password, rollno, otp);
 		dispatch(setCurrentScreen(ScreenType.LOGIN));
 	};
 
@@ -55,7 +53,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.formContainer}>
 
-						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} />
+						<SignupForm setName={setName} setPassword={setPassword} setRollno={setRollno} onPressSubmit={onPressSignup} />
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 

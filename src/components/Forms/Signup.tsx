@@ -6,13 +6,13 @@ import { LABELS, LENGTH } from "constant";
 interface Props {
 	setName: (name: string) => void;
 	setPassword: (password: string) => void;
-	setRollNo: (rollNo: string) => void;
-	onPressSubmit: () => void
+	setRollno: (rollno: string) => void;
+	onPressSubmit: () => void;
 }
 
 const SignupForm: React.FC<Props> = (props) => {
 
-	const { setName, setPassword, setRollNo, onPressSubmit } = props;
+	const { setName, setPassword, setRollno: setRollno, onPressSubmit } = props;
 
 	const onChangeName = (name: string) => {
 		if (name.length < LENGTH.NAME) {
@@ -20,9 +20,9 @@ const SignupForm: React.FC<Props> = (props) => {
 		}
 	};
 
-	const onChangeRollNo = (rollNo: string) => {
-		if (rollNo.length < LENGTH.ROLL_NO) {
-			setRollNo(rollNo);
+	const onChangeRollno = (rollno: string) => {
+		if (rollno.length < LENGTH.ROLL_NO) {
+			setRollno(rollno);
 		}
 	};
 
@@ -39,7 +39,7 @@ const SignupForm: React.FC<Props> = (props) => {
 			<TextInput
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
-				onChangeText={onChangeRollNo}
+				onChangeText={onChangeRollno}
 			/>
 
 			<TextInput

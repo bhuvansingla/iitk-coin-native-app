@@ -14,20 +14,19 @@ import { ScreenType } from "screens/screen.types";
 import { LoginParams } from "api/auth";
 import { loginCallback } from "callbacks/login";
 
-
 const LoginScreen: () => JSX.Element = () => {
 
 	const dispatch = useDispatch();
 
 	const [password, setPassword] = useState<string>("");
-	const [rollNo, setRollNo] = useState<string>("");
+	const [rollno, setRollno] = useState<string>("");
 
 	const onPressFooter = () => {
 		dispatch(setCurrentScreen(ScreenType.SIGNUP));
 	};
 
 	const onPressSignin = () => {
-		const loginParams: LoginParams = { Rollno: rollNo, Password: password };
+		const loginParams: LoginParams = { Rollno: rollno, Password: password };
 		loginCallback(loginParams).then((success) => {
 			if (success) {
 				dispatch(setIsAuthenticated(true));
@@ -43,7 +42,7 @@ const LoginScreen: () => JSX.Element = () => {
 
 			<View style={styles.formContainer}>
 
-				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} />
+				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollno={setRollno} />
 
 				<Text.Footer title={LABELS.CREATE_WALLET_FOOTER} link={LABELS.CREATE_WALLET_LINK} onPress={() => onPressFooter()} />
 
