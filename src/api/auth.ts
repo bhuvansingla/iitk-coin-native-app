@@ -4,17 +4,17 @@ import { API } from "constant";
 
 // Interfaces
 interface OTPParams {
-	Rollno: string;
+	RollNo: string;
 }
 
 interface SignupParams {
-	Rollno: string;
+	RollNo: string;
 	Password: string;
 	OTP: string;
 }
 
 interface LoginParams {
-	Rollno: string;
+	RollNo: string;
 	Password: string;
 }
 
@@ -28,7 +28,7 @@ interface Response {
 const postOTP = async (params: OTPParams): Promise<Response> => {
 	let payload, status;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.OTP, {
-		Rollno: params.Rollno,
+		RollNo: params.RollNo,
 	}).then(res => {
 		payload = res.data;
 		status = res.status;
@@ -47,7 +47,7 @@ const postOTP = async (params: OTPParams): Promise<Response> => {
 const postSignup = async (params: SignupParams): Promise<Response> => {
 	let payload, status;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.SIGNUP, {
-		Rollno: params.Rollno,
+		RollNo: params.RollNo,
 		Password: params.Password,
 		OTP: params.OTP
 	}).then(res => {
@@ -68,7 +68,7 @@ const postLogin = async (params: LoginParams): Promise<Response> => {
 	let payload, status;
 	let token: any;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.LOGIN, {
-		Rollno: params.Rollno,
+		RollNo: params.RollNo,
 		Password: params.Password
 	}).then(res => {
 		token = res.headers["set-cookie"][0];

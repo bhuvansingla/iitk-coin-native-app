@@ -12,7 +12,7 @@ interface Props {
 
 const LoginForm: React.FC<Props> = (props) => {
 
-	const { setPassword, setRollNo, onPressSignin } = props;
+	const { setPassword, setRollNo: setRollNo, onPressSignin } = props;
 
 	const onChangePassword = (password: string) => {
 		if (password.length < LENGTH.NAME) {

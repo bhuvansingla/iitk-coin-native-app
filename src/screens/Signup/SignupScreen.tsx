@@ -13,8 +13,6 @@ import styles from "../screen.styles";
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 
-
-
 const SignupScreen: () => JSX.Element = () => {
 
 	const enum SignupStage {

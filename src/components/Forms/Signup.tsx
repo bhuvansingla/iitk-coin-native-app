@@ -7,7 +7,7 @@ interface Props {
 	setName: (name: string) => void;
 	setPassword: (password: string) => void;
 	setRollNo: (rollNo: string) => void;
-	onPressSubmit: () => void
+	onPressSubmit: () => void;
 }
 
 const SignupForm: React.FC<Props> = (props) => {
