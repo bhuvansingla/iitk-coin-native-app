@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleProp, ImageStyle, View } from "react-native";
 
-import source from "./SvgImage.source";
-import styles from "./SvgImage.styles";
+import source from "./SVGImage.source";
+import styles from "./SVGImage.styles";
 
 interface Prop {
 	name: "CoinLogo" | "CoinTypographyLogo" | "Crow";
