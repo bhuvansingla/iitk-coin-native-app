@@ -16,8 +16,8 @@ interface TransferHistory {
 	TimeStamp: number
 	Amount: number
 	Tax: number
-	FromRollno: number
-	ToRollno: number
+	FromRollNo: number
+	ToRollNo: number
 	Remarks: string
 }
 
@@ -39,7 +39,7 @@ interface RedeemHistory {
 type TransactionHistory = RewardHistory | RedeemHistory | TransferHistory;
 
 interface TransactionHistoryParams {
-	Rollno: number
+	RollNo: number
 }
 
 interface TransactionHistoryResponse {
@@ -51,6 +51,6 @@ interface TransactionHistoryResponse {
 // example -- delete later.
 const rewardHistoryEntry: RewardHistory = { Amount: 100, TimeStamp: 100, Type: TransactionType.REWARD, Remarks: "" };
 const redeemHistoryEntry: RedeemHistory = { Amount: 100, TimeStamp: 100, Type: TransactionType.REDEEM, Remarks: "", Status: RedeemStatus.APPROVED };
-const transferHistoryEntry: TransferHistory = { Amount: 100, TimeStamp: 100, Type: TransactionType.TRANSFER, FromRollno: 180199, ToRollno: 180199, Remarks: "", Tax: 10 };
+const transferHistoryEntry: TransferHistory = { Amount: 100, TimeStamp: 100, Type: TransactionType.TRANSFER, FromRollNo: 180199, ToRollNo: 180199, Remarks: "", Tax: 10 };
 const transactionHistory: TransactionHistory[] = [rewardHistoryEntry, transferHistoryEntry, redeemHistoryEntry];
 transactionHistory.forEach(transaction => (console.log(transaction.Type, transaction.TimeStamp)));

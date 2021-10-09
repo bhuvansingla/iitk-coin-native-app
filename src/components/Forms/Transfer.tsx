@@ -7,18 +7,18 @@ import { StyleSheet } from "react-native";
 
 interface Props {
 	setRemark: (password: string) => void;
-	setRollno: (rollno: string) => void;
+	setRollNo: (rollNo: string) => void;
 	setAmount: (amount: string) => void;
 	onPressSend: () => void;
 }
 
 const TransferForm: React.FC<Props> = (props) => {
 
-	const { setRemark, setRollno: setRollno, setAmount, onPressSend } = props;
+	const { setRemark, setRollNo, setAmount, onPressSend } = props;
 
-	const onChangeRollno = (rollno: string) => {
-		if (rollno.length < LENGTH.ROLL_NO) {
-			setRollno(rollno);
+	const onChangeRollNo = (rollNo: string) => {
+		if (rollNo.length < LENGTH.ROLL_NO) {
+			setRollNo(rollNo);
 		}
 	};
 
@@ -39,7 +39,7 @@ const TransferForm: React.FC<Props> = (props) => {
 			<TextInput
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
-				onChangeText={onChangeRollno}
+				onChangeText={onChangeRollNo}
 			/>
 
 			<View style={styles.amountContainer}>	 

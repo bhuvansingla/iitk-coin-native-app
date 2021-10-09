@@ -17,7 +17,7 @@ const TransferScreen: () => JSX.Element = () => {
 
 	const [amount, setAmount] = useState<string>("");
 	const [remark, setRemark] = useState<string>("");
-	const [rollno, setRollno] = useState<string>("");
+	const [rollNo, setRollNo] = useState<string>("");
 
 	const onPressSend = () => {
 		console.log(amount);
@@ -31,7 +31,7 @@ const TransferScreen: () => JSX.Element = () => {
 			{/* TODO Wallet Balance Card */}
 			<View style={styles.formContainer}>
 
-				<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollno={setRollno} />
+				<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} />
 
 			</View>
 		</View>

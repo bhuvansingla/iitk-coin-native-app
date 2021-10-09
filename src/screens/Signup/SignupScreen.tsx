@@ -26,7 +26,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const [name, setName] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
-	const [rollno, setRollno] = useState<string>("");
+	const [rollNo, setRollNo] = useState<string>("");
 	const [otp, setOTP] = useState<string>("");
 
 	const onPressFooter = () => {
@@ -40,7 +40,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const onPressVerifyOtp = () => {
 		// Make the signup API call here.
-		console.log(name, password, rollno, otp);
+		console.log(name, password, rollNo, otp);
 		dispatch(setCurrentScreen(ScreenType.LOGIN));
 	};
 
@@ -53,7 +53,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.formContainer}>
 
-						<SignupForm setName={setName} setPassword={setPassword} setRollno={setRollno} onPressSubmit={onPressSignup} />
+						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} />
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 

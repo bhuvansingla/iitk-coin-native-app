@@ -5,12 +5,12 @@ const setName = (payload: string): Action => ({
 	payload,
 });
 
-const setRollno = (payload: string): Action => ({
+const setRollNo = (payload: string): Action => ({
 	type: ActionType.UPDATE_ROLLNO,
 	payload,
 });
 
 export {
 	setName,
-	setRollno
+	setRollNo
 };

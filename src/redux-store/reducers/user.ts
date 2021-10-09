@@ -2,12 +2,12 @@ import { Action, ActionType } from "redux-store/types";
 
 interface State {
 	name: string,
-    rollno: string
+    rollNo: string
 }
 
 const initialState: State = {
 	name: "",
-	rollno: ""
+	rollNo: ""
 };
 
 const userReducer = (state: State = initialState, action: Action): State => {
@@ -15,7 +15,7 @@ const userReducer = (state: State = initialState, action: Action): State => {
 	case ActionType.UPDATE_NAME:
 		return { ...state, name: action.payload };
 	case ActionType.UPDATE_ROLLNO:
-		return { ...state, rollno: action.payload };
+		return { ...state, rollNo: action.payload };
 	default:
 		return state;
 	}
