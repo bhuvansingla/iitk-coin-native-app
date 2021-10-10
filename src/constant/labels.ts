@@ -2,16 +2,20 @@ const LABELS = {
 	"VERIFY_OTP_FORM_TITLE": "VERIFY OTP",
 	"SIGNIN_FORM_TITLE": "HEY, THERE! 👋",
 	"SIGNUP_FORM_TITLE": "CREATE A WALLET",
-	
+	"TRANSFER_FORM_TITLE": "SEND COINS",
+
 	"SIGNUP_BUTTON_TEXT": "Sign up",
 	"SIGNIN_BUTTON_TEXT": "Sign in",
 	"SIGNOUT_BUTTON_TEXT": "Sign out",
 	"VERIFY_OTP_BUTTON_TEXT": "Verify",
+	"TRANSFER_BUTTON_TEXT": "Proceed",
 
 	"ROLL_NO_INPUT_FIELD_TITLE": "IITK Roll No.",
 	"NAME_INPUT_FIELD_TITLE": "Name",
 	"PASSWORD_INPUT_FIELD_TITLE": "Password",
 	"OTP_INPUT_FIELD_TITLE": "Check your email for an OTP",
+	"COINS_INPUT_FIELD_TITLE": "No. of Coins",
+	"REMARKS_INPUT_FIELD_TITLE": "Remarks",
 
 	"OTP_INPUT_FOOTER": "Didn't get?",
 	"CREATE_WALLET_FOOTER": "Don't have a wallet?",
@@ -25,12 +29,14 @@ const LABELS = {
 	"NAME_PLACEHOLDER": "Enter name",
 	"PASSWORD_PLACEHOLDER": "Enter Password",
 	"OTP_PLACEHOLDER": "Enter OTP ",
+	"REMARK_PLACEHOLDER": "Enter remarks",
+	"COINS_PLACEHOLDER": "Enter no. of coins",
 
 	"WRONG_OTP": "Incorrect OTP entered",
 	"WRONG_NAME": "Enter less than 50 characters",
 	"WRONG_ROLL_NO": "Invalid roll no.",
 
-	"HISTORY_TIMESTAMP": "Time Stamp",
+  "HISTORY_TIMESTAMP": "Time Stamp",
 	"HISTORY_TXNID": "Transaction ID",
 	"HISTORY_FromRollNo" : "Sender Roll No",
 	"HISTORY_ToRollNo" : "Reciever Roll No",
@@ -40,6 +46,11 @@ const LABELS = {
 	"HISTORY_Status" : "Redeem Status",
 	"HISTORY_Remarks" : "Remarks" ,
 	"HISTORY_Reward_Amount" : "Reward Amount",
+	
+  COINS: "Coins",
+	COIN: "Coin",
+	YOU_HAVE: "You have",
+
 };
 
 export { LABELS };

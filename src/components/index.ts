@@ -1,4 +1,5 @@
-import TextInput from "./TextInput";
+import TextInput from "./TextInput/TextInput";
+import NumericInput from "./TextInput/NumericInput";
 import Text from "./Text";
 import Button from "./Button";
 import BottomSheet from "./BottomSheet";
@@ -9,6 +10,7 @@ import History from "./History";
 
 export {
 	TextInput,
+	NumericInput,
 	Text,
 	Button,
 	BottomSheet,

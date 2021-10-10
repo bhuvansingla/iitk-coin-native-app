@@ -14,7 +14,6 @@ import { ScreenType } from "screens/screen.types";
 import { LoginParams } from "api/auth";
 import { loginCallback } from "callbacks/login";
 
-
 const LoginScreen: () => JSX.Element = () => {
 
 	const dispatch = useDispatch();
@@ -27,7 +26,7 @@ const LoginScreen: () => JSX.Element = () => {
 	};
 
 	const onPressSignin = () => {
-		const loginParams: LoginParams = { Rollno: rollNo, Password: password };
+		const loginParams: LoginParams = { RollNo: rollNo, Password: password };
 		loginCallback(loginParams).then((success) => {
 			if (success) {
 				dispatch(setIsAuthenticated(true));

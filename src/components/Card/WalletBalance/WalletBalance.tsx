@@ -1,0 +1,32 @@
+import React from "react";
+import { Text, Image } from "components";
+import { View } from "react-native";
+import styles from "./WalletBalance.styles";
+import { LABELS } from "constant";
+
+interface Props {
+    coins: number;
+}
+
+const WalletBalance: React.FC<Props> = ({ coins = 0 }) => {
+	return (
+		<View style={{alignItems: "center"}}>
+			<View style={styles.container}>
+				<View style={styles.left}>
+					<Image name="CoinLogo" />
+				</View>
+				<View style={styles.right}>
+					<Text.Title semibold white style={{fontSize:12}} >{LABELS.YOU_HAVE}</Text.Title>
+					<View style={styles.row}>
+						<Text.Title bold white style={styles.shadowCoinCount} >{coins}</Text.Title>
+						<View style={ styles.coinMargin }>
+							<Text.Title semibold white style={styles.shadow}> {coins > 1 ? LABELS.COINS : LABELS.COIN}</Text.Title>
+						</View>
+					</View>
+				</View>
+			</View>
+		</View>
+	);
+};
+
+export default WalletBalance;
