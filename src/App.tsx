@@ -10,6 +10,7 @@ import RootScreen from "./screens";
 
 import { COLORS } from "styles";
 import { useFonts, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold } from "@expo-google-fonts/open-sans";
+import { FontAwesome, AntDesign } from "@expo/vector-icons";
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
 		OpenSans_400Regular,
 		OpenSans_600SemiBold,
 		OpenSans_700Bold,
+		...FontAwesome.font,
+		...AntDesign.font,
 	});
 
 	return (
