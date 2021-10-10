@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, Image } from "components";
 import { View } from "react-native";
-import styles from "./Coin.styles";
+import styles from "./WalletBalance.styles";
+import { LABELS } from "constant";
 
 interface Props {
     coins: number;
@@ -15,11 +16,11 @@ const WalletBalance: React.FC<Props> = ({ coins = 0 }) => {
 					<Image name="CoinLogo" />
 				</View>
 				<View style={styles.right}>
-					<Text.Title semibold white style={{fontSize:12}} >You have</Text.Title>
+					<Text.Title semibold white style={{fontSize:12}} >{LABELS.YOU_HAVE}</Text.Title>
 					<View style={styles.row}>
 						<Text.Title bold white style={styles.shadowCoinCount} >{coins}</Text.Title>
 						<View style={ styles.coinMargin }>
-							<Text.Title semibold white style={styles.shadow}> coin{coins > 1 ? "s" : ""}</Text.Title>
+							<Text.Title semibold white style={styles.shadow}> {coins > 1 ? LABELS.COINS : LABELS.COIN}</Text.Title>
 						</View>
 					</View>
 				</View>

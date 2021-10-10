@@ -1,3 +1,3 @@
-import WalletBalance from "./Coin";
+import WalletBalance from "./WalletBalance";
 
 export { WalletBalance };
