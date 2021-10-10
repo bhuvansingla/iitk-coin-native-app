@@ -5,6 +5,7 @@ import BottomSheet from "./BottomSheet";
 import Image from "./SVGImage";
 import Header from "./Header";
 import Forms from "./Forms";
+import History from "./History";
 
 export {
 	TextInput,
@@ -14,4 +15,5 @@ export {
 	Image,
 	Header,
 	Forms,
+	History
 };

@@ -30,6 +30,16 @@ const LABELS = {
 	"WRONG_NAME": "Enter less than 50 characters",
 	"WRONG_ROLL_NO": "Invalid roll no.",
 
+	"HISTORY_TIMESTAMP": "Time Stamp",
+	"HISTORY_TXNID": "Transaction ID",
+	"HISTORY_FromRollNo" : "Sender Roll No",
+	"HISTORY_ToRollNo" : "Reciever Roll No",
+	"HISTORY_Transfer_Amount": "Coins Sent",
+	"HISTORY_Tax": "Transfer Tax",
+	"HISTORY_Redeem_Amount" : "Redeem Amount",
+	"HISTORY_Status" : "Redeem Status",
+	"HISTORY_Remarks" : "Remarks" ,
+	"HISTORY_Reward_Amount" : "Reward Amount",
 };
 
 export { LABELS };
