@@ -10,10 +10,9 @@ interface Prop {
 	style?: StyleProp<ImageStyle>;
 }
 
-const SImage: React.FC<Prop> = (props) => {
+const SVGImage: React.FC<Prop> = (props) => {
 	const { name, size, style } = props;
 
-	// SVG Tag
 	let SVG = source.crow;
 
 	const height = size || "100%";
@@ -37,16 +36,16 @@ const SImage: React.FC<Prop> = (props) => {
 		
 		if (size == undefined && style != undefined) {
 			return (
-				<SVG width={height} style={[styles.default, styles.coinLogo, style]} />
+				<SVG style={[styles.default, styles.coinLogo, style]} />
 			);
 		}
 
 		return (
-			<SVG width={height} style={[styles.default, styles.coinLogo, style]} />
+			<SVG height={height} style={[styles.default, styles.coinLogo, style]} />
 		);
 	}
 
 	return <View />;
 };
 
-export default SImage;
+export default SVGImage;
