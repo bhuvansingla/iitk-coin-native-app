@@ -36,7 +36,7 @@ const LABELS = {
 	"WRONG_NAME": "Enter less than 50 characters",
 	"WRONG_ROLL_NO": "Invalid roll no.",
 
-  "HISTORY_TIMESTAMP": "Time Stamp",
+	"HISTORY_TIMESTAMP": "Time Stamp",
 	"HISTORY_TXNID": "Transaction ID",
 	"HISTORY_FromRollNo" : "Sender Roll No",
 	"HISTORY_ToRollNo" : "Reciever Roll No",
@@ -47,7 +47,7 @@ const LABELS = {
 	"HISTORY_Remarks" : "Remarks" ,
 	"HISTORY_Reward_Amount" : "Reward Amount",
 	
-  COINS: "Coins",
+	COINS: "Coins",
 	COIN: "Coin",
 	YOU_HAVE: "You have",
 

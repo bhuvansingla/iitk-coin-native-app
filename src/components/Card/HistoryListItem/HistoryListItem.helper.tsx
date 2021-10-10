@@ -91,8 +91,7 @@ const DetailsList: React.FC<history.TransactionHistory> = (props) => {
 const ItemTitle: React.FC<ItemTitleProps> = (props) => {
 
 
-	// const userRollNo: string = useSelector((state: AppState) => state.user.rollNo);
-	const userRollNo = "200433";
+	const userRollNo: string = useSelector((state: AppState) => state.user.rollNo);
 
 	const { onPress, details } = props;
 
