@@ -1,15 +1,12 @@
 import React from "react";
-
 import { useDispatch } from "react-redux";
-import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
-
 import { View } from "react-native";
+
+import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
 import { Button } from "components";
-
-import styles from "../screen.styles";
-
 import { ScreenType } from "screens/screen.types";
 
+import styles from "../screen.styles";
 
 const HomeScreen: () => JSX.Element = () => {
 

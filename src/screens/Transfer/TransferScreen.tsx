@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-
 import { useDispatch } from "react-redux";
-import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
-
 import { View } from "react-native";
+
+import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
 import { Text } from "components";
 import TransferForm from "components/Forms/Transfer";
+import { LABELS } from "constant";
 
 import styles from "../screen.styles";
-
-import { LABELS } from "constant";
 
 const TransferScreen: () => JSX.Element = () => {
 

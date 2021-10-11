@@ -47,7 +47,6 @@ interface TransactionHistoryResponse {
 	Status: number;
 }
 
-
 // example -- delete later.
 const rewardHistoryEntry: RewardHistory = { Amount: 100, TimeStamp: 100, Type: TransactionType.REWARD, Remarks: "" };
 const redeemHistoryEntry: RedeemHistory = { Amount: 100, TimeStamp: 100, Type: TransactionType.REDEEM, Remarks: "", Status: RedeemStatus.APPROVED };

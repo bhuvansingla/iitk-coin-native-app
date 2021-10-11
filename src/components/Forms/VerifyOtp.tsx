@@ -1,5 +1,6 @@
 import React from "react";
 import { View } from "react-native";
+
 import { NumericInput } from "components/TextInput";
 import Button from "components/Button";
 import { LABELS, LENGTH } from "constant";

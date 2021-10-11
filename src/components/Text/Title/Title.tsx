@@ -55,4 +55,3 @@ export default function Title(props: Props): React.ReactElement {
 
 	return <Text {...props} style={customStyle} />;
 }
-

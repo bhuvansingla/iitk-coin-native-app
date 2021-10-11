@@ -1,10 +1,10 @@
 import React from "react";
+import Ripple from "react-native-material-ripple";
+
+import { COLORS } from "styles";
 
 import Text from "../Text";
-import { COLORS } from "styles";
 import styles from "./Button.styles";
-
-import Ripple from "react-native-material-ripple";
 
 interface Props {
 	title: string;

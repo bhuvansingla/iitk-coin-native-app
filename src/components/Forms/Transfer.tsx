@@ -1,10 +1,10 @@
 import React from "react";
-import { View } from "react-native";
+import { View , StyleSheet } from "react-native";
+
 import { TextInput, NumericInput } from "components/TextInput";
 import Button from "components/Button";
 import { LABELS, LENGTH } from "constant";
 import Image from "components/SVGImage";
-import { StyleSheet } from "react-native";
 
 interface Props {
 	setRemark: (password: string) => void;

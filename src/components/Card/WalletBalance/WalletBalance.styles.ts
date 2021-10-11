@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+
 import { COLORS } from "styles";
 
 const COIN_FONT_SIZE = 44;

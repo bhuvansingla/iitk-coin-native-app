@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+
 import { FONT } from "styles";
 
 export default StyleSheet.create({
