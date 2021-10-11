@@ -1,3 +1,4 @@
+/*eslint-disable	react-hooks/rules-of-hooks*/
 import React, { useMemo } from "react";
 import { BottomSheetBackdropProps } from "@gorhom/bottom-sheet";
 import Animated, {
@@ -47,16 +48,5 @@ const CustomBackdropGenerator: GeneratorType =
 				<Animated.View style={containerStyle}>{ShinkedHeader}</Animated.View>
 			);
 		};
-
-
-/* SAMPLE
-  let head = (
-  <View style={{ flex: 1, alignItems: "center", padding: "10%" }}>
-	<IMAGE name="coin" size={0.07} />
-  </View>
-  );
-
-  const abc = CustomBackdropGenerator(head);
-*/
 
 export default CustomBackdropGenerator;

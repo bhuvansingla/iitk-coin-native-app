@@ -5,8 +5,13 @@ module.exports = {
 	},
 	extends: [
 		"eslint:recommended",
-		"plugin:react/recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript",
 	],
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
@@ -22,10 +27,27 @@ module.exports = {
 		"linebreak-style": ["error", "unix"],
 		quotes: ["error", "double"],
 		semi: ["error", "always"],
+		"eol-last": 1,
+		"no-multiple-empty-lines": ["error", { max: 1, maxEOF: 0 }],
+		"import/default": "off",
+		"import/order": [
+			"error",
+			{
+				groups: [
+					["external", "builtin"], 
+					"internal", 
+					["parent", "sibling", "index"]
+				],
+				"newlines-between": "always",
+			},
+		],
 	},
 	settings: {
 		react: {
 			version: "detect",
+		},
+		"import/resolver": {
+			typescript: {},
 		},
 	},
 };
