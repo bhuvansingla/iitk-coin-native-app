@@ -24,6 +24,7 @@ interface ItemTitleProps {
 }
 
 const fontSize = FONT.SIZE.H3;
+const fontAwesomeSize = fontSize * 1.7;
 type ItemType = "Sent" | "Received" | "Redeem" | "Reward" | undefined;
 
 const DetailsListItem: React.FC<DetailsListItemProps> = (props) => {
@@ -58,28 +59,28 @@ const DetailsList: React.FC<history.TransactionHistory> = (props) => {
 	const { Type, TimeStamp, TxnID, Amount, Remarks } = props;
 
 	const timestamp = new Date(TimeStamp * 1000);
-	details.push(<DetailsListItem key="timestamp" title="Time Stamp" content={timestamp.toDateString()} />);
-	details.push(<DetailsListItem key="TxnID" title="Transaction ID" content={TxnID} />);
+	details.push(<DetailsListItem key={LABELS.HISTORY_TIMESTAMP} title={LABELS.HISTORY_TIMESTAMP} content={timestamp.toDateString()} />);
+	details.push(<DetailsListItem key={LABELS.HISTORY_TXNID} title={LABELS.HISTORY_TXNID} content={TxnID} />);
 
 	if (Type === history.TransactionType.TRANSFER) {
 		const { Tax, FromRollNo, ToRollNo } = props;
-		details.push(<DetailsListItem key={LABELS.HISTORY_FromRollNo} title={LABELS.HISTORY_FromRollNo} content={FromRollNo} />);
-		details.push(<DetailsListItem key={LABELS.HISTORY_ToRollNo} title={LABELS.HISTORY_ToRollNo} content={ToRollNo} />);
-		details.push(<DetailsListItem key={LABELS.HISTORY_Transfer_Amount} title={LABELS.HISTORY_Transfer_Amount} content={Amount} />);
-		details.push(<DetailsListItem key={LABELS.HISTORY_Tax} title={LABELS.HISTORY_Tax} content={Tax} />);
+		details.push(<DetailsListItem key={LABELS.HISTORY_FROMROLLNO} title={LABELS.HISTORY_FROMROLLNO} content={FromRollNo} />);
+		details.push(<DetailsListItem key={LABELS.HISTORY_TOROLLNO} title={LABELS.HISTORY_TOROLLNO} content={ToRollNo} />);
+		details.push(<DetailsListItem key={LABELS.HISTORY_TRANSFER_AMOUNT} title={LABELS.HISTORY_TRANSFER_AMOUNT} content={Amount} />);
+		details.push(<DetailsListItem key={LABELS.HISTORY_TAX} title={LABELS.HISTORY_TAX} content={Tax} />);
 	}
 
 	if (Type === history.TransactionType.REDEEM) {
 		const { Status } = props;
-		details.push(<DetailsListItem key={LABELS.HISTORY_Redeem_Amount} title={LABELS.HISTORY_Redeem_Amount} content={Amount} />);
-		details.push(<DetailsListItem key={LABELS.HISTORY_Status} title={LABELS.HISTORY_Status} content={Status} />);
+		details.push(<DetailsListItem key={LABELS.HISTORY_REDEEM_AMOUNT} title={LABELS.HISTORY_REDEEM_AMOUNT} content={Amount} />);
+		details.push(<DetailsListItem key={LABELS.HISTORY_STATUS} title={LABELS.HISTORY_STATUS} content={Status} />);
 	}
 
 	if (Type === history.TransactionType.REWARD) {
-		details.push(<DetailsListItem key={LABELS.HISTORY_Reward_Amount} title={LABELS.HISTORY_Reward_Amount} content={Amount} />);
+		details.push(<DetailsListItem key={LABELS.HISTORY_REWARD_AMOUNT} title={LABELS.HISTORY_REWARD_AMOUNT} content={Amount} />);
 	}
-	
-	details.push(<DetailsListItem key={LABELS.HISTORY_Remarks} title={LABELS.HISTORY_Remarks} content={Remarks} />);
+
+	details.push(<DetailsListItem key={LABELS.HISTORY_REMARKS} title={LABELS.HISTORY_REMARKS} content={Remarks} />);
 
 	return (
 		<View style={styles.detailsContainer}>
@@ -100,25 +101,37 @@ const ItemTitle: React.FC<ItemTitleProps> = (props) => {
 
 	if (details.Type === history.TransactionType.REDEEM) {
 		type = "Redeem";
-		if(details.Status != history.RedeemStatus.APPROVED) {
+		if (details.Status != history.RedeemStatus.APPROVED) {
 			amount = 0;
 		}
-		image = <AntDesign name="gift" size={fontSize * 1.7} color="white" />;
+		image = <AntDesign name="gift" size={fontAwesomeSize} color="white" />;
 	} else if (details.Type === history.TransactionType.REWARD) {
 		type = "Reward";
-		image = <FontAwesome name="trophy" size={fontSize * 1.7} color="black" />;
+		image = <FontAwesome name="trophy" size={fontAwesomeSize} color="black" />;
 	} else if (details.Type === history.TransactionType.TRANSFER) {
 		if (details.FromRollNo == userRollNo) {
 			type = "Sent";
-			image = <FontAwesome name="send" size={fontSize * 1.7} color="white" />;
+			image = <FontAwesome name="send" size={fontAwesomeSize} color="white" />;
 		} else if (details.ToRollNo == userRollNo) {
 			type = "Received";
 			amount = amount - details.Tax;
-			image = <FontAwesome name="send" size={fontSize * 1.7} color="black" />;
+			image = <FontAwesome name="send" size={fontAwesomeSize} color="black" />;
 		}
 	}
 
 	const credited = type === "Reward" || type === "Received";
+
+	const imageContainerStyle = {
+		backgroundColor: credited ? COLORS.GREEN_BG : COLORS.RED,
+		height: fontSize * 3,
+		width: fontSize * 3,
+		borderRadius: fontSize * 1.5,
+	};
+
+	const textContainerStyle = { 
+		opacity: 0.9, 
+		color: credited ? COLORS.GREEN : COLORS.RED, fontSize 
+	};
 
 	return (
 		<View style={styles.rippleWrapper}>
@@ -132,20 +145,15 @@ const ItemTitle: React.FC<ItemTitleProps> = (props) => {
 				style={styles.ripple}
 			>
 				<View style={styles.container}>
-					<View style={[styles.left, {
-						backgroundColor: credited ? COLORS.GREEN_BG : COLORS.RED,
-						height: fontSize * 3,
-						width: fontSize * 3,
-						borderRadius: fontSize * 1.5,
-					}]}>
+					<View style={[styles.left, imageContainerStyle]}>
 						{image}
 					</View>
 					<View style={styles.text}>
 						<Text.Title bold style={{ fontSize }}> {type} </Text.Title>
 					</View>
 					<View style={styles.right}>
-						<Text.Title bold style={{ opacity: 0.9, color: credited ? COLORS.GREEN : COLORS.RED, fontSize }}>
-							{credited ? "+" : "-"}{amount}
+						<Text.Title bold style={textContainerStyle}>
+							{credited ? LABELS.HISTORY_PLUS : LABELS.HISTORY_MINUS}{amount}
 						</Text.Title>
 					</View>
 				</View>
