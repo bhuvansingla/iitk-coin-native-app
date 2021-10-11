@@ -3,6 +3,7 @@ import { View } from "react-native";
 
 import { Text, Image } from "components";
 import { LABELS } from "constant";
+import { FONT } from "styles";
 
 import styles from "./WalletBalance.styles";
 
@@ -18,7 +19,7 @@ const WalletBalance: React.FC<Props> = ({ coins = 0 }) => {
 					<Image name="CoinLogo" />
 				</View>
 				<View style={styles.right}>
-					<Text.Title semibold white style={{fontSize:12}} >{LABELS.YOU_HAVE}</Text.Title>
+					<Text.Title semibold white style={{fontSize:FONT.SIZE.H2/2}} >{LABELS.YOU_HAVE}</Text.Title>
 					<View style={styles.row}>
 						<Text.Title bold white style={styles.shadowCoinCount} >{coins}</Text.Title>
 						<View style={ styles.coinMargin }>
