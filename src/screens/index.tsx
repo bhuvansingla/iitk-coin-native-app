@@ -1,10 +1,12 @@
-import { BottomSheet, Header } from "components";
 import React from "react";
+import { useSelector } from "react-redux";
+
+import { BottomSheet, Header } from "components";
+import { AppState } from "redux-store/reducers";
+
 import LoginScreen from "./Login/LoginScreen";
 import SignupScreen from "./Signup/SignupScreen";
 import { ScreenType } from "./screen.types";
-import { useSelector } from "react-redux";
-import { AppState } from "redux-store/reducers";
 import HomeScreen from "./Home/HomeScreen";
 import TransferScreen from "./Transfer/TransferScreen";
 

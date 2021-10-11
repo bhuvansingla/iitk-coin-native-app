@@ -1,7 +1,9 @@
 import React, { useCallback, useMemo, useRef } from "react";
 import { View, StyleSheet } from "react-native";
 import BottomSheet from "@gorhom/bottom-sheet";
+
 import { COLORS } from "styles";
+
 import CustomBackdropGenerator from "./CustomBackdrop";
 
 interface Props {

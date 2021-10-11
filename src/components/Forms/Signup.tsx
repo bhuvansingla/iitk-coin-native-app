@@ -1,6 +1,8 @@
 import React from "react";
 import { View } from "react-native";
-import { TextInput, Button } from "components";
+
+import { TextInput } from "components/TextInput";
+import Button from "components/Button";
 import { LABELS, LENGTH } from "constant";
 
 interface Props {

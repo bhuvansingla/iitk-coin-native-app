@@ -1,7 +1,6 @@
 import { Action, ActionType } from "redux-store/types";
 import { ScreenType } from "screens/screen.types";
 
-
 interface State {
 	currentScreen: ScreenType
 }

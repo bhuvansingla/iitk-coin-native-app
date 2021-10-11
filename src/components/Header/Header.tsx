@@ -4,6 +4,7 @@ import { View, StatusBar } from "react-native";
 import Text from "components/Text";
 import Image from "components/SVGImage";
 import { COLORS } from "styles";
+
 import styles from "./Header.styles";
 
 const Expanded: () => JSX.Element = () => {
