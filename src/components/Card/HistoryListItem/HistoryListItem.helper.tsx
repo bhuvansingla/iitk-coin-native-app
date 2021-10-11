@@ -2,14 +2,14 @@ import React from "react";
 import { View } from "react-native";
 import Ripple from "react-native-material-ripple";
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
-
 import { useSelector } from "react-redux";
-import { AppState } from "redux-store/reducers";
 
+import { AppState } from "redux-store/reducers";
 import { Text } from "components";
 import { COLORS, FONT } from "styles";
 import { history } from "api";
 import { LABELS } from "constant";
+
 import styles from "./HistoryListItem.styles";
 
 interface DetailsListItemProps {
@@ -89,7 +89,6 @@ const DetailsList: React.FC<history.TransactionHistory> = (props) => {
 };
 
 const ItemTitle: React.FC<ItemTitleProps> = (props) => {
-
 
 	const userRollNo: string = useSelector((state: AppState) => state.user.rollNo);
 

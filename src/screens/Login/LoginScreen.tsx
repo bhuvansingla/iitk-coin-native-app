@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-
 import { useDispatch } from "react-redux";
-import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
-
 import { View } from "react-native";
+
+import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
 import { Text } from "components";
 import LoginForm from "components/Forms/Login";
-
-import styles from "../screen.styles";
-
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 import { LoginParams } from "api/auth";
 import { loginCallback } from "callbacks/login";
+
+import styles from "../screen.styles";
 
 const LoginScreen: () => JSX.Element = () => {
 

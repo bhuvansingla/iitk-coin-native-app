@@ -1,9 +1,10 @@
 import React from "react";
-import { View } from "react-native";
-import { TextInput, NumericInput, Button } from "components";
+import { View , StyleSheet } from "react-native";
+
+import { TextInput, NumericInput } from "components/TextInput";
+import Button from "components/Button";
 import { LABELS, LENGTH } from "constant";
 import Image from "components/SVGImage";
-import { StyleSheet } from "react-native";
 
 interface Props {
 	setRemark: (password: string) => void;
@@ -31,40 +32,40 @@ const TransferForm: React.FC<Props> = (props) => {
 			setRemark(remark);
 		}
 	};
-	
+
 	return (
 
 		<View>
-			
+
 			<TextInput
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRollNo}
 			/>
 
-			<View style={styles.amountContainer}>	 
+			<View style={styles.amountContainer}>
 				<NumericInput
 					placeholder={LABELS.COINS_PLACEHOLDER}
 					title={LABELS.COINS_INPUT_FIELD_TITLE}
 					onChangeText={onChangeAmount}
-				/>      
-				<Image name = "CoinLogo" style={styles.imageStyle} />
+				/>
+				<Image name="CoinLogo" style={styles.imageStyle} />
 			</View>
 
-			<TextInput 
+			<TextInput
 				placeholder={LABELS.REMARK_PLACEHOLDER}
 				title={LABELS.REMARKS_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRemark}
 			/>
 
-			<Button title= {LABELS.TRANSFER_BUTTON_TEXT} onPress={() => onPressSend()}/>
+			<Button title={LABELS.TRANSFER_BUTTON_TEXT} onPress={() => onPressSend()} />
 
-		</View>	
+		</View>
 
 	);
 };
 
-const styles =StyleSheet.create({
+const styles = StyleSheet.create({
 	amountContainer: {
 		flexDirection: "row",
 		justifyContent: "flex-start",

@@ -1,4 +1,5 @@
 import React from "react";
+
 import {HistoryList, NoHistory, Props} from "./HistoryList";
 
 const History: React.FC<Props> = ({ history }: Props) => {

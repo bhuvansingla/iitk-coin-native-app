@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-
 import { useDispatch } from "react-redux";
-import { setCurrentScreen } from "redux-store/actions";
-
 import { View } from "react-native";
+
+import { setCurrentScreen } from "redux-store/actions";
 import { Text } from "components";
 import SignupForm from "components/Forms/Signup";
 import VerifyOtpForm from "components/Forms/VerifyOtp";
-
-import styles from "../screen.styles";
-
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
+
+import styles from "../screen.styles";
 
 const SignupScreen: () => JSX.Element = () => {
 

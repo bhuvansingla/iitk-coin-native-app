@@ -3,6 +3,7 @@ import { View } from "react-native";
 import Animated, { EasingNode } from "react-native-reanimated";
 
 import { history } from "api";
+
 import styles from "./HistoryListItem.styles";
 import { DetailsList, ItemTitle } from "./HistoryListItem.helper";
 
@@ -40,6 +41,7 @@ const HistoryListItem: React.FC<Props> = (props) => {
 			duration: 300,
 			easing: EasingNode.inOut(EasingNode.ease),
 		}).start();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isExpanded]);
 
 	function toggle() {

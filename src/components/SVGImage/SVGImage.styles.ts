@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 	},
 	coinLogo: {
-		// alignItems: "flex-end",
 		justifyContent: "center",
 	},
 });

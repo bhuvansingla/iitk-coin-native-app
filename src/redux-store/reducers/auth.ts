@@ -1,6 +1,5 @@
 import { Action, ActionType } from "redux-store/types";
 
-
 interface State {
 	isAuthenticated: boolean
 }

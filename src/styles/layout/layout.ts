@@ -16,5 +16,4 @@ const SCREEN = {
 	HEIGHT,
 };
 
-
 export const LAYOUT = { SCREEN, IS_SMALL_DEVICE, SPACING };

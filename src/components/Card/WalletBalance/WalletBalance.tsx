@@ -1,8 +1,10 @@
 import React from "react";
-import { Text, Image } from "components";
 import { View } from "react-native";
-import styles from "./WalletBalance.styles";
+
+import { Text, Image } from "components";
 import { LABELS } from "constant";
+
+import styles from "./WalletBalance.styles";
 
 interface Props {
     coins: number;
