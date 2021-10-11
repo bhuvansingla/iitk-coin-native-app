@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { StyleSheet, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import { useFonts, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold } from "@expo-google-fonts/open-sans";
+import { FontAwesome, AntDesign } from "@expo/vector-icons";
 
 import { COLORS } from "styles";
 import store from "redux-store";
@@ -16,6 +17,8 @@ function App() {
 		OpenSans_400Regular,
 		OpenSans_600SemiBold,
 		OpenSans_700Bold,
+		...FontAwesome.font,
+		...AntDesign.font,
 	});
 
 	return (

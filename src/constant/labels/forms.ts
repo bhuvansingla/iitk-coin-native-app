@@ -35,11 +35,6 @@ const LABELS = {
 	"WRONG_OTP": "Incorrect OTP entered",
 	"WRONG_NAME": "Enter less than 50 characters",
 	"WRONG_ROLL_NO": "Invalid roll no.",
-
-	COINS: "Coins",
-	COIN: "Coin",
-	YOU_HAVE: "You have",
-
 };
 
-export { LABELS };
+export default LABELS;
