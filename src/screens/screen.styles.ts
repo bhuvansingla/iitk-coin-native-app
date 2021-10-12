@@ -4,8 +4,8 @@ export default StyleSheet.create({
 	contentContainer: {
 		flex: 1,
 		alignItems: "center",
-		marginLeft: 45,
-		marginRight: 44,
+		paddingHorizontal: 22,
+		paddingBottom: 22,
 	},
 
 	formContainer: {

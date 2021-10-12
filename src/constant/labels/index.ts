@@ -15,6 +15,8 @@ const LABELS = {
 	"ACCOUNT": "Account",
 	"SEND": "Send",
 	"REDEEM": "Redeem",
+
+	"PAST_TRANSACTIONS": "PAST TRANSACTIONS",
 	
 };
 
