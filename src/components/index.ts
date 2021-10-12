@@ -7,6 +7,7 @@ import Image from "./SVGImage";
 import Header from "./Header";
 import Forms from "./Forms";
 import History from "./History";
+import Transaction from "./Transaction";
 
 export {
 	TextInput,
@@ -17,5 +18,6 @@ export {
 	Image,
 	Header,
 	Forms,
-	History
+	History,
+	Transaction
 };
