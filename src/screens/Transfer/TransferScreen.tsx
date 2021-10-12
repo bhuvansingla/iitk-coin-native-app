@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch , useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { View } from "react-native";
 
 import { AppState } from "redux-store/reducers";
@@ -55,7 +55,7 @@ const TransferScreen: () => JSX.Element = () => {
 		console.log(otp);
 		// TODO call api to validate transfer and get txnID
 		setTxnID("OP711");
-		dispatch(setCoins(coins-amount));
+		dispatch(setCoins(coins - amount));
 		setTransferStage(TransferStage.SUCCESS);
 	};
 
@@ -75,42 +75,30 @@ const TransferScreen: () => JSX.Element = () => {
 
 			<WalletBalance coins={coins} />
 
-			{transferStage === TransferStage.FORM &&
-				<React.Fragment>
+			<View style={styles.containerChildWrapper}>
 
-					<View style={styles.formContainer}>
+				{transferStage === TransferStage.FORM &&
+					<React.Fragment>
 						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} />
-					</View>
-
-				</React.Fragment>
-			}
-			{transferStage === TransferStage.CONFIRM_DETAILS &&
-				<React.Fragment>
-
-					<View style={styles.formContainer}>
+					</React.Fragment>
+				}
+				{transferStage === TransferStage.CONFIRM_DETAILS &&
+					<React.Fragment>
 						<Transfer.ConfirmDetails name={name} rollNo={rollNo} amount={amount} tax={tax} onPressConfirmTransfer={onPressConfirmTransfer} />
-					</View>
-
-				</React.Fragment>
-			}
-			{transferStage === TransferStage.VERIFY_OTP &&
-				<React.Fragment>
-
-					<View style={styles.formContainer}>
+					</React.Fragment>
+				}
+				{transferStage === TransferStage.VERIFY_OTP &&
+					<React.Fragment>
 						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} />
-					</View>
-
-				</React.Fragment>
-			}
-			{transferStage === TransferStage.SUCCESS &&
-				<React.Fragment>
-
-					<View style={styles.formContainer}>
+					</React.Fragment>
+				}
+				{transferStage === TransferStage.SUCCESS &&
+					<React.Fragment>
 						<Transfer.TransferSuccess txnID={txnID} onPressTransferSuccess={onPressTransferSuccess} />
-					</View>
+					</React.Fragment>
+				}
 
-				</React.Fragment>
-			}
+			</View>
 		</View>
 	);
 };

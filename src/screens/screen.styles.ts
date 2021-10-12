@@ -7,7 +7,7 @@ export default StyleSheet.create({
 		marginLeft: 45,
 		marginRight: 44,
 	},
-	formContainer: {
+	containerChildWrapper: {
 		width:"100%",
 		flex:1,
 	}

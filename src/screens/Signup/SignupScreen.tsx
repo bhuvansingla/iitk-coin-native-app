@@ -49,7 +49,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<Text.Heading title={LABELS.SIGNUP_FORM_TITLE} />
 
-					<View style={styles.formContainer}>
+					<View style={styles.containerChildWrapper}>
 
 						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} />
 
@@ -63,7 +63,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<Text.Heading title={LABELS.VERIFY_OTP_FORM_TITLE} />
 
-					<View style={styles.formContainer}>
+					<View style={styles.containerChildWrapper}>
 
 						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} />
 

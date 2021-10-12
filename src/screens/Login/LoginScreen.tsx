@@ -38,7 +38,7 @@ const LoginScreen: () => JSX.Element = () => {
 
 			<Text.Heading title={LABELS.SIGNIN_FORM_TITLE} />
 
-			<View style={styles.formContainer}>
+			<View style={styles.containerChildWrapper}>
 
 				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} />
 
