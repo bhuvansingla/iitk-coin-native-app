@@ -33,9 +33,9 @@ const postOTP = async (params: OTPParams): Promise<Response> => {
 	}).then(res => {
 		payload = res.data;
 		status = res.status;
-	}).catch(err => {
-		payload = err.response.data;
-		status = err.response.status;
+	}).catch((err) => {
+		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 
 	const response: Response = {
@@ -55,8 +55,8 @@ const postSignup = async (params: SignupParams): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err.response.data;
-		status = err.response.status;
+		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 	const response: Response = {
 		Payload: payload,
@@ -76,8 +76,8 @@ const postLogin = async (params: LoginParams): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err.response.data;
-		status = err.response.status;
+		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 	const response: Response = {
 		Payload: payload,
@@ -97,8 +97,8 @@ const postLogout = async (token: string): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err.response.data;
-		status = err.response.status;
+		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 	const response: Response = {
 		Payload: payload,
@@ -117,8 +117,8 @@ const postLoginStatus = async (token: string): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err.response.data;
-		status = err.response.status;
+		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 	const response: Response = {
 		Payload: payload,
