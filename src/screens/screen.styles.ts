@@ -11,5 +11,11 @@ export default StyleSheet.create({
 	formContainer: {
 		width:"100%",
 		flex:1,
+	},
+	
+	titleLeft: {
+		width: "100%", 
+		flexDirection:"row", 
+		justifyContent:"flex-start",
 	}
 });

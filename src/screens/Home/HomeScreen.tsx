@@ -32,7 +32,7 @@ const HomeScreen: () => JSX.Element = () => {
 	const coinCount: number = useSelector((state: AppState) => state.user.coins);
 	
 	// TODO: transaction history redux state and api
-	const [Transaction, setTransaction] = useState<TransactionHistory[]>([]);
+	const [transaction, setTransaction] = useState<TransactionHistory[]>([]);
 	
 	useEffect(() => {
 		// TODO: fetch transaction history
@@ -58,18 +58,18 @@ const HomeScreen: () => JSX.Element = () => {
 	return (
 		<View style={styles.contentContainer}>
 
-			<Text.Heading title={`Hi, ${username}! 👋`} />
+			<Text.Heading title={`${LABELS.GREET_MESSAGE} ${username} ${LABELS.GREET_EMOTE}`} />
 			<WalletBalance coins={coinCount} />
 			<NavCard 
 				accountAction={navigateToAccount} 
 				sendAction={navigateToTransfer}
 				redeemAction= {navigateToRedeem} />
 			
-			<View style={{width: "100%", flexDirection:"row", justifyContent:"flex-start"}}>
+			<View style={styles.titleLeft}>
 				<Text.Title darkgrey bold>{LABELS.PAST_TRANSACTIONS}</Text.Title>
 			</View>
 
-			<History history={Transaction} />
+			<History history={transaction} />
 		</View>
 	);
 };
