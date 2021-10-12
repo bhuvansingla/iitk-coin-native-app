@@ -24,11 +24,11 @@ const RootScreen: () => JSX.Element = () => {
 				<React.Fragment>
 					{currentScreen === ScreenType.LOGIN && <LoginScreen />}
 					{currentScreen === ScreenType.SIGNUP && <SignupScreen />}
-					{currentScreen === ScreenType.TRANSFER && <TransferScreen/>}
 				</React.Fragment>
 				:
 				<React.Fragment>
 					{currentScreen === ScreenType.HOME && <HomeScreen />}
+					{currentScreen === ScreenType.TRANSFER && <TransferScreen/>}
 				</React.Fragment>
 			}
 		</BottomSheet>

@@ -8,6 +8,7 @@ import Header from "./Header";
 import Forms from "./Forms";
 import History from "./History";
 import Transaction from "./Transaction";
+import { WalletBalance, NavCard } from "./Card";
 
 export {
 	TextInput,
@@ -19,5 +20,7 @@ export {
 	Header,
 	Forms,
 	History,
-	Transaction
+	Transaction,
+	WalletBalance,
+	NavCard,
 };
