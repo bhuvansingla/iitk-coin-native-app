@@ -11,7 +11,7 @@ interface Props {
 	rollNo: string;
 	amount: number;
 	tax: number;
-	onPress: () => void;
+	onPressConfirmTransfer: () => void;
 }
 
 interface DetailsListItemProps {
@@ -64,7 +64,7 @@ const DetailsListItem: React.FC<DetailsListItemProps> = (props) => {
 };
 
 const ConfirmDetails: React.FC<Props> = (props) => {
-	const { name, rollNo, amount, tax, onPress } = props;
+	const { name, rollNo, amount, tax, onPressConfirmTransfer } = props;
 	const totalAmount = amount - tax;
 
 	return (
@@ -83,7 +83,7 @@ const ConfirmDetails: React.FC<Props> = (props) => {
 			<View>
 				<DetailsListItem key={LABELS.TRANSFER_FINAL_AMOUNT} label={LABELS.TRANSFER_FINAL_AMOUNT} value={totalAmount} />
 			</View>
-			<Button title={LABELS.TRANSFER_BUTTON} onPress={onPress} />
+			<Button title={LABELS.TRANSFER_BUTTON} onPress={onPressConfirmTransfer} />
 		</View>
 	);
 };
