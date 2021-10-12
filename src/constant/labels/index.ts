@@ -11,6 +11,13 @@ const LABELS = {
 	"COINS": "Coins",
 	"COIN": "Coin",
 	"YOU_HAVE": "You have",
+
+
+	
+	"ACCOUNT": "Account",
+	"SEND": "Send",
+	"REDEEM": "Redeem",
+
 	
 };
 
