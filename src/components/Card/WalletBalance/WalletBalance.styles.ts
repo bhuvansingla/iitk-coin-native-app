@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native";
 
-import { COLORS } from "styles";
+import { COLORS, FONT } from "styles";
 
-const COIN_FONT_SIZE = 44;
+const COIN_FONT_SIZE = FONT.SIZE.H3 * 2;
 
 const styles = StyleSheet.create({
 	container: {
 		width: "100%",
 		minHeight: 100,
-		height: "36%",
+		maxHeight: 200,
 		borderRadius: 20,
 		flexDirection: "row",
 		position: "relative",
@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
 		shadowOffset: { width: 0, height: 4 },
 		elevation: 4,
 		alignItems: "center",
+		marginBottom: 20,
 	},
 	left: {
 		left: -25,

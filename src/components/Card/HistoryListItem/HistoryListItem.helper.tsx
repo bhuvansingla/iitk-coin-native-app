@@ -5,7 +5,7 @@ import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 
 import { AppState } from "redux-store/reducers";
-import { Text } from "components";
+import Text from "components/Text";
 import { COLORS, FONT } from "styles";
 import { history } from "api";
 import { LABELS } from "constant";
