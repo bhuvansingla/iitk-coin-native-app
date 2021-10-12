@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch , useSelector } from "react-redux";
 import { View } from "react-native";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import Ripple from "react-native-material-ripple";
 
 import { AppState } from "redux-store/reducers";
 import { setCurrentScreen, setCoins } from "redux-store/actions";
@@ -10,13 +8,9 @@ import { Text, WalletBalance, Transfer } from "components";
 import TransferForm from "components/Forms/Transfer";
 import { LABELS } from "constant";
 import VerifyOtpForm from "components/Forms/VerifyOtp";
-import { COLORS, FONT } from "styles";
 import { ScreenType } from "screens/screen.types";
 
 import styles from "../screen.styles";
-
-const fontSize = FONT.SIZE.H2;
-const fontAwesomeSize = fontSize * 1.3;
 
 const TransferScreen: () => JSX.Element = () => {
 
@@ -29,9 +23,7 @@ const TransferScreen: () => JSX.Element = () => {
 
 	const dispatch = useDispatch();
 
-	const initialcoins: number = useSelector((state: AppState) => state.user.coins);
-	const [coin, setCoin] = useState<number>(initialcoins);
-
+	const coins: number = useSelector((state: AppState) => state.user.coins);
 	const [transferStage, setTransferStage] = useState<TransferStage>(TransferStage.FORM);
 
 	const [rollNo, setRollNo] = useState<string>("");
@@ -44,7 +36,7 @@ const TransferScreen: () => JSX.Element = () => {
 	const [otp, setOTP] = useState<string>("");
 	const [txnID, setTxnID] = useState<string>("");
 
-	const onPressForm = () => {
+	const onPressSend = () => {
 		// TODO verify rollno, amount, remarks
 		console.log(rollNo, remark, amount);
 		// TODO call api to get name and tax
@@ -53,22 +45,21 @@ const TransferScreen: () => JSX.Element = () => {
 		setTransferStage(TransferStage.CONFIRM_DETAILS);
 	};
 
-	const onPressConfirmDetails = () => {
+	const onPressConfirmTransfer = () => {
 		console.log(rollNo, name, tax, amount, remark);
 		// TODO request otp
 		setTransferStage(TransferStage.VERIFY_OTP);
 	};
 
-	const onPressVerifyOtp = () => {
+	const onPressSubmit = () => {
 		console.log(otp);
 		// TODO call api to validate transfer and get txnID
-		setTxnID("AFK");
-		setCoins(coin-amount);
-		setCoin(coin-amount);
+		setTxnID("OP711");
+		dispatch(setCoins(coins-amount));
 		setTransferStage(TransferStage.SUCCESS);
 	};
 
-	const onPressSuccess = () => {
+	const onPressTransferSuccess = () => {
 		console.log("onPressSuccess");
 		dispatch(setCurrentScreen(ScreenType.HOME));
 	};
@@ -78,31 +69,17 @@ const TransferScreen: () => JSX.Element = () => {
 		dispatch(setCurrentScreen(ScreenType.HOME));
 	};
 
-	const Heading: JSX.Element = (
-		<View style={styles.header}>
-			<Ripple
-				rippleDuration={360}
-				rippleColor={COLORS.DARK_TEAL}
-				rippleContainerBorderRadius={20}
-				onPress={onPressBack}>
-				<Ionicons name="arrow-back-outline" size={fontAwesomeSize} color={COLORS.BLACK} />
-			</Ripple>
-			<Text.Title semibold style={[styles.heading, { fontSize }]}>{LABELS.TRANSFER_FORM_TITLE}</Text.Title>
-			<FontAwesome name="send" size={fontAwesomeSize} color={COLORS.BLACK} />
-		</View>
-	);
-
 	return (
 		<View style={styles.contentContainer}>
-			{Heading}
+			<Text.PageTitle title={LABELS.TRANSFER_FORM_TITLE} onPressBack={onPressBack} />
 
-			<WalletBalance coins={coin} />
+			<WalletBalance coins={coins} />
 
 			{transferStage === TransferStage.FORM &&
 				<React.Fragment>
 
 					<View style={styles.formContainer}>
-						<TransferForm onPressSend={onPressForm} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} />
+						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} />
 					</View>
 
 				</React.Fragment>
@@ -111,7 +88,7 @@ const TransferScreen: () => JSX.Element = () => {
 				<React.Fragment>
 
 					<View style={styles.formContainer}>
-						<Transfer.ConfirmDetails name={name} rollNo={rollNo} amount={amount} tax={tax} onPress={onPressConfirmDetails} />
+						<Transfer.ConfirmDetails name={name} rollNo={rollNo} amount={amount} tax={tax} onPressConfirmTransfer={onPressConfirmTransfer} />
 					</View>
 
 				</React.Fragment>
@@ -120,7 +97,7 @@ const TransferScreen: () => JSX.Element = () => {
 				<React.Fragment>
 
 					<View style={styles.formContainer}>
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} />
+						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} />
 					</View>
 
 				</React.Fragment>
@@ -129,7 +106,7 @@ const TransferScreen: () => JSX.Element = () => {
 				<React.Fragment>
 
 					<View style={styles.formContainer}>
-						<Transfer.TransferSuccess txnID={txnID} onPress={onPressSuccess} />
+						<Transfer.TransferSuccess txnID={txnID} onPressTransferSuccess={onPressTransferSuccess} />
 					</View>
 
 				</React.Fragment>
