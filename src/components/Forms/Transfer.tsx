@@ -7,9 +7,9 @@ import { LABELS, LENGTH } from "constant";
 import Image from "components/SVGImage";
 
 interface Props {
-	setRemark: (password: string) => void;
+	setRemark: (remark: string) => void;
 	setRollNo: (rollNo: string) => void;
-	setAmount: (amount: string) => void;
+	setAmount: (amount: number) => void;
 	onPressSend: () => void;
 }
 
@@ -24,7 +24,7 @@ const TransferForm: React.FC<Props> = (props) => {
 	};
 
 	const onChangeAmount = (amount: string) => {
-		setAmount(amount);
+		setAmount(Number(amount));
 	};
 
 	const onChangeRemark = (remark: string) => {
