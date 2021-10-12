@@ -33,7 +33,7 @@ const postOTP = async (params: OTPParams): Promise<Response> => {
 	}).then(res => {
 		payload = res.data;
 		status = res.status;
-	}).catch((err) => {
+	}).catch(err => {
 		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
 		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
