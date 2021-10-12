@@ -12,7 +12,7 @@ interface Props {
 	onPress: () => void;
 }
 
-const TransactionSuccess: React.FC<Props> = ({txnID, onPress}) => {
+const TransferSuccess: React.FC<Props> = ({txnID, onPress}) => {
 	return (
 		<View style={styles.container}>
 			<AntDesign name="checkcircle" size={80} color={COLORS.TEAL} />
@@ -48,4 +48,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default TransactionSuccess;
+export default TransferSuccess;
