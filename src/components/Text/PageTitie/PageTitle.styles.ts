@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "flex-start",
 		alignItems: "flex-start",
+		marginTop: 20,
+		marginBottom: 10,
 		maxHeight: 50,
 	},
 	heading: {

@@ -27,36 +27,12 @@ const DetailsListItem: React.FC<DetailsListItemProps> = (props) => {
 	if (typeof value === "number") {
 		suffix = (value > 1) ? LABELS.COINS : LABELS.COIN;
 	}
-	
-	const detailsTextProps = {
-		label: {
-			style: {
-				paddingBottom: 5,
-				fontSize: FONT.SIZE.SECONDARY,
-				opacity: 0.7,
-			},
-		},
-		value: {
-			style: {
-				opacity: 0.9,
-				fontSize: FONT.SIZE.H2,
-			},
-		},
-		wrapper: {
-			style: {
-				marginBottom: 15,
-				fontFamily: FONT.WEIGHT.BOLD,
-				opacity: 0.7,
-				fontSize: FONT.SIZE.TERTIARY,
-			},
-		},
-	};
 
 	return (
 		<View style={styles.listItem}>
-			<Text.Title {...detailsTextProps.label}>{label}</Text.Title>
-			<Text.Title {...detailsTextProps.wrapper}>
-				<Text.Title {...detailsTextProps.value}>{value} {suffix}</Text.Title>
+			<Text.Title style={styles.label}>{label}</Text.Title>
+			<Text.Title style={styles.wrapper}>
+				<Text.Title style={styles.value}>{value} {suffix}</Text.Title>
 				{rollNo}
 			</Text.Title>
 		</View>
@@ -91,7 +67,6 @@ const ConfirmDetails: React.FC<Props> = (props) => {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingVertical: 20,
 		flexDirection: "column",
 		justifyContent: "flex-start",
 		alignItems: "flex-start",
@@ -109,6 +84,21 @@ const styles = StyleSheet.create({
 		flexDirection: "column",
 		justifyContent: "flex-start",
 		alignItems: "flex-start",
+	}, 
+	label: {
+		paddingBottom: 5,
+		fontSize: FONT.SIZE.SECONDARY,
+		opacity: 0.7,
+	},
+	value: {
+		opacity: 0.9,
+		fontSize: FONT.SIZE.H2,
+	},
+	wrapper: {
+		marginBottom: 15,
+		fontFamily: FONT.WEIGHT.BOLD,
+		opacity: 0.7,
+		fontSize: FONT.SIZE.TERTIARY,
 	},
 });
 
