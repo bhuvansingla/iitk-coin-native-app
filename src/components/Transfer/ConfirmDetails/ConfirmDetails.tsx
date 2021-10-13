@@ -6,7 +6,7 @@ import Button from "components/Button";
 import { LABELS } from "constant";
 
 import styles from "./ConfirmDetails.styles";
-import DetailsListItem from "./ConfirmDetails.helper";
+import DetailsListItem from "./ConfirmDetailsItem";
 
 interface Props {
 	name: string;

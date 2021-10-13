@@ -1,5 +1,10 @@
 import { StyleSheet } from "react-native";
 
+import { FONT } from "styles";
+
+const fontSize = FONT.SIZE.H2;
+const fontAwesomeSize = fontSize * 1.3;
+
 const styles = StyleSheet.create({
 	header: {
 		flex: 1,
@@ -17,6 +22,10 @@ const styles = StyleSheet.create({
 		maxHeight: 50,
 		opacity: 1,
 		width: 50,
+		fontSize,
+	},
+	icon: {
+		fontSize: fontAwesomeSize,
 	},
 });
 

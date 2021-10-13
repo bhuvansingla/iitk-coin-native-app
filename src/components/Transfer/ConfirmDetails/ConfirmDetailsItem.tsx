@@ -6,14 +6,14 @@ import { LABELS } from "constant";
 
 import styles from "./ConfirmDetails.styles";
 
-interface DetailsListItemProps {
+interface ConfirmDetailsItemProps {
 	key: string;
 	label: string;
 	value: string | number;
 	rollNo?: string;
 }
 
-const DetailsListItem: React.FC<DetailsListItemProps> = (props) => {
+const ConfirmDetailsItem: React.FC<ConfirmDetailsItemProps> = (props) => {
 	const { label, value, rollNo } = props;
 	let suffix = "";
 	if (typeof value === "number") {
@@ -31,4 +31,4 @@ const DetailsListItem: React.FC<DetailsListItemProps> = (props) => {
 	);
 };
 
-export default DetailsListItem;
+export default ConfirmDetailsItem;
