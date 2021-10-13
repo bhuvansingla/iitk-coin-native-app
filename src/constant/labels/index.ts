@@ -1,12 +1,14 @@
 import FormLabel from "./forms";
 import HistoryLabel from "./history";
 import TransferLabel from "./transfer";
+import ValidationLabel from "./validation";
 
 const LABELS = {
 
 	...FormLabel,
 	...HistoryLabel,
 	...TransferLabel,
+	...ValidationLabel,
 
 	"COINS": "Coins",
 	"COIN": "Coin",

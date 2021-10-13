@@ -9,6 +9,7 @@ import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 import { LoginParams } from "api/auth";
 import { loginCallback } from "callbacks/login";
+import { validator as v } from "utils";
 
 import styles from "../screen.styles";
 
@@ -18,12 +19,17 @@ const LoginScreen: () => JSX.Element = () => {
 
 	const [password, setPassword] = useState<string>("");
 	const [rollNo, setRollNo] = useState<string>("");
+	const [loginFormError, setLoginFormError] = useState<v.Errors.LoginFromErrors>(v.Errors.LoginFromErrorsEmpty);
 
 	const onPressFooter = () => {
 		dispatch(setCurrentScreen(ScreenType.SIGNUP));
 	};
 
 	const onPressSignin = () => {
+		setLoginFormError(v.formValidators.loginFormValidator(rollNo, password));
+		if (loginFormError != v.Errors.LoginFromErrorsEmpty) {
+			return;
+		}
 		const loginParams: LoginParams = { RollNo: rollNo, Password: password };
 		loginCallback(loginParams).then((success) => {
 			if (success) {
@@ -40,7 +46,7 @@ const LoginScreen: () => JSX.Element = () => {
 
 			<View style={styles.containerChildWrapper}>
 
-				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} />
+				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} loginFormError={loginFormError} />
 
 				<Text.Footer title={LABELS.CREATE_WALLET_FOOTER} link={LABELS.CREATE_WALLET_LINK} onPress={() => onPressFooter()} />
 
