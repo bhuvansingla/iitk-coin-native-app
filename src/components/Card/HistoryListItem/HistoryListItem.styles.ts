@@ -5,7 +5,8 @@ import { COLORS } from "styles";
 const styles = StyleSheet.create({
 	mainContainer: {
 		flex: 0,
-		padding: 5,
+		paddingVertical: 5,
+		width: "100%",
 	},
 	content: {
 		zIndex: -1,
@@ -13,6 +14,7 @@ const styles = StyleSheet.create({
 	rippleWrapper: {
 		minHeight: 115,
 		maxHeight: 200,
+		width: "100%",
 	},
 	ripple: {
 		flex: 1,
@@ -79,7 +81,6 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 	},
 	text: {
-		flex: 1,
 		flexDirection: "row",
 		justifyContent: "flex-start",
 		alignItems: "center",

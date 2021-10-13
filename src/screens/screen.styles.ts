@@ -4,11 +4,17 @@ export default StyleSheet.create({
 	contentContainer: {
 		flex: 1,
 		alignItems: "center",
-		marginLeft: 45,
-		marginRight: 44,
+		paddingHorizontal: 22,
+		paddingBottom: 22,
 	},
 	containerChildWrapper: {
 		width:"100%",
 		flex:1,
+	},
+	
+	titleLeft: {
+		width: "100%", 
+		flexDirection:"row", 
+		justifyContent:"flex-start",
 	}
 });

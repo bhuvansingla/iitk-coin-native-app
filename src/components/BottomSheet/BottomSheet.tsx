@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useRef } from "react";
 import { View, StyleSheet } from "react-native";
-import BottomSheet from "@gorhom/bottom-sheet";
+import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 
 import { COLORS } from "styles";
 
@@ -42,7 +42,7 @@ const MyBottomSheet: React.FC<Props> = ({
 				backdropComponent={CustomBackdrop}
 				onChange={handleSheetChanges}
 			>
-				{children}
+				<BottomSheetScrollView>{children}</BottomSheetScrollView>
 			</BottomSheet>
 		</View>
 	);

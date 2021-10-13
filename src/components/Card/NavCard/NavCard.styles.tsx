@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
 	container : {
 		width: "100%",
 		minHeight: 100,
-		maxHeight: 200,
+		maxHeight: 100,
 		borderRadius: 20,
 		flex : 1,
 		flexDirection: "row",
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
 		shadowColor: COLORS.BLACK,
 		shadowOpacity: 0.5,
 		shadowOffset: { width: 0, height: 4 },
-		elevation: 4,
+		elevation: 10,
 		backgroundColor : COLORS.WHITE,
 		marginBottom : 20,
 	},
