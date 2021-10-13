@@ -7,7 +7,8 @@ import Image from "./SVGImage";
 import Header from "./Header";
 import Forms from "./Forms";
 import History from "./History";
-import Transaction from "./Transaction";
+import Transfer from "./Transfer";
+import { WalletBalance, NavCard } from "./Card";
 
 export {
 	TextInput,
@@ -19,5 +20,7 @@ export {
 	Header,
 	Forms,
 	History,
-	Transaction
+	Transfer,
+	WalletBalance,
+	NavCard,
 };

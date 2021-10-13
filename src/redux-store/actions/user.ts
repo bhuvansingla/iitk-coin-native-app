@@ -10,7 +10,13 @@ const setRollNo = (payload: string): Action => ({
 	payload,
 });
 
+const setCoins = (payload: number): Action => ({
+	type: ActionType.UPDATE_COINS,
+	payload,
+});
+
 export {
 	setName,
-	setRollNo
+	setRollNo,
+	setCoins,
 };

@@ -1,7 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 
-import { Text, Image } from "components";
+import Text from "components/Text";
+import Image from "components/SVGImage";
 import { LABELS } from "constant";
 import { FONT } from "styles";
 

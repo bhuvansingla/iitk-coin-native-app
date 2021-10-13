@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { MaterialIcons, Ionicons, AntDesign } from "@expo/vector-icons";
 
-import { Text } from "components";
+import Text from "components/Text";
 import { LABELS } from "constant";
 
 import {styles, COLOR, SIZE} from "./NavCard.styles";
