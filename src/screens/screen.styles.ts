@@ -7,8 +7,7 @@ export default StyleSheet.create({
 		paddingHorizontal: 22,
 		paddingBottom: 22,
 	},
-
-	formContainer: {
+	containerChildWrapper: {
 		width:"100%",
 		flex:1,
 	},
