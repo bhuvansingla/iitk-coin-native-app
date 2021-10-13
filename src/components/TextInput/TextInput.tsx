@@ -9,12 +9,14 @@ interface Props {
 	title: string;
 	value?: string;
 	password?: boolean;
+	error?: string;
 	onChangeText: (text: string) => void;
 }
 
 const TextInput: React.FC<Props> = (props) => {
 
-	const { onChangeText, value, placeholder, title, password } = props;
+	const { onChangeText, value, placeholder, title, password, error } = props;
+	const isNotError = error == undefined || error == "";
 
 	return (
 
@@ -29,6 +31,10 @@ const TextInput: React.FC<Props> = (props) => {
 				onChangeText={onChangeText}
 				value={value}
 			/>
+
+			{!isNotError &&
+					<Text.Title red style={styles.error}>{error}</Text.Title>
+			}
 
 		</View>
 	);

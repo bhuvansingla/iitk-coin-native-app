@@ -2,17 +2,18 @@ import { StyleSheet } from "react-native";
 
 import { COLORS, FONT } from "styles";
 
-export default StyleSheet.create({
+const paddingHorizontal = 16;
+const marginBottom = 10; 
 
+export default StyleSheet.create({
 	container: {
 		marginTop: 1,
 		width: "100%",
 	},
-
 	input: {
 		marginTop: 2,
-		marginBottom: 10,
-		paddingHorizontal: 16,
+		marginBottom: marginBottom,
+		paddingHorizontal: paddingHorizontal,
 		paddingVertical: 10,
 		borderRadius: 20,
 		backgroundColor: COLORS.GREY,
@@ -28,10 +29,13 @@ export default StyleSheet.create({
 		shadowOffset: { width: 0, height: 4 },
 
 	},
-
 	containerTitle: {
 		marginBottom: 4,
 		flexDirection: "row",
 	},
-
+	error: {
+		paddingHorizontal: paddingHorizontal,
+		top: -marginBottom, 
+		opacity: 0.9,
+	},
 });

@@ -5,35 +5,36 @@ import styles from "./Title.styles";
 import mainStyle from "../styles";
 
 interface Props {
-  style?: StyleProp<TextStyle>;
-  children: string | React.ReactNode;
-  black?: boolean;
-  link?: boolean;
-  darkgrey?: boolean;
-  white?:boolean;
-  center?: boolean;
-  bold?:boolean;
-  semibold?: boolean;
-  footer?: boolean;
+	style?: StyleProp<TextStyle>;
+	children: string | React.ReactNode;
+	black?: boolean;
+	link?: boolean;
+	darkgrey?: boolean;
+	white?: boolean;
+	center?: boolean;
+	bold?: boolean;
+	semibold?: boolean;
+	footer?: boolean;
+	red?: boolean;
 }
 
 export default function Title(props: Props): React.ReactElement {
 	const customStyle = [styles.default, props.style];
-	const {black, link, darkgrey, bold, white, center, semibold, footer} = props;
+	const { black, link, darkgrey, bold, white, center, semibold, footer, red } = props;
 
 	if (black) {
 		customStyle.push(mainStyle.black);
 	}
 
-	if(link) {
+	if (link) {
 		customStyle.push(mainStyle.link);
 	}
 
-	if(darkgrey) {
+	if (darkgrey) {
 		customStyle.push(mainStyle.darkgrey);
 	}
 
-	if(white) {
+	if (white) {
 		customStyle.push(mainStyle.white);
 	}
 
@@ -49,8 +50,12 @@ export default function Title(props: Props): React.ReactElement {
 		customStyle.push(mainStyle.SemiBold);
 	}
 
-	if(footer) {
+	if (footer) {
 		customStyle.push(mainStyle.secondary);
+	}
+
+	if (red) {
+		customStyle.push(mainStyle.red);
 	}
 
 	return <Text {...props} style={customStyle} />;
