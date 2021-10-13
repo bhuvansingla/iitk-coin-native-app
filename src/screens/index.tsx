@@ -9,6 +9,8 @@ import SignupScreen from "./Signup/SignupScreen";
 import { ScreenType } from "./screen.types";
 import HomeScreen from "./Home/HomeScreen";
 import TransferScreen from "./Transfer/TransferScreen";
+import AccountScreen from "./Account/AccountScreen";
+import RedeemScreen from "./Redeem/RedeemScreen";
 
 const RootScreen: () => JSX.Element = () => {
 
@@ -24,11 +26,13 @@ const RootScreen: () => JSX.Element = () => {
 				<React.Fragment>
 					{currentScreen === ScreenType.LOGIN && <LoginScreen />}
 					{currentScreen === ScreenType.SIGNUP && <SignupScreen />}
-					{currentScreen === ScreenType.TRANSFER && <TransferScreen/>}
 				</React.Fragment>
 				:
 				<React.Fragment>
 					{currentScreen === ScreenType.HOME && <HomeScreen />}
+					{currentScreen === ScreenType.TRANSFER && <TransferScreen/>}
+					{currentScreen === ScreenType.ACCOUNT && <AccountScreen />}
+					{currentScreen === ScreenType.REDEEM && <RedeemScreen />}
 				</React.Fragment>
 			}
 		</BottomSheet>
