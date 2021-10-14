@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
 	crow: {
 		position: "absolute",
 		top: 0,
-		right: 0,
+		right: -10,
 		marginRight: 0,
 		paddingRight: 0,
 		alignItems: "flex-end",
