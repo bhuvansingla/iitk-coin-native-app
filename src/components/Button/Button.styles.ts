@@ -4,26 +4,26 @@ import { COLORS, FONT } from "styles";
 
 export default StyleSheet.create({
 	container: {
-		borderRadius: 20,
-
-		shadowRadius: 17,
-		shadowColor: COLORS.BLACK,
-		shadowOpacity: 0.5,
-		shadowOffset: { width: 0, height: 4 },
-		elevation: 5,
-		backgroundColor: COLORS.TEAL,
-		paddingVertical: 10,
-
-		width: "100%",
 		alignItems: "center",
 
+		backgroundColor: COLORS.TEAL,
+		borderRadius: 20,
+		elevation: 5,
 		marginTop: 15,
+		paddingVertical: 10,
+		shadowColor: COLORS.BLACK,
+		shadowOffset: { width: 0, height: 4 },
+
+		shadowOpacity: 0.5,
+		shadowRadius: 17,
+
+		width: "100%",
 	},
 
 	text: {
 		flexDirection: "row",
-		opacity: 1,
 		fontSize: FONT.SIZE.PRIMARY,
+		opacity: 1,
 	},
 
 });

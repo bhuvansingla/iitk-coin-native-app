@@ -4,19 +4,19 @@ import { FONT } from "styles";
 
 export default StyleSheet.create({
 	container: {
-		marginTop: 27,
 		marginBottom: 20,
-	},
-
-	text: {
-		marginBottom: 7,
-		flexDirection: "row",
-		opacity: 1,
+		marginTop: 27,
 	},
 
 	link: {
 		flexDirection: "row",
 		fontSize: FONT.SIZE.SECONDARY,
+		opacity: 1,
+	},
+
+	text: {
+		flexDirection: "row",
+		marginBottom: 7,
 		opacity: 1,
 	},
 

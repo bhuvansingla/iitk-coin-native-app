@@ -67,16 +67,16 @@ const TransferForm: React.FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
 	amountContainer: {
+		alignItems: "center",
 		flexDirection: "row",
 		justifyContent: "flex-start",
-		alignItems: "center",
 	},
 
 	imageStyle: {
 		height: "40%",
-		width: "40%",
 		marginLeft: "-28%",
 		marginTop: "6%",
+		width: "40%",
 	},
 });
 

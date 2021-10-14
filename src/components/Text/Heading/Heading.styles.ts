@@ -4,17 +4,17 @@ import { COLORS, FONT } from "styles";
 
 export default StyleSheet.create({
 	container: {
-		marginTop: 20,
 		marginBottom: 17,
+		marginTop: 20,
 		width: "100%",
 	},
 
 	text: {
-		marginBottom: 7,
-		flexDirection: "row",
-		opacity: 1,
 		color: COLORS.BLACK,
+		flexDirection: "row",
 		fontSize: FONT.SIZE.H2,
+		marginBottom: 7,
+		opacity: 1,
 		textAlign: "left",
 	},
 

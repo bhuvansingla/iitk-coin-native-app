@@ -24,7 +24,7 @@ const ConfirmDetailsItem: React.FC<ConfirmDetailsItemProps> = (props) => {
 		<View style={styles.listItem}>
 			<Text.Title style={styles.label}>{label}</Text.Title>
 			<Text.Title style={styles.wrapper}>
-				<Text.Title style={styles.value}>{value} {suffix}</Text.Title>
+				<Text.Title style={styles.value}>{value}{suffix}</Text.Title>
 				{rollNo}
 			</Text.Title>
 		</View>

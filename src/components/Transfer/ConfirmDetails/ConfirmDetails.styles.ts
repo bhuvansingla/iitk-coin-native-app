@@ -3,40 +3,40 @@ import { StyleSheet } from "react-native";
 import { FONT } from "styles";
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		flexDirection: "column",
-		justifyContent: "flex-start",
-		alignItems: "flex-start",
-	},
 	amountTaxContainer: {
 		flexDirection: "row",
 		justifyContent: "space-between",
 	},
-	halfBox: {
-		width: "50%",
+	container: {
+		alignItems: "flex-start",
+		flex: 1,
 		flexDirection: "column",
 		justifyContent: "flex-start",
 	},
-	listItem: {
+	halfBox: {
 		flexDirection: "column",
 		justifyContent: "flex-start",
-		alignItems: "flex-start",
+		width: "50%",
 	},
 	label: {
-		paddingBottom: 5,
 		fontSize: FONT.SIZE.SECONDARY,
 		opacity: 0.7,
+		paddingBottom: 5,
+	},
+	listItem: {
+		alignItems: "flex-start",
+		flexDirection: "column",
+		justifyContent: "flex-start",
 	},
 	value: {
-		opacity: 0.9,
 		fontSize: FONT.SIZE.H2,
+		opacity: 0.9,
 	},
 	wrapper: {
-		marginBottom: 15,
 		fontFamily: FONT.WEIGHT.BOLD,
-		opacity: 0.7,
 		fontSize: FONT.SIZE.TERTIARY,
+		marginBottom: 15,
+		opacity: 0.7,
 	},
 });
 

@@ -1,24 +1,24 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-	default: {
-		flex: 1,
-	},
-	crow: {
-		position: "absolute",
-		top: 0,
-		right: -10,
-		marginRight: 0,
-		paddingRight: 0,
-		alignItems: "flex-end",
-		justifyContent: "flex-start",
+	coinLogo: {
+		justifyContent: "center",
 	},
 	coinTypographyLogo: {
 		alignItems: "center",
 		justifyContent: "center",
 	},
-	coinLogo: {
-		justifyContent: "center",
+	crow: {
+		alignItems: "flex-end",
+		justifyContent: "flex-start",
+		marginRight: 0,
+		paddingRight: 0,
+		position: "absolute",
+		right: -10,
+		top: 0,
+	},
+	default: {
+		flex: 1,
 	},
 });
 
