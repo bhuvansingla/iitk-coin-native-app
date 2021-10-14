@@ -9,7 +9,6 @@ export const retrieveByKey = async (key: string): Promise<string | null> => {
 	if (result) {
 		return result;
 	} else {
-		console.error(`No value found for key: ${key}`);
 		return null;
 	}
 };

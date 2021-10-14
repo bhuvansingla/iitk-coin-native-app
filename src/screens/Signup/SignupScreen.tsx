@@ -8,6 +8,9 @@ import SignupForm from "components/Forms/Signup";
 import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
+import { OTPParams, SignupParams } from "api/auth";
+import { otpCallback } from "callbacks/otp";
+import { signupCallback } from "callbacks/signup";
 
 import styles from "../screen.styles";
 
@@ -33,13 +36,29 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const onPressSignup = () => {
 		// Make the API Call here to request OTP.
-		setSignupStage(SignupStage.VERIFY_OTP);
+		const otpParams: OTPParams = {RollNo: rollNo};
+		otpCallback(otpParams).then((success) => {
+			if(success) {
+				setSignupStage(SignupStage.VERIFY_OTP);
+			} else {
+			// TODO: Handle the error
+				console.log("Can't send OTP");
+			}
+		});
 	};
 
 	const onPressVerifyOtp = () => {
 		// Make the signup API call here.
 		console.log(name, password, rollNo, otp);
-		dispatch(setCurrentScreen(ScreenType.LOGIN));
+		const signupParams: SignupParams = { RollNo: rollNo, Password: password, OTP: otp };
+		signupCallback(signupParams).then((success) => {
+			if(success) {
+				dispatch(setCurrentScreen(ScreenType.LOGIN));
+			} else {
+				// TODO: Handle the error
+				console.log("Failed");
+			}
+		});
 	};
 
 	return (
