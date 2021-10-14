@@ -6,31 +6,34 @@ export const COLOR = "#305A90";
 export const SIZE = FONT.SIZE.H3 * 2.3;
 
 export const styles = StyleSheet.create({
+	button : {
+		alignItems : "center",
+		flex : 2,
+		justifyContent : "center",
+		maxWidth: "30%",
+	},
 	container : {
-		width: "100%",
-		minHeight: 100,
-		maxHeight: 100,
+		alignItems : "center",
+		backgroundColor : COLORS.WHITE,
 		borderRadius: 20,
+		elevation: 10,
 		flex : 1,
 		flexDirection: "row",
 		justifyContent : "space-around",
-		alignItems : "center",
-		shadowRadius: 20,
-		shadowColor: COLORS.BLACK,
-		shadowOpacity: 0.5,
-		shadowOffset: { width: 0, height: 4 },
-		elevation: 10,
-		backgroundColor : COLORS.WHITE,
 		marginBottom : 20,
+		maxHeight: 100,
+		minHeight: 100,
+		shadowColor: COLORS.BLACK,
+		shadowOffset: { width: 0, height: 4 },
+		shadowOpacity: 0.5,
+		shadowRadius: 20,
+		width: "100%",
+	},
+	icon: {
+		left:5
 	},
 	text : {
-		fontSize : FONT.SIZE.H3 * 0.55,
 		color : COLOR,
-	},
-	button : {
-		flex : 2,
-		alignItems : "center",
-		justifyContent : "center",
-		maxWidth: "30%",
+		fontSize : FONT.SIZE.H3 * 0.55,
 	}
 });

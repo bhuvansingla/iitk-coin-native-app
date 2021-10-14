@@ -45,7 +45,7 @@ const DetailsListItem: React.FC<DetailsListItemProps> = (props) => {
 	return (
 		<Text.Title {...TextStyle}>
 			<Text.Title {...titleTextStyle}>
-				{title}:{" "}
+				{title}{LABELS.COLON}{LABELS.SPACE}
 			</Text.Title>
 			{content}
 		</Text.Title>
@@ -149,7 +149,7 @@ const ItemTitle: React.FC<ItemTitleProps> = (props) => {
 						{image}
 					</View>
 					<View style={styles.text}>
-						<Text.Title bold style={{ fontSize }}> {type} </Text.Title>
+						<Text.Title bold style={{ fontSize }}>{type}</Text.Title>
 					</View>
 					<View style={styles.right}>
 						<Text.Title bold style={textContainerStyle}>

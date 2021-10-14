@@ -46,7 +46,7 @@ function App() {
 			}
 		}
 		checkToken();
-	}, []);
+	});
 	
 	return (
 		(!fontsLoaded) ? <AppLoading />
@@ -60,9 +60,9 @@ function App() {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		backgroundColor: COLORS.WHITE,
 		alignItems: "center",
+		backgroundColor: COLORS.WHITE,
+		flex: 1,
 		justifyContent: "center",
 	},
 });

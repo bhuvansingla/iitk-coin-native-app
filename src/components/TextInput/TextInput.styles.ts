@@ -9,29 +9,29 @@ export default StyleSheet.create({
 		width: "100%",
 	},
 
-	input: {
-		marginTop: 2,
-		marginBottom: 10,
-		paddingHorizontal: 16,
-		paddingVertical: 10,
-		borderRadius: 20,
-		backgroundColor: COLORS.GREY,
+	containerTitle: {
+		flexDirection: "row",
+		marginBottom: 4,
+	},
 
-		fontFamily: FONT.WEIGHT.REGULAR,
+	input: {
+		backgroundColor: COLORS.GREY,
+		borderRadius: 20,
 		color: COLORS.BLACK,
+		fontFamily: FONT.WEIGHT.REGULAR,
 		fontSize: FONT.SIZE.PRIMARY,
 		fontWeight: "600",
 
-		shadowRadius: 4,
+		marginBottom: 10,
+		marginTop: 2,
+		paddingHorizontal: 16,
+		paddingVertical: 10,
+
 		shadowColor: COLORS.BLACK,
-		shadowOpacity: 0.25,
 		shadowOffset: { width: 0, height: 4 },
+		shadowOpacity: 0.25,
+		shadowRadius: 4,
 
-	},
-
-	containerTitle: {
-		marginBottom: 4,
-		flexDirection: "row",
 	},
 
 });

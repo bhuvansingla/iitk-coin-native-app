@@ -41,11 +41,11 @@ export interface RedeemHistory {
 
 export type TransactionHistory = RewardHistory | RedeemHistory | TransferHistory;
 
-interface TransactionHistoryParams {
-	RollNo: number
-}
+// interface TransactionHistoryParams {
+// 	RollNo: number
+// }
 
-interface TransactionHistoryResponse {
-	Payload: TransactionHistory[];
-	Status: number;
-}
+// interface TransactionHistoryResponse {
+// 	Payload: TransactionHistory[];
+// 	Status: number;
+// }

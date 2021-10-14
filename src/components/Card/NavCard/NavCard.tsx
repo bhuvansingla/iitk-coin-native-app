@@ -23,7 +23,7 @@ const NavCard: React.FC<NavActionProps> = ({accountAction, sendAction, redeemAct
 			</NavBtn>
 
 			<NavBtn onPress = {sendAction}>
-				<View style={{left: 5}}>
+				<View style={styles.icon}>
 					<Ionicons name="send-sharp" size={SIZE} color={COLOR} />
 				</View>
 				<Text.Title style={styles.text}>{LABELS.SEND}</Text.Title>
