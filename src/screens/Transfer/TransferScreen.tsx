@@ -9,6 +9,7 @@ import TransferForm from "components/Forms/Transfer";
 import { LABELS } from "constant";
 import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { ScreenType } from "screens/screen.types";
+import { validator } from "utils";
 
 import styles from "../screen.styles";
 
@@ -36,8 +37,17 @@ const TransferScreen: () => JSX.Element = () => {
 	const [otp, setOTP] = useState<string>("");
 	const [txnID, setTxnID] = useState<string>("");
 
+	const [transferFormError, setTransferFormError] = useState(validator.forms.transfer.emptyError);
+	const [verifyOTPError, setVerifyOTPError] = useState(validator.forms.verifyOTP.emptyError);
+
 	const onPressSend = () => {
-		// TODO verify rollno, amount, remarks
+		const currentTransferFormError = validator.forms.transfer.validate(rollNo, remark, amount, coins);
+		setTransferFormError(currentTransferFormError);
+
+		if (validator.forms.transfer.isError(currentTransferFormError)) {
+			return;
+		}
+
 		console.log(rollNo, remark, amount);
 		// TODO call api to get name and tax
 		setName("Harshit Raj");
@@ -52,6 +62,13 @@ const TransferScreen: () => JSX.Element = () => {
 	};
 
 	const onPressSubmit = () => {
+		const currentVerifyOTPError = validator.forms.verifyOTP.validate(otp);
+		setVerifyOTPError(currentVerifyOTPError);
+
+		if (validator.forms.verifyOTP.isError(currentVerifyOTPError)) {
+			return;
+		}
+
 		console.log(otp);
 		// TODO call api to validate transfer and get txnID
 		setTxnID("OP711");
@@ -79,7 +96,7 @@ const TransferScreen: () => JSX.Element = () => {
 
 				{transferStage === TransferStage.FORM &&
 					<React.Fragment>
-						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} />
+						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} errors={transferFormError} />
 					</React.Fragment>
 				}
 				{transferStage === TransferStage.CONFIRM_DETAILS &&
@@ -89,7 +106,7 @@ const TransferScreen: () => JSX.Element = () => {
 				}
 				{transferStage === TransferStage.VERIFY_OTP &&
 					<React.Fragment>
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} />
+						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} />
 					</React.Fragment>
 				}
 				{transferStage === TransferStage.SUCCESS &&

@@ -8,12 +8,13 @@ interface Props {
 	title: string;
 	value?: string;
 	password?: boolean;
+	error?: string;
 	onChangeText: (text: string) => void;
 }
 
 const TextInput: React.FC<Props> = (props) => {
 
-	const { onChangeText, value, placeholder, title, password } = props;
+	const { onChangeText, value, placeholder, title, password, error } = props;
 
 	return (
 
@@ -29,6 +30,10 @@ const TextInput: React.FC<Props> = (props) => {
 				value={value}
 				keyboardType={"numeric"}
 			/>
+
+			{Boolean(error) &&
+				<Text.Title red style={styles.error}>{error}</Text.Title>
+			}
 
 		</View>
 	);
