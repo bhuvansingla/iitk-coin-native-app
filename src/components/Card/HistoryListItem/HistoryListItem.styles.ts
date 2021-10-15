@@ -3,87 +3,87 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "styles";
 
 const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		flexDirection: "row",
+		height: "100%",
+		
+		justifyContent: "flex-start",
+		paddingHorizontal: 20,
+		position: "relative",
+		zIndex: 2,
+	},
+	content: {
+		zIndex: -1,
+	},
+	detailsContainer: {
+		backgroundColor: COLORS.DARK_TEAL,
+		borderRadius: 20,
+
+		elevation: 4,
+		margin: 0,
+
+		overflow: "hidden",
+		paddingBottom: 5,
+		paddingLeft: 40,
+		paddingRight: 20,
+		paddingTop: 40,
+
+		shadowColor: COLORS.BLACK,
+		shadowOffset: { width: 0, height: 4 },
+		shadowOpacity: 0.5,
+		shadowRadius: 20,
+		top: -40,
+
+		width: "100%",
+		zIndex: -1,
+	},
+	left: {
+		alignItems: "center",
+		justifyContent: "center",
+		zIndex: 1,
+	},
 	mainContainer: {
 		flex: 0,
 		paddingVertical: 5,
 		width: "100%",
 	},
-	content: {
-		zIndex: -1,
-	},
-	rippleWrapper: {
-		minHeight: 115,
-		maxHeight: 200,
-		width: "100%",
-	},
-	ripple: {
-		flex: 1,
-		flexDirection: "column",
-		alignItems: "center",
-
-		marginTop: 7,
-		marginBottom: 0,
-		paddingVertical: 20,
-		borderRadius: 20,
-
-		shadowRadius: 20,
-		shadowColor: COLORS.BLACK,
-		shadowOpacity: 0.5,
-		shadowOffset: { width: 0, height: 4 },
-		elevation: 4,
-
-		backgroundColor: COLORS.WHITE,
-		minHeight: 100,
-		maxHeight: 185,
-		width: "100%",
-	},
-	detailsContainer: {
-		zIndex: -1,
-		overflow: "hidden",
-
-		borderRadius: 20,
-		margin: 0,
-
-		paddingTop: 40,
-		paddingBottom: 5,
-		paddingLeft: 40,
-		paddingRight: 20,
-		top: -40,
-
-		shadowRadius: 20,
-		shadowColor: COLORS.BLACK,
-		shadowOpacity: 0.5,
-		shadowOffset: { width: 0, height: 4 },
-		elevation: 4,
-
-		backgroundColor: COLORS.DARK_TEAL,
-		width: "100%",
-	},
-	container: {
-		flex: 1,
-		flexDirection: "row",
-		justifyContent: "flex-start",
-		
-		zIndex: 2,
-		position: "relative",
-		paddingHorizontal: 20,
-		height: "100%",
-	},
-	left: {
-		zIndex: 1,
-		alignItems: "center",
-		justifyContent: "center",
-	},
 	right: {
+		alignItems: "center",
 		flex: 1,
 		flexDirection: "row",
 		justifyContent: "flex-end",
+	},
+	ripple: {
 		alignItems: "center",
+		backgroundColor: COLORS.WHITE,
+		borderRadius: 20,
+
+		elevation: 4,
+		flex: 1,
+		flexDirection: "column",
+		marginBottom: 0,
+
+		marginTop: 7,
+		maxHeight: 185,
+		minHeight: 100,
+		paddingVertical: 20,
+		shadowColor: COLORS.BLACK,
+
+		shadowOffset: { width: 0, height: 4 },
+		shadowOpacity: 0.5,
+		shadowRadius: 20,
+		width: "100%",
+	},
+	rippleWrapper: {
+		maxHeight: 200,
+		minHeight: 115,
+		width: "100%",
 	},
 	text: {
+		alignItems: "center",
 		flexDirection: "row",
 		justifyContent: "flex-start",
-		alignItems: "center",
 		opacity: 1,
 	},
 });

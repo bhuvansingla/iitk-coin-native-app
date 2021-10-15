@@ -12,6 +12,7 @@ module.exports = {
 		"plugin:import/errors",
 		"plugin:import/warnings",
 		"plugin:import/typescript",
+		"plugin:react-native/all"
 	],
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
@@ -21,7 +22,7 @@ module.exports = {
 		ecmaVersion: 12,
 		sourceType: "module",
 	},
-	plugins: ["react", "@typescript-eslint"],
+	plugins: ["react", "react-native", "@typescript-eslint"],
 	rules: {
 		indent: ["error", "tab"],
 		"linebreak-style": ["error", "unix"],

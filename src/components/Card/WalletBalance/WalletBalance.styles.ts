@@ -5,58 +5,58 @@ import { COLORS, FONT } from "styles";
 const COIN_FONT_SIZE = FONT.SIZE.H3 * 2;
 
 const styles = StyleSheet.create({
+	coinMargin: {
+		marginTop: COIN_FONT_SIZE * 0.7,
+	},
 	container: {
-		width: "100%",
-		minHeight: 100,
-		maxHeight: 200,
-		borderRadius: 20,
-		flexDirection: "row",
-		position: "relative",
-		backgroundColor: "#00937F",
-		shadowRadius: 20,
-		shadowColor: COLORS.BLACK,
-		shadowOpacity: 0.5,
-		shadowOffset: { width: 0, height: 4 },
-		elevation: 10,
 		alignItems: "center",
+		backgroundColor: COLORS.WALLET_TEAL,
+		borderRadius: 20,
+		elevation: 10,
+		flexDirection: "row",
 		marginBottom: 20,
+		maxHeight: 200,
+		minHeight: 100,
+		position: "relative",
+		shadowColor: COLORS.BLACK,
+		shadowOffset: { width: 0, height: 4 },
+		shadowOpacity: 0.5,
+		shadowRadius: 20,
+		width: "100%",
 	},
 	left: {
-		left: -25,
-		height: "65%",
-		width: 100, 
+		alignItems: "center",
 		flex: 1,
 		flexDirection: "row",
-		alignItems: "center",
+		height: "65%",
 		justifyContent: "center",
+		left: -25,
+		width: 100,
 	},
 	right: {
+		alignItems: "flex-start",
 		flex: 1,
 		flexDirection: "column",
 		height: "70%",
+		justifyContent: "center",
 		left: -50,
 		top: 2,
-		alignItems: "flex-start",
-		justifyContent: "center",
 	},
 	row: {
 		flex: 2,
+		flexDirection: "row",
 		top: -6,
-		flexDirection: "row", 
-	},
-	shadowCoinCount: {
-		fontSize:COIN_FONT_SIZE,
-		textShadowColor: "rgba(0, 0, 0, 0.25)",
-		textShadowOffset: {width: 0, height: 2},
-		textShadowRadius: 4
 	},
 	shadow: {
-		textShadowColor: "rgba(0, 0, 0, 0.25)",
-		textShadowOffset: {width: 0, height: 2},
+		textShadowColor: COLORS.BLACK_25_PERCENT,
+		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 4
 	},
-	coinMargin: {
-		marginTop: COIN_FONT_SIZE*0.7,
+	shadowCoinCount: {
+		fontSize: COIN_FONT_SIZE,
+		textShadowColor: COLORS.BLACK_25_PERCENT,
+		textShadowOffset: { width: 0, height: 2 },
+		textShadowRadius: 4
 	}
 });
 
