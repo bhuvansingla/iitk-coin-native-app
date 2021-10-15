@@ -1,5 +1,4 @@
-import * as Errors from "./Errors";
-import fieldValidators from "./fieldValidators";
-import formValidators from "./validator";
+import forms from "./forms";
+import fields from "./fields";
 
-export { Errors, fieldValidators, formValidators };
+export default {forms, fields};
