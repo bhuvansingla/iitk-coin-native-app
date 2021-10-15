@@ -9,7 +9,7 @@ import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 import { LoginParams } from "api/auth";
 import { loginCallback } from "callbacks/login";
-import { validator as v } from "utils";
+import { validator } from "utils";
 
 import styles from "../screen.styles";
 
@@ -19,17 +19,20 @@ const LoginScreen: () => JSX.Element = () => {
 
 	const [password, setPassword] = useState<string>("");
 	const [rollNo, setRollNo] = useState<string>("");
-	const [loginFormError, setLoginFormError] = useState<v.Errors.LoginFromErrors>(v.Errors.LoginFromErrorsEmpty);
+	const [loginFormError, setLoginFormError] = useState(validator.forms.login.emptyError);
 
 	const onPressFooter = () => {
 		dispatch(setCurrentScreen(ScreenType.SIGNUP));
 	};
 
 	const onPressSignin = () => {
-		setLoginFormError(v.formValidators.loginFormValidator(rollNo, password));
-		if (loginFormError != v.Errors.LoginFromErrorsEmpty) {
+		const currentError = validator.forms.login.validate(rollNo, password);
+		setLoginFormError(currentError);
+
+		if (currentError != validator.forms.login.emptyError) {
 			return;
 		}
+
 		const loginParams: LoginParams = { RollNo: rollNo, Password: password };
 		loginCallback(loginParams).then((success) => {
 			if (success) {

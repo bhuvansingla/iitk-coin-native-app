@@ -11,6 +11,7 @@ import { ScreenType } from "screens/screen.types";
 import { OTPParams, SignupParams } from "api/auth";
 import { otpCallback } from "callbacks/otp";
 import { signupCallback } from "callbacks/signup";
+import { validator } from "utils";
 
 import styles from "../screen.styles";
 
@@ -30,11 +31,21 @@ const SignupScreen: () => JSX.Element = () => {
 	const [rollNo, setRollNo] = useState<string>("");
 	const [otp, setOTP] = useState<string>("");
 
+	const [signupFormError, setSignupFormError] = useState(validator.forms.signup.emptyError);
+	const [verifyOTPError, setVerifyOTPError] = useState(validator.forms.verifyOTP.emptyError);
+
 	const onPressFooter = () => {
 		dispatch(setCurrentScreen(ScreenType.LOGIN));
 	};
 
 	const onPressSignup = () => {
+		const currentSignupError = validator.forms.signup.validate(name, rollNo, password);
+		setSignupFormError(currentSignupError);
+
+		if (currentSignupError != validator.forms.signup.emptyError) {
+			return;
+		}
+
 		// Make the API Call here to request OTP.
 		const otpParams: OTPParams = {RollNo: rollNo};
 		otpCallback(otpParams).then((success) => {
@@ -48,6 +59,13 @@ const SignupScreen: () => JSX.Element = () => {
 	};
 
 	const onPressVerifyOtp = () => {
+		const currentVerifyOTPError = validator.forms.verifyOTP.validate(otp);
+		setVerifyOTPError(currentVerifyOTPError);
+
+		if (currentVerifyOTPError != validator.forms.verifyOTP.emptyError) {
+			return;
+		}
+
 		// Make the signup API call here.
 		console.log(name, password, rollNo, otp);
 		const signupParams: SignupParams = { RollNo: rollNo, Password: password, OTP: otp };
@@ -70,7 +88,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.containerChildWrapper}>
 
-						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} />
+						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} signupFormError={signupFormError} />
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 
@@ -84,7 +102,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.containerChildWrapper}>
 
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} />
+						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} verifyOTPError={verifyOTPError} />
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 
