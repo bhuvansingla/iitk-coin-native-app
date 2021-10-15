@@ -42,7 +42,7 @@ const SignupScreen: () => JSX.Element = () => {
 		const currentSignupError = validator.forms.signup.validate(name, rollNo, password);
 		setSignupFormError(currentSignupError);
 
-		if (currentSignupError != validator.forms.signup.emptyError) {
+		if (validator.forms.signup.isError(currentSignupError)) {
 			return;
 		}
 
@@ -62,7 +62,7 @@ const SignupScreen: () => JSX.Element = () => {
 		const currentVerifyOTPError = validator.forms.verifyOTP.validate(otp);
 		setVerifyOTPError(currentVerifyOTPError);
 
-		if (currentVerifyOTPError != validator.forms.verifyOTP.emptyError) {
+		if (validator.forms.verifyOTP.isError(currentVerifyOTPError)) {
 			return;
 		}
 

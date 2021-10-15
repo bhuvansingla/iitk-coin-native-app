@@ -32,4 +32,12 @@ function validate(rollNo: string, remarks: string, amount: number, availableCoin
 	return error;
 }
 
-export default { validate, emptyError };
+function isError(error: Errors): boolean {
+	let iserror = false;
+	iserror = iserror || error.rollNo !== emptyError.rollNo;
+	iserror = iserror || error.amount !== emptyError.amount;
+	iserror = iserror || error.remarks !== emptyError.remarks;
+	return iserror;
+}
+
+export default { validate, isError, emptyError };

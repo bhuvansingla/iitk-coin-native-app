@@ -29,7 +29,7 @@ const LoginScreen: () => JSX.Element = () => {
 		const currentError = validator.forms.login.validate(rollNo, password);
 		setLoginFormError(currentError);
 
-		if (currentError != validator.forms.login.emptyError) {
+		if (validator.forms.login.isError(currentError)) {
 			return;
 		}
 

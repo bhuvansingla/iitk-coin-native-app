@@ -20,4 +20,10 @@ function validate(otp: string | number): Errors {
 	return error;
 }
 
-export default { validate, emptyError };
+function isError(error: Errors): boolean {
+  let iserror = false;
+  iserror = iserror || error.otp !== emptyError.otp;
+  return iserror;
+}
+
+export default { validate, isError, emptyError };

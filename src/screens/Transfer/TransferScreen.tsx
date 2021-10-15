@@ -44,7 +44,7 @@ const TransferScreen: () => JSX.Element = () => {
 		const currentTransferFormError = validator.forms.transfer.validate(rollNo, remark, amount, coins);
 		setTransferFormError(currentTransferFormError);
 
-		if (currentTransferFormError != validator.forms.transfer.emptyError) {
+		if (validator.forms.transfer.isError(currentTransferFormError)) {
 			return;
 		}
 
@@ -65,7 +65,7 @@ const TransferScreen: () => JSX.Element = () => {
 		const currentVerifyOTPError = validator.forms.verifyOTP.validate(otp);
 		setVerifyOTPError(currentVerifyOTPError);
 
-		if (currentVerifyOTPError != validator.forms.verifyOTP.emptyError) {
+		if (validator.forms.verifyOTP.isError(currentVerifyOTPError)) {
 			return;
 		}
 

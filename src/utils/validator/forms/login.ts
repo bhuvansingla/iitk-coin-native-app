@@ -27,4 +27,11 @@ function validate(rollNo: string, password: string): Errors {
 	return error;
 }
 
-export default { validate, emptyError };
+function isError(error: Errors): boolean {
+	let iserror = false;
+	iserror = iserror || error.rollNo !== emptyError.rollNo;
+	iserror = iserror || error.password !== emptyError.password;
+	return iserror;
+}
+
+export default { validate, isError, emptyError };
