@@ -1,9 +1,18 @@
 const LENGTH = {
-	"OTP": 70,
-	"NAME": 50,
-	"ROLL_NO": 11,
-	"PASSWORD": 32,
-	"REMARKS": 100,
+	"OTP": 8,
+	MIN : {
+		"NAME": 3,
+		"ROLL_NO": 6,
+		"PASSWORD": 8,
+		"EMAIL": 3,
+	},
+	MAX : {
+		"NAME": 50,
+		"ROLL_NO": 8,
+		"PASSWORD": 20,
+		"EMAIL": 40,
+		"REMARK": 100,
+	},
 };
 
 export { LENGTH };

@@ -1,16 +1,16 @@
-import FormLabel from "./forms";
-import HistoryLabel from "./history";
-import TransferLabel from "./transfer";
-import ValidationLabel from "./validation";
+import FORM_LABELS from "./forms";
+import HISTORY_LABELS from "./history";
+import TRANSFER_LABELS from "./transfer";
+import VALIDATION_LABELS from "./validation";
 import SYMBOL_LABELS from "./symbols";
 import HEADER_LABELS from "./header";
 
 const LABELS = {
 
-	...FormLabel,
-	...HistoryLabel,
-	...TransferLabel,
-	...ValidationLabel,
+	...FORM_LABELS,
+	...HISTORY_LABELS,
+	...TRANSFER_LABELS,
+	...VALIDATION_LABELS,
 	...SYMBOL_LABELS,
 	...HEADER_LABELS,
 	

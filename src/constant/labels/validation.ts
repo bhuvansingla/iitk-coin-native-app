@@ -1,6 +1,11 @@
 const LABELS = {
-	"VALIDATION_ROLLNO": "Roll number must be 6 or 8 digit number",
-	"VALIDATION_PASSWORD": "Please enter a valid password",
+	"VALIDATION_NAME_INVALID": "Invalid Name",
+	"VALIDATION_ROLLNO_INVALID": "Invalid Roll Number",
+	"VALIDATION_EMAIL_INVALID": "Invalid E-Mail ID",
+	"VALIDATION_PASSWORD_INVALID": "Invalid Password",
+	"VALIDATION_OTP_INVALID": "Invalid OTP",
+	"VALIDATION_REMARKS_INVALID": "Too long Remarks",
+	"VALIDATION_AMOUNT_INVALID": "Invalid Amount",
 };
 
 export default LABELS;
