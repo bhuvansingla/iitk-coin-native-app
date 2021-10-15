@@ -16,7 +16,6 @@ interface Props {
 const TextInput: React.FC<Props> = (props) => {
 
 	const { onChangeText, value, placeholder, title, password, error } = props;
-	const isNotError = error == undefined || error == "";
 
 	return (
 
@@ -32,7 +31,7 @@ const TextInput: React.FC<Props> = (props) => {
 				value={value}
 			/>
 
-			{!isNotError &&
+			{Boolean(error) &&
 					<Text.Title red style={styles.error}>{error}</Text.Title>
 			}
 

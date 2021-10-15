@@ -3,24 +3,24 @@ import { View , StyleSheet } from "react-native";
 
 import { TextInput, NumericInput } from "components/TextInput";
 import Button from "components/Button";
-import { LABELS, LENGTH } from "constant";
+import { LABELS } from "constant";
 import Image from "components/SVGImage";
+import { validator } from "utils";
 
 interface Props {
 	setRemark: (remark: string) => void;
 	setRollNo: (rollNo: string) => void;
 	setAmount: (amount: number) => void;
 	onPressSend: () => void;
+	transferFormError?: typeof validator.forms.transfer.emptyError;
 }
 
 const TransferForm: React.FC<Props> = (props) => {
 
-	const { setRemark, setRollNo, setAmount, onPressSend } = props;
+	const { setRemark, setRollNo, setAmount, onPressSend, transferFormError } = props;
 
 	const onChangeRollNo = (rollNo: string) => {
-		if (rollNo.length < LENGTH.ROLL_NO) {
-			setRollNo(rollNo);
-		}
+		setRollNo(rollNo);
 	};
 
 	const onChangeAmount = (amount: string) => {
@@ -28,9 +28,7 @@ const TransferForm: React.FC<Props> = (props) => {
 	};
 
 	const onChangeRemark = (remark: string) => {
-		if (remark.length < LENGTH.REMARKS) {
-			setRemark(remark);
-		}
+		setRemark(remark);
 	};
 
 	return (
@@ -41,6 +39,7 @@ const TransferForm: React.FC<Props> = (props) => {
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRollNo}
+				error={transferFormError?.rollNo}
 			/>
 
 			<View style={styles.amountContainer}>
@@ -48,6 +47,7 @@ const TransferForm: React.FC<Props> = (props) => {
 					placeholder={LABELS.COINS_PLACEHOLDER}
 					title={LABELS.COINS_INPUT_FIELD_TITLE}
 					onChangeText={onChangeAmount}
+					error={transferFormError?.amount}
 				/>
 				<Image name="CoinLogo" style={styles.imageStyle} />
 			</View>
@@ -56,6 +56,7 @@ const TransferForm: React.FC<Props> = (props) => {
 				placeholder={LABELS.REMARK_PLACEHOLDER}
 				title={LABELS.REMARKS_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRemark}
+				error={transferFormError?.remarks}
 			/>
 
 			<Button title={LABELS.TRANSFER_BUTTON_TEXT} onPress={() => onPressSend()} />

@@ -10,7 +10,7 @@ interface Props {
 	setPassword: (password: string) => void;
 	setRollNo: (rollNo: string) => void;
 	onPressSignin: () => void;
-	loginFormError?: validator.Errors.LoginFromErrors;
+	loginFormError?: typeof validator.forms.login.emptyError;
 }
 
 const LoginForm: React.FC<Props> = (props) => {
