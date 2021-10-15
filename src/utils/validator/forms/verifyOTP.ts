@@ -21,9 +21,9 @@ function validate(otp: string | number): Errors {
 }
 
 function isError(error: Errors): boolean {
-  let iserror = false;
-  iserror = iserror || error.otp !== emptyError.otp;
-  return iserror;
+	let iserror = false;
+	iserror = iserror || error.otp !== emptyError.otp;
+	return iserror;
 }
 
 export default { validate, isError, emptyError };

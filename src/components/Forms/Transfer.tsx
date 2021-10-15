@@ -12,12 +12,12 @@ interface Props {
 	setRollNo: (rollNo: string) => void;
 	setAmount: (amount: number) => void;
 	onPressSend: () => void;
-	transferFormError?: typeof validator.forms.transfer.emptyError;
+	errors?: typeof validator.forms.transfer.emptyError;
 }
 
 const TransferForm: React.FC<Props> = (props) => {
 
-	const { setRemark, setRollNo, setAmount, onPressSend, transferFormError } = props;
+	const { setRemark, setRollNo, setAmount, onPressSend, errors } = props;
 
 	const onChangeRollNo = (rollNo: string) => {
 		setRollNo(rollNo);
@@ -39,7 +39,7 @@ const TransferForm: React.FC<Props> = (props) => {
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRollNo}
-				error={transferFormError?.rollNo}
+				error={errors?.rollNo}
 			/>
 
 			<View style={styles.amountContainer}>
@@ -47,7 +47,7 @@ const TransferForm: React.FC<Props> = (props) => {
 					placeholder={LABELS.COINS_PLACEHOLDER}
 					title={LABELS.COINS_INPUT_FIELD_TITLE}
 					onChangeText={onChangeAmount}
-					error={transferFormError?.amount}
+					error={errors?.amount}
 				/>
 				<Image name="CoinLogo" style={styles.imageStyle} />
 			</View>
@@ -56,7 +56,7 @@ const TransferForm: React.FC<Props> = (props) => {
 				placeholder={LABELS.REMARK_PLACEHOLDER}
 				title={LABELS.REMARKS_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRemark}
-				error={transferFormError?.remarks}
+				error={errors?.remarks}
 			/>
 
 			<Button title={LABELS.TRANSFER_BUTTON_TEXT} onPress={() => onPressSend()} />

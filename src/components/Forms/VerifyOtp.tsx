@@ -9,12 +9,12 @@ import { validator } from "utils";
 interface Props {
 	setOTP: (otp: string) => void;
 	onPressSubmit: () => void;
-	verifyOTPError?: typeof validator.forms.verifyOTP.emptyError;
+	errors?: typeof validator.forms.verifyOTP.emptyError;
 }
 
 const VerifyOtpForm: React.FC<Props> = (props) => {
 
-	const { setOTP: setOTP, onPressSubmit, verifyOTPError } = props;
+	const { setOTP, onPressSubmit, errors } = props;
 
 	const onChangeOTP = (OTP: string) => {
 		setOTP(OTP);
@@ -28,7 +28,7 @@ const VerifyOtpForm: React.FC<Props> = (props) => {
 				placeholder={LABELS.OTP_PLACEHOLDER}
 				title={LABELS.OTP_INPUT_FIELD_TITLE}
 				onChangeText={onChangeOTP}
-				error={verifyOTPError?.otp}
+				error={errors?.otp}
 			/>
 
 			<Button title={LABELS.VERIFY_OTP_BUTTON_TEXT} onPress={() => onPressSubmit()} />

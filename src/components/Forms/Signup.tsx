@@ -11,12 +11,12 @@ interface Props {
 	setPassword: (password: string) => void;
 	setRollNo: (rollNo: string) => void;
 	onPressSubmit: () => void;
-	signupFormError?: typeof validator.forms.signup.emptyError;
+	errors?: typeof validator.forms.signup.emptyError;
 }
 
 const SignupForm: React.FC<Props> = (props) => {
 
-	const { setName, setPassword, setRollNo, onPressSubmit, signupFormError } = props;
+	const { setName, setPassword, setRollNo, onPressSubmit, errors } = props;
 
 	const onChangeName = (name: string) => {
 		setName(name);
@@ -38,21 +38,21 @@ const SignupForm: React.FC<Props> = (props) => {
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRollNo}
-				error={signupFormError?.rollNo}
+				error={errors?.rollNo}
 			/>
 
 			<TextInput
 				placeholder={LABELS.NAME_PLACEHOLDER}
 				title={LABELS.NAME_INPUT_FIELD_TITLE}
 				onChangeText={onChangeName}
-				error={signupFormError?.name}
+				error={errors?.name}
 			/>
 
 			<TextInput
 				placeholder={LABELS.PASSWORD_PLACEHOLDER}
 				title={LABELS.PASSWORD_INPUT_FIELD_TITLE}
 				onChangeText={onChangePassword}
-				error={signupFormError?.password}
+				error={errors?.password}
 			/>
 
 			<Button title={LABELS.SIGNUP_BUTTON_TEXT} onPress={() => onPressSubmit()} />

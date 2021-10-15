@@ -88,7 +88,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.containerChildWrapper}>
 
-						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} signupFormError={signupFormError} />
+						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} errors={signupFormError} />
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 
@@ -102,7 +102,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.containerChildWrapper}>
 
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} verifyOTPError={verifyOTPError} />
+						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} errors={verifyOTPError} />
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 

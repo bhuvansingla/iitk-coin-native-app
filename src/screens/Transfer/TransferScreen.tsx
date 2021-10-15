@@ -96,7 +96,7 @@ const TransferScreen: () => JSX.Element = () => {
 
 				{transferStage === TransferStage.FORM &&
 					<React.Fragment>
-						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} transferFormError={transferFormError} />
+						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} errors={transferFormError} />
 					</React.Fragment>
 				}
 				{transferStage === TransferStage.CONFIRM_DETAILS &&
@@ -106,7 +106,7 @@ const TransferScreen: () => JSX.Element = () => {
 				}
 				{transferStage === TransferStage.VERIFY_OTP &&
 					<React.Fragment>
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} verifyOTPError={verifyOTPError} />
+						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} />
 					</React.Fragment>
 				}
 				{transferStage === TransferStage.SUCCESS &&

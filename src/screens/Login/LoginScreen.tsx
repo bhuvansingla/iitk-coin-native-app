@@ -52,7 +52,7 @@ const LoginScreen: () => JSX.Element = () => {
 
 			<View style={styles.containerChildWrapper}>
 
-				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} loginFormError={loginFormError} />
+				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} errors={loginFormError} />
 
 				<Text.Footer title={LABELS.CREATE_WALLET_FOOTER} link={LABELS.CREATE_WALLET_LINK} onPress={() => onPressFooter()} />
 

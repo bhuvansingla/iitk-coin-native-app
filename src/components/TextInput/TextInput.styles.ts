@@ -30,9 +30,9 @@ export default StyleSheet.create({
 		fontSize: FONT.SIZE.PRIMARY,
 		fontWeight: "600",
 
-		marginBottom: 10,
+		marginBottom,
 		marginTop: 2,
-		paddingHorizontal: 16,
+		paddingHorizontal,
 		paddingVertical: 10,
 
 		shadowColor: COLORS.BLACK,
