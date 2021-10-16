@@ -19,7 +19,7 @@ function validate(item: string, amount: number, availableCoins: number): Errors 
 		error.item = LABELS.VALIDATION_ITEM_INVALID;
 	}
 
-	if (amount > availableCoins) {
+	if (!fields.validateAmount(amount, availableCoins)) {
 		error.amount = LABELS.VALIDATION_AMOUNT_INVALID;
 	}
 

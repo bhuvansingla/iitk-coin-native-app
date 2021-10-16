@@ -4,6 +4,7 @@ import validateEmail from "./email";
 import validatePassword from "./password";
 import validateOTP from "./otp";
 import validateItem from "./item";
+import validateAmount from "./amount";
 import validateRemarks from "./remarks";
 
 export default {
@@ -13,5 +14,6 @@ export default {
 	validatePassword,
 	validateOTP,
 	validateItem,
+	validateAmount,
 	validateRemarks,
 };

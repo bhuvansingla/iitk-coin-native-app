@@ -25,7 +25,7 @@ function validate(rollNo: string, remarks: string, amount: number, availableCoin
 		error.remarks = LABELS.VALIDATION_REMARKS_INVALID;
 	}
 
-	if (amount > availableCoins) {
+	if (!fields.validateAmount(amount, availableCoins)) {
 		error.amount = LABELS.VALIDATION_AMOUNT_INVALID;
 	}
 
