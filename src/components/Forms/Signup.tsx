@@ -55,7 +55,7 @@ const SignupForm: React.FC<Props> = (props) => {
 				error={errors?.password}
 			/>
 
-			<Button title={LABELS.SIGNUP_BUTTON_TEXT} onPress={() => onPressSubmit()} />
+			<Button title={LABELS.SIGNUP_BUTTON_TEXT} onPress={onPressSubmit} />
 
 		</View>
 	);

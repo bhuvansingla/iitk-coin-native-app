@@ -31,7 +31,7 @@ const VerifyOtpForm: React.FC<Props> = (props) => {
 				error={errors?.otp}
 			/>
 
-			<Button title={LABELS.VERIFY_OTP_BUTTON_TEXT} onPress={() => onPressSubmit()} />
+			<Button title={LABELS.VERIFY_OTP_BUTTON_TEXT} onPress={onPressSubmit} />
 
 		</View>
 	);

@@ -9,6 +9,7 @@ const LABELS = {
 	"SIGNOUT_BUTTON_TEXT": "Sign out",
 	"VERIFY_OTP_BUTTON_TEXT": "Verify",
 	"TRANSFER_BUTTON_TEXT": "Proceed",
+	"REDEEM_BUTTON_TEXT": "Request Redeem",
 
 	"ROLL_NO_INPUT_FIELD_TITLE": "IITK Roll No.",
 	"NAME_INPUT_FIELD_TITLE": "Name",
@@ -16,6 +17,7 @@ const LABELS = {
 	"OTP_INPUT_FIELD_TITLE": "Check your email for an OTP",
 	"COINS_INPUT_FIELD_TITLE": "No. of Coins",
 	"REMARKS_INPUT_FIELD_TITLE": "Remarks",
+	"ITEM_NAME_FIELD_TITLE": "Redeem Item Name",
 
 	"OTP_INPUT_FOOTER": "Didn't get?",
 	"CREATE_WALLET_FOOTER": "Don't have a wallet?",
@@ -31,6 +33,7 @@ const LABELS = {
 	"OTP_PLACEHOLDER": "Enter OTP ",
 	"REMARK_PLACEHOLDER": "Enter remarks",
 	"COINS_PLACEHOLDER": "Enter no. of coins",
+	"ITEM_NAME_PLACEHOLDER": "Enter Name of redeem item",
 
 	"WRONG_OTP": "Incorrect OTP entered",
 	"WRONG_NAME": "Enter less than 50 characters",

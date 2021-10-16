@@ -44,7 +44,7 @@ const LoginForm: React.FC<Props> = (props) => {
 				error={errors?.password}
 			/>
 
-			<Button title={LABELS.SIGNIN_BUTTON_TEXT} onPress={() => onPressSignin()} />
+			<Button title={LABELS.SIGNIN_BUTTON_TEXT} onPress={onPressSignin} />
 
 		</View>
 

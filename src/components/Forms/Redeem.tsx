@@ -8,27 +8,22 @@ import Image from "components/SVGImage";
 import { validator } from "utils";
 
 interface Props {
-	setRemark: (remark: string) => void;
-	setRollNo: (rollNo: string) => void;
 	setAmount: (amount: number) => void;
+	setItem: (item: string) => void;
 	onPressSend: () => void;
-	errors?: typeof validator.forms.transfer.emptyError;
+	errors?: typeof validator.forms.redeem.emptyError;
 }
 
-const TransferForm: React.FC<Props> = (props) => {
+const RedeemForm: React.FC<Props> = (props) => {
 
-	const { setRemark, setRollNo, setAmount, onPressSend, errors } = props;
+	const { setItem, setAmount, onPressSend, errors } = props;
 
-	const onChangeRollNo = (rollNo: string) => {
-		setRollNo(rollNo);
+	const onChangeItem = (item: string) => {
+		setItem(item);
 	};
 
 	const onChangeAmount = (amount: string) => {
 		setAmount(Number(amount));
-	};
-
-	const onChangeRemark = (remark: string) => {
-		setRemark(remark);
 	};
 
 	return (
@@ -36,10 +31,10 @@ const TransferForm: React.FC<Props> = (props) => {
 		<View>
 
 			<TextInput
-				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
-				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
-				onChangeText={onChangeRollNo}
-				error={errors?.rollNo}
+				placeholder={LABELS.ITEM_NAME_PLACEHOLDER}
+				title={LABELS.ITEM_NAME_FIELD_TITLE}
+				onChangeText={onChangeItem}
+				error={errors?.item}
 			/>
 
 			<View style={styles.amountContainer}>
@@ -52,14 +47,7 @@ const TransferForm: React.FC<Props> = (props) => {
 				<Image name="CoinLogo" style={styles.imageStyle} />
 			</View>
 
-			<TextInput
-				placeholder={LABELS.REMARK_PLACEHOLDER}
-				title={LABELS.REMARKS_INPUT_FIELD_TITLE}
-				onChangeText={onChangeRemark}
-				error={errors?.remarks}
-			/>
-
-			<Button title={LABELS.TRANSFER_BUTTON_TEXT} onPress={onPressSend} />
+			<Button title={LABELS.REDEEM_BUTTON_TEXT} onPress={onPressSend} />
 
 		</View>
 
@@ -81,4 +69,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default TransferForm;
+export default RedeemForm;
