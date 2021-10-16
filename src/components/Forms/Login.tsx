@@ -29,7 +29,7 @@ const LoginForm: React.FC<Props> = (props) => {
 
 		<View>
 
-			<TextInput
+			<TextInput numeric
 				placeholder={LABELS.ROLL_NO_PLACEHOLDER}
 				title={LABELS.ROLL_NO_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRollNo}
@@ -44,7 +44,7 @@ const LoginForm: React.FC<Props> = (props) => {
 				error={errors?.password}
 			/>
 
-			<Button title={LABELS.SIGNIN_BUTTON_TEXT} onPress={() => onPressSignin()} />
+			<Button title={LABELS.SIGNIN_BUTTON_TEXT} onPress={onPressSignin} />
 
 		</View>
 

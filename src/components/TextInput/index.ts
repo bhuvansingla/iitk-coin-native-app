@@ -1,7 +1,7 @@
 import TextInput from "./TextInput";
-import NumericInput from "./NumericInput";
+import AmountInput from "./AmountInput";
 
 export {
 	TextInput,
-	NumericInput,
+	AmountInput,
 };

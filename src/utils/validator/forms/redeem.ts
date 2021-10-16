@@ -3,26 +3,20 @@ import { LABELS } from "constant";
 import fields from "../fields";
 
 interface Errors {
-	rollNo: string;
 	amount: string;
-	remarks: string;
+	item: string;
 }
 
 const emptyError: Errors = {
-	rollNo: "",
 	amount: "",
-	remarks: "",
+	item: "",
 };
 
-function validate(rollNo: string, remarks: string, amount: number, availableCoins: number): Errors {
+function validate(item: string, amount: number, availableCoins: number): Errors {
 	const error: Errors = { ...emptyError };
 
-	if (!fields.validateRollNo(rollNo)) {
-		error.rollNo = LABELS.VALIDATION_ROLLNO_INVALID;
-	}
-
-	if (!fields.validateRemarks(remarks)) {
-		error.remarks = LABELS.VALIDATION_REMARKS_INVALID;
+	if (!fields.validateItem(item)) {
+		error.item = LABELS.VALIDATION_ITEM_INVALID;
 	}
 
 	if (!fields.validateAmount(amount, availableCoins)) {
@@ -34,9 +28,8 @@ function validate(rollNo: string, remarks: string, amount: number, availableCoin
 
 function isError(error: Errors): boolean {
 	let iserror = false;
-	iserror = iserror || error.rollNo !== emptyError.rollNo;
+	iserror = iserror || error.item !== emptyError.item;
 	iserror = iserror || error.amount !== emptyError.amount;
-	iserror = iserror || error.remarks !== emptyError.remarks;
 	return iserror;
 }
 

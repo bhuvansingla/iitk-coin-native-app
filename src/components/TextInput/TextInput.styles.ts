@@ -6,6 +6,12 @@ const paddingHorizontal = 16;
 const marginBottom = 10;
 
 export default StyleSheet.create({
+	amountInputContainer: {
+		alignItems: "center",
+		flexDirection: "row",
+		justifyContent: "flex-start",
+	},
+
 	container: {
 		marginTop: 1,
 		width: "100%",
@@ -20,6 +26,13 @@ export default StyleSheet.create({
 		opacity: 0.9,
 		paddingHorizontal: paddingHorizontal,
 		top: -marginBottom,
+	},
+	
+	imageStyle: {
+		height: "40%",
+		marginLeft: "-28%",
+		marginTop: "6%",
+		width: "40%",
 	},
 
 	input: {

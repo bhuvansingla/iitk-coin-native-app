@@ -5,13 +5,15 @@ const LENGTH = {
 		"ROLL_NO": 6,
 		"PASSWORD": 8,
 		"EMAIL": 3,
+		"ITEM": 3,
 	},
 	MAX : {
 		"NAME": 50,
 		"ROLL_NO": 8,
 		"PASSWORD": 20,
 		"EMAIL": 40,
-		"REMARK": 100,
+		"ITEM": 50,
+		"REMARKS": 100,
 	},
 };
 

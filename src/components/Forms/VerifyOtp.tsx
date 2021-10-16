@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 
-import { NumericInput } from "components/TextInput";
+import { TextInput } from "components/TextInput";
 import Button from "components/Button";
 import { LABELS } from "constant";
 import { validator } from "utils";
@@ -24,14 +24,14 @@ const VerifyOtpForm: React.FC<Props> = (props) => {
 
 		<View>
 
-			<NumericInput
+			<TextInput numeric
 				placeholder={LABELS.OTP_PLACEHOLDER}
 				title={LABELS.OTP_INPUT_FIELD_TITLE}
 				onChangeText={onChangeOTP}
 				error={errors?.otp}
 			/>
 
-			<Button title={LABELS.VERIFY_OTP_BUTTON_TEXT} onPress={() => onPressSubmit()} />
+			<Button title={LABELS.VERIFY_OTP_BUTTON_TEXT} onPress={onPressSubmit} />
 
 		</View>
 	);

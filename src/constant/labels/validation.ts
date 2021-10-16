@@ -6,6 +6,7 @@ const LABELS = {
 	"VALIDATION_OTP_INVALID": "Invalid OTP",
 	"VALIDATION_REMARKS_INVALID": "Too long Remarks",
 	"VALIDATION_AMOUNT_INVALID": "Invalid Amount",
+	"VALIDATION_ITEM_INVALID": "Invalid Item Name",
 };
 
 export default LABELS;
