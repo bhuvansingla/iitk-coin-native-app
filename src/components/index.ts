@@ -1,5 +1,5 @@
 import TextInput from "./TextInput/TextInput";
-import NumericInput from "./TextInput/NumericInput";
+import AmountInput from "./TextInput/AmountInput";
 import Text from "./Text";
 import Button from "./Button";
 import BottomSheet from "./BottomSheet";
@@ -13,7 +13,7 @@ import { WalletBalance, NavCard } from "./Card";
 
 export {
 	TextInput,
-	NumericInput,
+	AmountInput,
 	Text,
 	Button,
 	BottomSheet,

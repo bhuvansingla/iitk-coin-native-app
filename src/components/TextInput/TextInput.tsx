@@ -9,14 +9,17 @@ interface Props {
 	title: string;
 	value?: string;
 	password?: boolean;
+	numeric?: boolean;
 	error?: string;
 	onChangeText: (text: string) => void;
 }
 
 const TextInput: React.FC<Props> = (props) => {
 
-	const { onChangeText, value, placeholder, title, password, error } = props;
-
+	const { onChangeText, value, placeholder, title, password, numeric, error } = props;
+	const keyboardType = numeric ? "numeric" : "default";
+	const autoCapitalize = password ? "none" : "words";
+	
 	return (
 
 		<View style={styles.container}>
@@ -28,6 +31,8 @@ const TextInput: React.FC<Props> = (props) => {
 				style={styles.input}
 				secureTextEntry={password}
 				onChangeText={onChangeText}
+				keyboardType={keyboardType}
+				autoCapitalize={autoCapitalize}
 				value={value}
 			/>
 
