@@ -6,6 +6,12 @@ const paddingHorizontal = 16;
 const marginBottom = 10;
 
 export default StyleSheet.create({
+	amountInputContainer: {
+		alignItems: "center",
+		flexDirection: "row",
+		justifyContent: "flex-start",
+	},
+
 	container: {
 		marginTop: 1,
 		width: "100%",
@@ -21,14 +27,14 @@ export default StyleSheet.create({
 		paddingHorizontal: paddingHorizontal,
 		top: -marginBottom,
 	},
-
+	
 	imageStyle: {
 		height: "40%",
 		marginLeft: "-28%",
 		marginTop: "6%",
 		width: "40%",
 	},
-	
+
 	input: {
 		backgroundColor: COLORS.GREY,
 		borderRadius: 20,
@@ -46,11 +52,5 @@ export default StyleSheet.create({
 		shadowOffset: { width: 0, height: 4 },
 		shadowOpacity: 0.25,
 		shadowRadius: 4,
-	},
-
-	inputWithImageContainer: {
-		alignItems: "center",
-		flexDirection: "row",
-		justifyContent: "flex-start",
 	},
 });

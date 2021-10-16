@@ -4,7 +4,7 @@ import { TextInput as TextInputRN, View } from "react-native";
 import Text from "../Text";
 import styles from "./TextInput.styles";
 
-interface Props {
+export interface Props {
 	placeholder?: string;
 	title: string;
 	value?: string;
