@@ -8,6 +8,7 @@ import Header from "./Header";
 import Forms from "./Forms";
 import History from "./History";
 import Transfer from "./Transfer";
+import Redeem from "./Redeem";
 import { WalletBalance, NavCard } from "./Card";
 
 export {
@@ -21,6 +22,7 @@ export {
 	Forms,
 	History,
 	Transfer,
+	Redeem,
 	WalletBalance,
 	NavCard,
 };

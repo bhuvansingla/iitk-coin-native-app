@@ -3,6 +3,7 @@ const LABELS = {
 	"SIGNIN_FORM_TITLE": "HEY, THERE! 👋",
 	"SIGNUP_FORM_TITLE": "CREATE A WALLET",
 	"TRANSFER_FORM_TITLE": " SEND ✈️ ",
+	"REDEEM_FORM_TITLE": " Redeem 🎁 ",
 
 	"SIGNUP_BUTTON_TEXT": "Sign up",
 	"SIGNIN_BUTTON_TEXT": "Sign in",
@@ -38,6 +39,10 @@ const LABELS = {
 	"WRONG_OTP": "Incorrect OTP entered",
 	"WRONG_NAME": "Enter less than 50 characters",
 	"WRONG_ROLL_NO": "Invalid roll no.",
+
+	"REDEEM_REQUESTED":"Redeem Requested",
+	"REDEEM_ID":"Redeem ID: ",
+	"REDEEM_FINAL": "Yay!",
 };
 
 export default LABELS;
