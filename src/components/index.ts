@@ -9,7 +9,7 @@ import Forms from "./Forms";
 import History from "./History";
 import Transfer from "./Transfer";
 import Redeem from "./Redeem";
-import { WalletBalance, NavCard } from "./Card";
+import { WalletBalance, NavCard, UserInfo } from "./Card";
 
 export {
 	TextInput,
@@ -25,4 +25,5 @@ export {
 	Redeem,
 	WalletBalance,
 	NavCard,
+	UserInfo
 };
