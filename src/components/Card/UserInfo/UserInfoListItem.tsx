@@ -6,6 +6,7 @@ import Text from "components/Text";
 import styles from "./UserInfo.styles";
 
 interface Props {
+	key: string;
 	title: string;
 	value: string;
 }
