@@ -20,6 +20,14 @@ export default StyleSheet.create({
 		width: "100%",
 	},
 
+	rippleDisabled: {
+		opacity: 0.65,
+	},
+
+	rippleEnabled: {
+		opacity: 1,
+	},
+
 	text: {
 		flexDirection: "row",
 		fontSize: FONT.SIZE.PRIMARY,
