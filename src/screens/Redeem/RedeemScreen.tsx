@@ -34,14 +34,19 @@ const RedeemScreen: () => JSX.Element = () => {
 	const [otp, setOTP] = useState<string>("");
 	const [txnID, setTxnID] = useState<string>("");
 
+	const [clickedRequest, setClickedRequest] = useState(false);
+	const [clickedVerifyOtp, setClickedVerifyOtp] = useState(false);
+
 	const [redeemFormError, setRedeemFormError] = useState(validator.forms.redeem.emptyError);
 	const [verifyOTPError, setVerifyOTPError] = useState(validator.forms.verifyOTP.emptyError);
 
-	const onPressSend = () => {
+	const onPressRequest = () => {
+		setClickedRequest(true);
 		const currentRedeemFormError = validator.forms.redeem.validate(item, amount, coins);
 		setRedeemFormError(currentRedeemFormError);
 
 		if (validator.forms.redeem.isError(currentRedeemFormError)) {
+			setClickedRequest(false);
 			return;
 		}
 
@@ -51,10 +56,12 @@ const RedeemScreen: () => JSX.Element = () => {
 	};
 
 	const onPressSubmit = () => {
+		setClickedVerifyOtp(true);
 		const currentVerifyOTPError = validator.forms.verifyOTP.validate(otp);
 		setVerifyOTPError(currentVerifyOTPError);
 
 		if (validator.forms.verifyOTP.isError(currentVerifyOTPError)) {
+			setClickedVerifyOtp(false);
 			return;
 		}
 
@@ -84,12 +91,12 @@ const RedeemScreen: () => JSX.Element = () => {
 
 				{redeemStage === RedeemStage.FORM &&
 					<React.Fragment>
-						<RedeemForm onPressSend={onPressSend} setAmount={setAmount} setItem={setItem} errors={redeemFormError} />
+						<RedeemForm onPressRequest={onPressRequest} setAmount={setAmount} setItem={setItem} errors={redeemFormError} isClicked={clickedRequest} />
 					</React.Fragment>
 				}
 				{redeemStage === RedeemStage.VERIFY_OTP &&
 					<React.Fragment>
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} />
+						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} isClicked={clickedVerifyOtp} />
 					</React.Fragment>
 				}
 				{redeemStage === RedeemStage.SUCCESS &&

@@ -27,6 +27,10 @@ const TransferScreen: () => JSX.Element = () => {
 	const coins: number = useSelector((state: AppState) => state.user.coins);
 	const [transferStage, setTransferStage] = useState<TransferStage>(TransferStage.FORM);
 
+	const[clickedSend, setClickedSend] = useState(false);
+	const[clickedConfirmDetails, setClickedConfirmDetails] = useState(false);
+	const[clickedVerifyOtp, setClickedVerifyOtp] = useState(false);
+
 	const [rollNo, setRollNo] = useState<string>("");
 	const [name, setName] = useState<string>("");
 
@@ -41,10 +45,12 @@ const TransferScreen: () => JSX.Element = () => {
 	const [verifyOTPError, setVerifyOTPError] = useState(validator.forms.verifyOTP.emptyError);
 
 	const onPressSend = () => {
+		setClickedSend(true);
 		const currentTransferFormError = validator.forms.transfer.validate(rollNo, remark, amount, coins);
 		setTransferFormError(currentTransferFormError);
 
 		if (validator.forms.transfer.isError(currentTransferFormError)) {
+			setClickedSend(false);
 			return;
 		}
 
@@ -56,16 +62,19 @@ const TransferScreen: () => JSX.Element = () => {
 	};
 
 	const onPressConfirmTransfer = () => {
+		setClickedConfirmDetails(true);
 		console.log(rollNo, name, tax, amount, remark);
 		// TODO request otp
 		setTransferStage(TransferStage.VERIFY_OTP);
 	};
 
 	const onPressSubmit = () => {
+		setClickedVerifyOtp(true);
 		const currentVerifyOTPError = validator.forms.verifyOTP.validate(otp);
 		setVerifyOTPError(currentVerifyOTPError);
 
 		if (validator.forms.verifyOTP.isError(currentVerifyOTPError)) {
+			setClickedVerifyOtp(false);
 			return;
 		}
 
@@ -96,17 +105,17 @@ const TransferScreen: () => JSX.Element = () => {
 
 				{transferStage === TransferStage.FORM &&
 					<React.Fragment>
-						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} errors={transferFormError} />
+						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} errors={transferFormError} isClicked={clickedSend}/>
 					</React.Fragment>
 				}
 				{transferStage === TransferStage.CONFIRM_DETAILS &&
 					<React.Fragment>
-						<Transfer.ConfirmDetails name={name} rollNo={rollNo} amount={amount} tax={tax} onPressConfirmTransfer={onPressConfirmTransfer} />
+						<Transfer.ConfirmDetails name={name} rollNo={rollNo} amount={amount} tax={tax} onPressConfirmTransfer={onPressConfirmTransfer} isClicked={clickedConfirmDetails}/>
 					</React.Fragment>
 				}
 				{transferStage === TransferStage.VERIFY_OTP &&
 					<React.Fragment>
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} />
+						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} isClicked={clickedVerifyOtp}/>
 					</React.Fragment>
 				}
 				{transferStage === TransferStage.SUCCESS &&

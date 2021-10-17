@@ -29,7 +29,7 @@ const HomeScreen: () => JSX.Element = () => {
 
 	const username: string = useSelector((state: AppState) => state.user.name);
 	dispatch(setName("XYZ")); // TODO: Remove this later.
-	const coinCount: number = useSelector((state: AppState) => state.user.coins);
+	const coins: number = useSelector((state: AppState) => state.user.coins);
 	
 	// TODO: transaction history redux state and api
 	const [transaction, setTransaction] = useState<TransactionHistory[]>([]);
@@ -59,7 +59,7 @@ const HomeScreen: () => JSX.Element = () => {
 		<View style={styles.contentContainer}>
 
 			<Text.Heading title={`${LABELS.GREET_MESSAGE} ${username} ${LABELS.GREET_EMOTE}`} />
-			<WalletBalance coins={coinCount} />
+			<WalletBalance coins={coins} />
 			<NavCard 
 				accountAction={navigateToAccount} 
 				sendAction={navigateToTransfer}
