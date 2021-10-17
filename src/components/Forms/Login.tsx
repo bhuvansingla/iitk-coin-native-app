@@ -9,13 +9,14 @@ import { validator } from "utils";
 interface Props {
 	setPassword: (password: string) => void;
 	setRollNo: (rollNo: string) => void;
+	isClicked?:boolean;
 	onPressSignin: () => void;
 	errors?: typeof validator.forms.login.emptyError;
 }
 
 const LoginForm: React.FC<Props> = (props) => {
-
-	const { setPassword, setRollNo: setRollNo, onPressSignin, errors } = props;
+	
+	const { setPassword, setRollNo: setRollNo, onPressSignin, errors, isClicked } = props;
 
 	const onChangePassword = (password: string) => {
 		setPassword(password);
@@ -24,6 +25,8 @@ const LoginForm: React.FC<Props> = (props) => {
 	const onChangeRollNo = (rollNo: string) => {
 		setRollNo(rollNo);
 	};
+
+	const label = isClicked ? LABELS.SIGNIN_BUTTON_TEXT_CLICKED : LABELS.SIGNIN_BUTTON_TEXT;
 
 	return (
 
@@ -44,7 +47,7 @@ const LoginForm: React.FC<Props> = (props) => {
 				error={errors?.password}
 			/>
 
-			<Button title={LABELS.SIGNIN_BUTTON_TEXT} onPress={onPressSignin} />
+			<Button title={label} onPress={onPressSignin} disabled={isClicked}/>
 
 		</View>
 

@@ -11,12 +11,13 @@ interface Props {
 	setPassword: (password: string) => void;
 	setRollNo: (rollNo: string) => void;
 	onPressSubmit: () => void;
+	isClicked?: boolean;
 	errors?: typeof validator.forms.signup.emptyError;
 }
 
 const SignupForm: React.FC<Props> = (props) => {
 
-	const { setName, setPassword, setRollNo, onPressSubmit, errors } = props;
+	const { setName, setPassword, setRollNo, onPressSubmit, errors, isClicked } = props;
 
 	const onChangeName = (name: string) => {
 		setName(name);
@@ -29,6 +30,8 @@ const SignupForm: React.FC<Props> = (props) => {
 	const onChangePassword = (password: string) => {
 		setPassword(password);
 	};
+
+	const label = isClicked ? LABELS.SIGNUP_BUTTON_TEXT_CLICKED : LABELS.SIGNUP_BUTTON_TEXT;
 
 	return (
 
@@ -55,7 +58,7 @@ const SignupForm: React.FC<Props> = (props) => {
 				error={errors?.password}
 			/>
 
-			<Button title={LABELS.SIGNUP_BUTTON_TEXT} onPress={onPressSubmit} />
+			<Button title={label} onPress={onPressSubmit} disabled={isClicked} />
 
 		</View>
 	);

@@ -9,17 +9,20 @@ import { validator } from "utils";
 interface Props {
 	setOTP: (otp: string) => void;
 	onPressSubmit: () => void;
+	isClicked?: boolean;
 	errors?: typeof validator.forms.verifyOTP.emptyError;
 }
 
 const VerifyOtpForm: React.FC<Props> = (props) => {
 
-	const { setOTP, onPressSubmit, errors } = props;
+	const { setOTP, onPressSubmit, errors, isClicked } = props;
 
 	const onChangeOTP = (OTP: string) => {
 		setOTP(OTP);
 	};
 
+	const label = isClicked ? LABELS.VERIFY_OTP_BUTTON_TEXT_CLICKED : LABELS.VERIFY_OTP_BUTTON_TEXT;
+	
 	return (
 
 		<View>
@@ -31,7 +34,7 @@ const VerifyOtpForm: React.FC<Props> = (props) => {
 				error={errors?.otp}
 			/>
 
-			<Button title={LABELS.VERIFY_OTP_BUTTON_TEXT} onPress={onPressSubmit} />
+			<Button title={label} onPress={onPressSubmit} disabled={isClicked}/>
 
 		</View>
 	);

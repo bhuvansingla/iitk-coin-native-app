@@ -13,12 +13,15 @@ interface Props {
 	rollNo: string;
 	amount: number;
 	tax: number;
+	isClicked?: boolean;
 	onPressConfirmTransfer: () => void;
 }
 
 const ConfirmDetails: React.FC<Props> = (props) => {
-	const { name, rollNo, amount, tax, onPressConfirmTransfer } = props;
+	const { name, rollNo, amount, tax, onPressConfirmTransfer, isClicked } = props;
 	const totalAmount = amount - tax;
+
+	const label = isClicked ? LABELS.CONFIRM_DETAILS_BUTTON_TEXT_CLICKED : LABELS.TRANSFER_BUTTON;
 
 	return (
 		<View style={styles.container}>
@@ -39,7 +42,7 @@ const ConfirmDetails: React.FC<Props> = (props) => {
 				<ConfirmDetailsItem key={LABELS.TRANSFER_FINAL_AMOUNT} label={LABELS.TRANSFER_FINAL_AMOUNT} value={totalAmount} />
 			</View>
 			
-			<Button title={LABELS.TRANSFER_BUTTON} onPress={onPressConfirmTransfer} />
+			<Button title={label} onPress={onPressConfirmTransfer} disabled={isClicked} />
 		
 		</View>
 	);
