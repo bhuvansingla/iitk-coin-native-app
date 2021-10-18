@@ -10,12 +10,17 @@ interface Props {
 	title: string;
 	onPress: () => void;
 	disabled?: boolean;
+	yellow?: boolean;
+	red?: boolean;
 }
 
 const Button: React.FC<Props> = (props) => {
 
-	const { onPress, title, disabled } = props;
+	const { onPress, title, disabled, yellow, red } = props;
 	const rippleStyle = disabled ? styles.rippleDisabled : styles.rippleEnabled;
+	const style = yellow ? styles.yellow : red ? styles.red : styles.default;
+	const white = !yellow;
+	
 	return (
 
 		<Ripple rippleOpacity={0.25}
@@ -24,11 +29,11 @@ const Button: React.FC<Props> = (props) => {
 			rippleDuration={1300}
 			rippleContainerBorderRadius={20}
 			onPress={onPress} 
-			style={[styles.container, rippleStyle]}
+			style={[styles.container, rippleStyle, style]}
 			disabled={disabled}
 		>
 
-			<Text.Title white bold style={styles.text}>
+			<Text.Title white={white} bold style={styles.text}>
 				{title}
 			</Text.Title>
 
