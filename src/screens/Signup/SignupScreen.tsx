@@ -26,6 +26,9 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const [signupStage, setSignupStage] = useState<SignupStage>(SignupStage.SIGNUP_DETAILS);
 
+	const [clickedSignup, setClickedSignup] = useState(false);
+	const [clickedVerifyOtp, setClickedVerifyOtp] = useState(false);
+
 	const [name, setName] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [rollNo, setRollNo] = useState<string>("");
@@ -39,10 +42,12 @@ const SignupScreen: () => JSX.Element = () => {
 	};
 
 	const onPressSignup = () => {
+		setClickedSignup(true);
 		const currentSignupError = validator.forms.signup.validate(name, rollNo, password);
 		setSignupFormError(currentSignupError);
 
 		if (validator.forms.signup.isError(currentSignupError)) {
+			setClickedSignup(false);
 			return;
 		}
 
@@ -55,14 +60,17 @@ const SignupScreen: () => JSX.Element = () => {
 			// TODO: Handle the error
 				console.log("Can't send OTP");
 			}
+			setClickedSignup(false);
 		});
 	};
 
 	const onPressVerifyOtp = () => {
+		setClickedVerifyOtp(true);
 		const currentVerifyOTPError = validator.forms.verifyOTP.validate(otp);
 		setVerifyOTPError(currentVerifyOTPError);
 
 		if (validator.forms.verifyOTP.isError(currentVerifyOTPError)) {
+			setClickedVerifyOtp(false);
 			return;
 		}
 
@@ -76,6 +84,7 @@ const SignupScreen: () => JSX.Element = () => {
 				// TODO: Handle the error
 				console.log("Failed");
 			}
+			setClickedVerifyOtp(false);
 		});
 	};
 
@@ -88,7 +97,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.containerChildWrapper}>
 
-						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} errors={signupFormError} />
+						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} errors={signupFormError} isClicked={clickedSignup} />
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 
@@ -102,7 +111,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.containerChildWrapper}>
 
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} errors={verifyOTPError} />
+						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} errors={verifyOTPError} isClicked={clickedVerifyOtp}/>
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 

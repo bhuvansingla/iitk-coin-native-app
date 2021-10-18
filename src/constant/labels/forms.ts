@@ -12,6 +12,13 @@ const LABELS = {
 	"TRANSFER_BUTTON_TEXT": "Proceed",
 	"REDEEM_BUTTON_TEXT": "Request Redeem",
 
+	"SIGNIN_BUTTON_TEXT_CLICKED": "Signing in...",
+	"SIGNUP_BUTTON_TEXT_CLICKED": "Creating account...",
+	"VERIFY_OTP_BUTTON_TEXT_CLICKED": "Verifying OTP...",
+	"TRANSFER_BUTTON_TEXT_CLICKED": "Fetching details...",
+	"CONFIRM_DETAILS_BUTTON_TEXT_CLICKED": "Sending coins...",
+	"REDEEM_BUTTON_TEXT_CLICKED": "Requesting redeem...",
+
 	"ROLL_NO_INPUT_FIELD_TITLE": "IITK Roll No.",
 	"NAME_INPUT_FIELD_TITLE": "Name",
 	"PASSWORD_INPUT_FIELD_TITLE": "Password",

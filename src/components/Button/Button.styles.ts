@@ -24,6 +24,12 @@ export default StyleSheet.create({
 	red: {
 		backgroundColor: COLORS.RED,
 	},
+	rippleDisabled: {
+		opacity: 0.65,
+	},
+	rippleEnabled: {
+		opacity: 1,
+	},
 	text: {
 		flexDirection: "row",
 		fontSize: FONT.SIZE.PRIMARY,
@@ -32,4 +38,5 @@ export default StyleSheet.create({
 	yellow: {
 		backgroundColor: COLORS.YELLOW,
 	},
+
 });

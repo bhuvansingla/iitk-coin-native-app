@@ -17,6 +17,7 @@ const LoginScreen: () => JSX.Element = () => {
 
 	const dispatch = useDispatch();
 
+	const [clicked, setClicked] = useState(false);
 	const [password, setPassword] = useState<string>("");
 	const [rollNo, setRollNo] = useState<string>("");
 	const [loginFormError, setLoginFormError] = useState(validator.forms.login.emptyError);
@@ -26,10 +27,11 @@ const LoginScreen: () => JSX.Element = () => {
 	};
 
 	const onPressSignin = () => {
+		setClicked(true);
 		const currentError = validator.forms.login.validate(rollNo, password);
 		setLoginFormError(currentError);
-
 		if (validator.forms.login.isError(currentError)) {
+			setClicked(false);
 			return;
 		}
 
@@ -37,11 +39,12 @@ const LoginScreen: () => JSX.Element = () => {
 		loginCallback(loginParams).then((success) => {
 			if (success) {
 				dispatch(setIsAuthenticated(true));
-				dispatch(setCurrentScreen(ScreenType.HOME));
+				dispatch(setCurrentScreen(ScreenType.HOME));				
 			} else {
 				// TODO: Handle the error
 				console.log("Wrong Credentials");
 			}
+			setClicked(false);
 		});
 	};
 
@@ -52,7 +55,7 @@ const LoginScreen: () => JSX.Element = () => {
 
 			<View style={styles.containerChildWrapper}>
 
-				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} errors={loginFormError} />
+				<LoginForm onPressSignin={onPressSignin} setPassword={setPassword} setRollNo={setRollNo} errors={loginFormError} isClicked={clicked}/>
 
 				<Text.Footer title={LABELS.CREATE_WALLET_FOOTER} link={LABELS.CREATE_WALLET_LINK} onPress={() => onPressFooter()} />
 

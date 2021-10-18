@@ -11,12 +11,13 @@ interface Props {
 	setRollNo: (rollNo: string) => void;
 	setAmount: (amount: number) => void;
 	onPressSend: () => void;
+	isClicked?: boolean;
 	errors?: typeof validator.forms.transfer.emptyError;
 }
 
 const TransferForm: React.FC<Props> = (props) => {
 
-	const { setRemark, setRollNo, setAmount, onPressSend, errors } = props;
+	const { setRemark, setRollNo, setAmount, onPressSend, errors, isClicked } = props;
 
 	const onChangeRollNo = (rollNo: string) => {
 		setRollNo(rollNo);
@@ -29,6 +30,8 @@ const TransferForm: React.FC<Props> = (props) => {
 	const onChangeRemark = (remark: string) => {
 		setRemark(remark);
 	};
+
+	const label = isClicked ? LABELS.TRANSFER_BUTTON_TEXT_CLICKED : LABELS.TRANSFER_BUTTON_TEXT;
 
 	return (
 
@@ -55,7 +58,7 @@ const TransferForm: React.FC<Props> = (props) => {
 				error={errors?.remarks}
 			/>
 
-			<Button title={LABELS.TRANSFER_BUTTON_TEXT} onPress={onPressSend} />
+			<Button title={label} onPress={() => onPressSend()} disabled={isClicked}/>
 
 		</View>
 

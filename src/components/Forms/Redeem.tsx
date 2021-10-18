@@ -9,13 +9,14 @@ import { validator } from "utils";
 interface Props {
 	setAmount: (amount: number) => void;
 	setItem: (item: string) => void;
-	onPressSend: () => void;
+	isClicked?: boolean;
+	onPressRequest: () => void;
 	errors?: typeof validator.forms.redeem.emptyError;
 }
 
 const RedeemForm: React.FC<Props> = (props) => {
 
-	const { setItem, setAmount, onPressSend, errors } = props;
+	const { setItem, setAmount, onPressRequest, errors, isClicked } = props;
 
 	const onChangeItem = (item: string) => {
 		setItem(item);
@@ -25,6 +26,8 @@ const RedeemForm: React.FC<Props> = (props) => {
 		setAmount(Number(amount));
 	};
 
+	const label = isClicked ? LABELS.REDEEM_BUTTON_TEXT_CLICKED : LABELS.REDEEM_BUTTON_TEXT;
+	
 	return (
 
 		<View>
@@ -43,7 +46,7 @@ const RedeemForm: React.FC<Props> = (props) => {
 				error={errors?.amount}
 			/>
 
-			<Button title={LABELS.REDEEM_BUTTON_TEXT} onPress={onPressSend} />
+			<Button title={label} onPress={onPressRequest} disabled={isClicked} />
 
 		</View>
 
