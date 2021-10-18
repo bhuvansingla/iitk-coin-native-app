@@ -4,6 +4,7 @@ import TRANSFER_LABELS from "./transfer";
 import VALIDATION_LABELS from "./validation";
 import SYMBOL_LABELS from "./symbols";
 import HEADER_LABELS from "./header";
+import ACCOUNT_LABELS from "./account";
 
 const LABELS = {
 
@@ -13,6 +14,7 @@ const LABELS = {
 	...VALIDATION_LABELS,
 	...SYMBOL_LABELS,
 	...HEADER_LABELS,
+	...ACCOUNT_LABELS,
 	
 	"COINS": "Coins",
 	"COIN": "Coin",
