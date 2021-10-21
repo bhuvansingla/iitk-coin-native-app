@@ -56,9 +56,6 @@ const SignupScreen: () => JSX.Element = () => {
 		otpCallback(otpParams).then((success) => {
 			if(success) {
 				setSignupStage(SignupStage.VERIFY_OTP);
-			} else {
-			// TODO: Handle the error
-				console.log("Can't send OTP");
 			}
 			setClickedSignup(false);
 		});
@@ -80,9 +77,6 @@ const SignupScreen: () => JSX.Element = () => {
 		signupCallback(signupParams).then((success) => {
 			if(success) {
 				dispatch(setCurrentScreen(ScreenType.LOGIN));
-			} else {
-				// TODO: Handle the error
-				console.log("Failed");
 			}
 			setClickedVerifyOtp(false);
 		});

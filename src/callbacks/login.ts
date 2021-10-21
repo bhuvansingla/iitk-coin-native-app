@@ -1,3 +1,5 @@
+import { showMessage } from "react-native-flash-message";
+
 import { saveToken } from "secure-store";
 import { auth } from "api";
 
@@ -10,6 +12,10 @@ export const loginCallback = async (params: auth.LoginParams): Promise<boolean> 
 		}
 		return true;
 	} else {
+		showMessage({
+			message: response.Payload,
+			type: "danger",
+		});
 		return false;
 	}
 };
