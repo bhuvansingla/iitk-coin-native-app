@@ -9,10 +9,7 @@ import FlashMessage from "react-native-flash-message";
 
 import { COLORS } from "styles";
 import store from "redux-store";
-import { postLoginStatus } from "api/auth";
-import { deleteToken, getToken } from "secure-store";
-import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
-import { ScreenType } from "screens/screen.types";
+import { CheckToken } from "callbacks";
 
 import RootScreen from "./screens";
 
@@ -29,24 +26,7 @@ function App() {
 
 	const dispatch = useDispatch();
 	useEffect(() => {
-		async function checkToken() {
-			const token = await getToken();
-			if (token) {
-				await postLoginStatus(token).then((res) => {
-					if (res.Status === 200) {
-						dispatch(setIsAuthenticated(true));
-						dispatch(setCurrentScreen(ScreenType.HOME));
-						console.log("Logged in");
-					} else {
-						console.log("Not logged in");
-						deleteToken().then(() => console.log("Token deleted"));
-					}
-				});
-			} else {
-				console.log("No Token");
-			}
-		}
-		checkToken();
+		CheckToken(dispatch);
 	});
 	
 	return (

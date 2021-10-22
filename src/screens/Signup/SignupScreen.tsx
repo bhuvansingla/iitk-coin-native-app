@@ -9,8 +9,7 @@ import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 import { OTPParams, SignupParams } from "api/auth";
-import { otpCallback } from "callbacks/otp";
-import { signupCallback } from "callbacks/signup";
+import { otpCallback , signupCallback } from "callbacks";
 import { validator } from "utils";
 
 import styles from "../screen.styles";

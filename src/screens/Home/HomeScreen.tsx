@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { View } from "react-native";
 
 import { AppState } from "redux-store/reducers";
-import { setCurrentScreen, setName } from "redux-store/actions";
+import { setCoins, setCurrentScreen, setName, setRollNo } from "redux-store/actions";
 import { History, Text } from "components";
 import { ScreenType } from "screens/screen.types";
 import { NavCard, WalletBalance } from "components/Card";
 import { TransactionType, TransactionHistory, RedeemStatus } from "api/transaction-history";
 import LABELS from "constant/labels";
+import { getUsername } from "api/user";
+import { getRollNo, getToken } from "secure-store";
+import { getWalletBalance } from "api/wallet";
 
 import styles from "../screen.styles";
 
@@ -28,8 +31,28 @@ const HomeScreen: () => JSX.Element = () => {
 	};
 
 	const username: string = useSelector((state: AppState) => state.user.name);
-	dispatch(setName("XYZ")); // TODO: Remove this later.
+	const rollno: string = useSelector((state: AppState) => state.user.rollNo);
 	const coins: number = useSelector((state: AppState) => state.user.coins);
+	
+	if(!rollno) {
+		getRollNo().then(rollno => {
+			if(rollno) {
+				dispatch(setRollNo(rollno));
+			}
+		});
+	}
+	if(!username && rollno) {
+		getToken().then(token => {
+			if(token) {
+				getUsername(parseInt(rollno), token).then(name => {
+					dispatch(setName(name));
+				});
+				getWalletBalance(parseInt(rollno), token).then(balance => {
+					dispatch(setCoins(balance));
+				});
+			}
+		});
+	}
 	
 	// TODO: transaction history redux state and api
 	const [transaction, setTransaction] = useState<TransactionHistory[]>([]);

@@ -77,7 +77,6 @@ const RedeemScreen: () => JSX.Element = () => {
 	};
 
 	const onPressBack = () => {
-		console.log("back");
 		dispatch(setCurrentScreen(ScreenType.HOME));
 	};
 
