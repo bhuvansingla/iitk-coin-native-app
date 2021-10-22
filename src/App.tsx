@@ -5,6 +5,7 @@ import { StyleSheet, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import { useFonts, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold } from "@expo-google-fonts/open-sans";
 import { FontAwesome, AntDesign, Ionicons } from "@expo/vector-icons";
+import FlashMessage from "react-native-flash-message";
 
 import { COLORS } from "styles";
 import store from "redux-store";
@@ -53,6 +54,7 @@ function App() {
 			: (
 				<View style={styles.container}>
 					<RootScreen />
+					<FlashMessage position="bottom" floating={true} icon="auto" style={styles.flash} />
 				</View>
 			)
 	);
@@ -65,6 +67,10 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "center",
 	},
+	flash: {
+		alignItems: "center",
+		borderRadius: 20,
+	}
 });
 
 const AppWrapper = () => {

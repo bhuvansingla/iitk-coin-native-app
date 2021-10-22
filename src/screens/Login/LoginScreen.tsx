@@ -40,9 +40,6 @@ const LoginScreen: () => JSX.Element = () => {
 			if (success) {
 				dispatch(setIsAuthenticated(true));
 				dispatch(setCurrentScreen(ScreenType.HOME));				
-			} else {
-				// TODO: Handle the error
-				console.log("Wrong Credentials");
 			}
 			setClicked(false);
 		});

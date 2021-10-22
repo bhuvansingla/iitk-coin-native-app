@@ -1,3 +1,5 @@
+import { showMessage } from "react-native-flash-message";
+
 import { auth } from "api";
 
 export const signupCallback = async (params: auth.SignupParams): Promise<boolean> => {
@@ -5,6 +7,10 @@ export const signupCallback = async (params: auth.SignupParams): Promise<boolean
 	if (response.Status === 200) {
 		return true;
 	} else {
+		showMessage({
+			message: response.Payload,
+			type: "danger",
+		});
 		return false;
 	}
 };
