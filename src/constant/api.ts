@@ -1,5 +1,5 @@
 const BACKEND = {
-	BASE_URL: "http://5b01-223-226-170-139.ngrok.io",
+	BASE_URL: "",
 	ENDPOINT: {
 		"OTP": "/auth/otp",
 		"SIGNUP": "/auth/signup",
