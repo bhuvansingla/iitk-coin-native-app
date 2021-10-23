@@ -54,8 +54,8 @@ const HomeScreen: () => JSX.Element = () => {
 			TxnID: "4"
 		}];
 
-		balanceCallback(rollno).then((res) => dispatch(setCoins(res)));
-		nameCallback(rollno).then((res) => dispatch(setName(res)));
+		balanceCallback(rollno).then((coins) => dispatch(setCoins(coins)));
+		nameCallback(rollno).then((name) => dispatch(setName(name)));
 		setTransaction(transactionHistory);
 
 	}, [rollno, dispatch]);
