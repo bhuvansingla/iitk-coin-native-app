@@ -7,7 +7,7 @@ import { Button, Text, WalletBalance, UserInfo } from "components";
 import { ScreenType } from "screens/screen.types";
 import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
 import { LABELS } from "constant";
-import { deleteRollNo, deleteToken, getToken } from "secure-store";
+import { deleteToken, getToken } from "secure-store";
 import { postLogout } from "api/auth";
 
 import styles from "../screen.styles";
@@ -38,7 +38,6 @@ const AccountScreen: () => JSX.Element = () => {
 				postLogout(token).then((res) => {
 					if(res.Status == 200){
 						deleteToken();
-						deleteRollNo();
 					}	
 				});
 			}

@@ -1,5 +1,5 @@
 const BACKEND = {
-	BASE_URL: "",
+	BASE_URL: "",	
 	ENDPOINT: {
 		"OTP": "/auth/otp",
 		"SIGNUP": "/auth/signup",
@@ -10,9 +10,6 @@ const BACKEND = {
 		"WALLET_TRANSFER": "/wallet/transfer",
 		"WALLET_BALANCE": "/wallet/balance",
 		"REDEEM_NEW": "/wallet/redeem/new",
-	},
-	QUERY_PARAM: {
-		"ROLLNO": "?rollno=",
 	},
 	ERROR: {
 		NETWORK: {

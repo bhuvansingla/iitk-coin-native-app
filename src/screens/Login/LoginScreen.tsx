@@ -10,7 +10,6 @@ import { ScreenType } from "screens/screen.types";
 import { LoginParams } from "api/auth";
 import { loginCallback } from "callbacks";
 import { validator } from "utils";
-import { saveRollNo } from "secure-store";
 
 import styles from "../screen.styles";
 
@@ -41,7 +40,6 @@ const LoginScreen: () => JSX.Element = () => {
 			if (success) {
 				dispatch(setIsAuthenticated(true));
 				dispatch(setRollNo(loginParams.RollNo));
-				saveRollNo(loginParams.RollNo);
 				dispatch(setCurrentScreen(ScreenType.HOME));
 			}
 			setClicked(false);

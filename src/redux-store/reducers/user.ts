@@ -9,7 +9,7 @@ interface State {
 const initialState: State = {
 	name: "",
 	rollNo: "",
-	coins: -1,
+	coins: 0,
 };
 
 const userReducer = (state: State = initialState, action: Action): State => {

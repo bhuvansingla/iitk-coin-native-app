@@ -1,5 +1,4 @@
 import axios from "axios";
-import { showMessage } from "react-native-flash-message";
 
 import { API } from "constant";
 
@@ -22,23 +21,28 @@ interface Response {
 	Status: number;
 }
 
-const getWalletBalance = async (rollno: number, token: string): Promise<number> => {
-	let payload = -1;
-	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.WALLET_BALANCE + API.BACKEND.QUERY_PARAM.ROLLNO + rollno, {
+const getWalletBalance = async (rollno: string, token: string): Promise<Response> => {
+	let payload = "", status = 0;
+	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.WALLET_BALANCE, {
 		headers: {
-			"cookie": token
+			cookie: token
+		},
+		params: {
+			rollno: rollno
 		}
 	}).then((res) => {
 		payload = res.data.coins;
+		status = res.status;
 	}).catch(err => {
-		showMessage({
-			message: err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD,
-			type: "danger",
-		});
-		payload = -1;
+		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 
-	return payload;
+	const response: Response = {
+		Payload: payload,
+		Status: status
+	};
+	return response;
 };
 
 const postWalletTransfer = async (params: WalletTransferParams): Promise<Response> => {

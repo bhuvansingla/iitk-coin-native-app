@@ -1,25 +1,35 @@
 import axios from "axios";
-import { showMessage } from "react-native-flash-message";
 
 import { API } from "constant";
 
-const getUsername = async (rollno: number, token: string): Promise<string> => {
-	let payload = "";
-	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.USERNAME + API.BACKEND.QUERY_PARAM.ROLLNO + rollno, {
+interface Response {
+	Payload: string;
+	Status: number;
+}
+
+const getUsername = async (rollno: string, token: string): Promise<Response> => {
+	let payload = "", status = 0;
+	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.USERNAME, {
 		headers: {
-			"cookie": token
+			cookie: token
+		},
+		params: {
+			rollno: rollno
 		}
 	}).then((res) => {
 		payload = res.data.name;
+		status = res.status;
 	}).catch(err => {
-		showMessage({
-			message: err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD,
-			type: "danger",
-		});
-		payload = "";
+		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 
-	return payload;
+	const response: Response = {
+		Payload: payload,
+		Status: status
+	};
+
+	return response;
 };
 
 export { getUsername };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { registerRootComponent } from "expo";
 import { Provider, useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
@@ -9,7 +9,10 @@ import FlashMessage from "react-native-flash-message";
 
 import { COLORS } from "styles";
 import store from "redux-store";
-import { CheckToken } from "callbacks";
+import { setCurrentScreen, setIsAuthenticated, setRollNo } from "redux-store/actions";
+import { ScreenType } from "screens/screen.types";
+import { deleteToken } from "secure-store";
+import { isLoggedIn } from "callbacks";
 
 import RootScreen from "./screens";
 
@@ -25,18 +28,30 @@ function App() {
 	});
 
 	const dispatch = useDispatch();
+	const [checkLoggedIn, setCheckLoggedIn] = useState(false);
+	
 	useEffect(() => {
-		CheckToken(dispatch);
+		isLoggedIn().then((rollno) => {
+			if (rollno) {
+				dispatch(setCurrentScreen(ScreenType.HOME));
+				dispatch(setIsAuthenticated(true));
+				dispatch(setRollNo(rollno));
+			} else {
+				deleteToken();
+			}
+			setCheckLoggedIn(true);
+		});
 	});
 	
 	return (
-		(!fontsLoaded) ? <AppLoading />
-			: (
+		(fontsLoaded && checkLoggedIn) ? 
+			(
 				<View style={styles.container}>
 					<RootScreen />
 					<FlashMessage position="bottom" floating={true} icon="auto" style={styles.flash} />
 				</View>
-			)
+			) 
+			: <AppLoading />
 	);
 }
 
