@@ -25,7 +25,7 @@ function validate(name: string, rollNo: string, password: string): Errors {
 		error.rollNo = LABELS.VALIDATION_ROLLNO_INVALID;
 	}
 
-	if (!fields.validatePassword(password)) {
+	if (!fields.validateSignupPassword(password)) {
 		error.password = LABELS.VALIDATION_PASSWORD_INVALID;
 	}
 

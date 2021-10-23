@@ -1,7 +1,8 @@
 import validateName from "./name";
 import validateRollNo from "./rollNo";
 import validateEmail from "./email";
-import validatePassword from "./password";
+import validateSignupPassword from "./signupPassword";
+import validateLoginPassword from "./loginPassword";
 import validateOTP from "./otp";
 import validateItem from "./item";
 import validateAmount from "./amount";
@@ -11,7 +12,8 @@ export default {
 	validateName,
 	validateRollNo,
 	validateEmail,
-	validatePassword,
+	validateSignupPassword,
+	validateLoginPassword,
 	validateOTP,
 	validateItem,
 	validateAmount,
