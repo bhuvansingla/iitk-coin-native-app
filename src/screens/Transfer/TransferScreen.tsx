@@ -10,6 +10,8 @@ import { LABELS } from "constant";
 import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { ScreenType } from "screens/screen.types";
 import { validator } from "utils";
+import { nameCallback, otpCallback , transferCallback } from "callbacks";
+import { wallet } from "api";
 
 import styles from "../screen.styles";
 
@@ -54,18 +56,20 @@ const TransferScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		console.log(rollNo, remark, amount);
-		// TODO call api to get name and tax
-		setName("Harshit Raj");
+		nameCallback(rollNo).then((name) => {setName(name);});
+		// TODO Get tax
 		setTax(1);
 		setTransferStage(TransferStage.CONFIRM_DETAILS);
 	};
 
 	const onPressConfirmTransfer = () => {
 		setClickedConfirmDetails(true);
-		console.log(rollNo, name, tax, amount, remark);
-		// TODO request otp
-		setTransferStage(TransferStage.VERIFY_OTP);
+
+		otpCallback({RollNo: rollNo}).then((success) => {
+			if (success) {
+				setTransferStage(TransferStage.VERIFY_OTP);
+			}
+		});
 	};
 
 	const onPressSubmit = () => {
@@ -78,15 +82,25 @@ const TransferScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		console.log(otp);
-		// TODO call api to validate transfer and get txnID
-		setTxnID("OP711");
-		dispatch(setCoins(coins - amount));
-		setTransferStage(TransferStage.SUCCESS);
+		const params: wallet.WalletTransferParams = {
+			NumCoins: coins,
+			ReceiverRollno: rollNo,
+			Remarks: remark,
+			OTP: otp
+		};
+
+		transferCallback(params).then((txid) => {
+			if (txid) {
+				setTxnID(txid);
+				dispatch(setCoins(coins - amount));
+				setTransferStage(TransferStage.SUCCESS);
+			} else {
+				dispatch(setCurrentScreen(ScreenType.HOME));
+			}
+		});
 	};
 
 	const onPressTransferSuccess = () => {
-		console.log("onPressSuccess");
 		dispatch(setCurrentScreen(ScreenType.HOME));
 	};
 

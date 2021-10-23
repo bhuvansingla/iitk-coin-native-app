@@ -1,5 +1,5 @@
 import { loginCallback, signupCallback, otpCallback, isLoggedIn } from "./auth";
 import { nameCallback } from "./user";
-import { balanceCallback } from "./wallet/balance";
+import { balanceCallback, transferCallback, redeemNewCallback } from "./wallet";
 
-export { loginCallback, signupCallback, otpCallback, isLoggedIn, nameCallback, balanceCallback };
+export { loginCallback, signupCallback, otpCallback, isLoggedIn, nameCallback, balanceCallback, transferCallback, redeemNewCallback };

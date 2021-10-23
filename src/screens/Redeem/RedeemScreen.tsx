@@ -10,6 +10,8 @@ import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { ScreenType } from "screens/screen.types";
 import { validator } from "utils";
 import RedeemForm from "components/Forms/Redeem";
+import { otpCallback, redeemNewCallback } from "callbacks";
+import { wallet } from "api";
 
 import styles from "../screen.styles";
 
@@ -49,10 +51,12 @@ const RedeemScreen: () => JSX.Element = () => {
 			setClickedRequest(false);
 			return;
 		}
-
-		console.log(rollNo, item, amount);
-		// TODO call api to request OTP
-		setRedeemStage(RedeemStage.VERIFY_OTP);
+		
+		otpCallback({RollNo: rollNo}).then((success) => {
+			if (success) {
+				setRedeemStage(RedeemStage.VERIFY_OTP);
+			}
+		});
 	};
 
 	const onPressSubmit = () => {
@@ -65,14 +69,24 @@ const RedeemScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		console.log(otp);
-		// TODO call api to validate transfer and get txnID
-		setTxnID("OP711");
-		setRedeemStage(RedeemStage.SUCCESS);
+		const params: wallet.RedeemNewParams = {
+			NumCoins: amount,
+			ReceiverRollno: rollNo,
+			Item: item,
+			OTP: otp
+		};
+
+		redeemNewCallback(params).then((txid) => {
+			if (txid) {
+				setTxnID(txid);
+				setRedeemStage(RedeemStage.SUCCESS);
+			} else {
+				dispatch(setCurrentScreen(ScreenType.HOME));
+			}
+		});
 	};
 
 	const onPressRedeemSuccess = () => {
-		console.log("onPressSuccess");
 		dispatch(setCurrentScreen(ScreenType.HOME));
 	};
 

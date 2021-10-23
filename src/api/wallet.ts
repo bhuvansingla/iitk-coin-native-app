@@ -6,14 +6,14 @@ interface WalletTransferParams {
 	NumCoins: number;
 	ReceiverRollno: string;
 	Remarks: string;
-	Otp: string;
+	OTP: string;
 }
 
 interface RedeemNewParams {
 	NumCoins: number;
 	ReceiverRollno: string;
 	Item: string;
-	Otp: string;
+	OTP: string;
 }
 
 interface Response {
@@ -45,13 +45,17 @@ const getWalletBalance = async (rollno: string, token: string): Promise<Response
 	return response;
 };
 
-const postWalletTransfer = async (params: WalletTransferParams): Promise<Response> => {
+const postWalletTransfer = async (params: WalletTransferParams, token: string): Promise<Response> => {
 	let payload = "", status = -1;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.WALLET_TRANSFER, {
 		numCoins: params.NumCoins,
 		receiverRollno: params.ReceiverRollno,
 		remarks: params.Remarks,
-		otp: params.Otp
+		otp: params.OTP
+	}, {
+		headers: {
+			cookie: token
+		}
 	}).then((res) => {
 		payload = res.data.TxnID;
 		status = res.status;
@@ -67,15 +71,19 @@ const postWalletTransfer = async (params: WalletTransferParams): Promise<Respons
 	return response;
 };
 
-const postNewRedeem = async (params: RedeemNewParams): Promise<Response> => {
+const postNewRedeem = async (params: RedeemNewParams, token: string): Promise<Response> => {
 	let payload = "", status = -1;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.REDEEM_NEW, {
 		numCoins: params.NumCoins,
 		receiverRollno: params.ReceiverRollno,
 		item: params.Item,
-		otp: params.Otp
+		otp: params.OTP
+	}, {
+		headers: {
+			cookie: token
+		}
 	}).then((res) => {
-		payload = res.data;
+		payload = res.data.TxnID;
 		status = res.status;
 	}).catch(err => {
 		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
@@ -87,7 +95,6 @@ const postNewRedeem = async (params: RedeemNewParams): Promise<Response> => {
 		Status: status
 	};
 	return response;
-
 };
 
-export { getWalletBalance, postWalletTransfer, postNewRedeem };
+export { WalletTransferParams, RedeemNewParams, getWalletBalance, postWalletTransfer, postNewRedeem };
