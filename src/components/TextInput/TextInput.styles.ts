@@ -28,6 +28,13 @@ export default StyleSheet.create({
 		top: -marginBottom,
 	},
 	
+	errorImageStyle: {
+		height: "32%",
+		marginLeft: "-28%",
+		marginTop: "-1%",
+		width: "40%",
+	},
+
 	imageStyle: {
 		height: "40%",
 		marginLeft: "-28%",

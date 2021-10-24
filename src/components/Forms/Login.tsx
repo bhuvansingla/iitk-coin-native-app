@@ -39,10 +39,9 @@ const LoginForm: React.FC<Props> = (props) => {
 				error={errors?.rollNo}
 			/>
 
-			<TextInput
+			<TextInput password
 				placeholder={LABELS.PASSWORD_PLACEHOLDER}
 				title={LABELS.PASSWORD_INPUT_FIELD_TITLE}
-				password={true}
 				onChangeText={onChangePassword}
 				error={errors?.password}
 			/>

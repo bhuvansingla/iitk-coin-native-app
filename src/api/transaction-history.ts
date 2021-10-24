@@ -27,7 +27,7 @@ export enum RedeemStatus {
   PENDING = "PENDING",
   APPROVED = "APPROVED",
   CANCELLED = "CANCELLED",
-  DISAPPROVED = "DISAPPROVED",
+  REJECTED = "REJECTED",
 }
 
 export interface RedeemHistory {
