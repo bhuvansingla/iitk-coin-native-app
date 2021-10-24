@@ -9,6 +9,7 @@ import { validator } from "utils";
 interface Props {
 	setName: (name: string) => void;
 	setPassword: (password: string) => void;
+	setConfirmPassword: (confirmPassword: string) => void;
 	setRollNo: (rollNo: string) => void;
 	onPressSubmit: () => void;
 	isClicked?: boolean;
@@ -17,7 +18,7 @@ interface Props {
 
 const SignupForm: React.FC<Props> = (props) => {
 
-	const { setName, setPassword, setRollNo, onPressSubmit, errors, isClicked } = props;
+	const { setName, setPassword, setConfirmPassword, setRollNo, onPressSubmit, errors, isClicked } = props;
 
 	const onChangeName = (name: string) => {
 		setName(name);
@@ -29,6 +30,10 @@ const SignupForm: React.FC<Props> = (props) => {
 
 	const onChangePassword = (password: string) => {
 		setPassword(password);
+	};
+
+	const onChangeConfirmPassword = (confirmPassword: string) => {
+		setConfirmPassword(confirmPassword);
 	};
 
 	const label = isClicked ? LABELS.SIGNUP_BUTTON_TEXT_CLICKED : LABELS.SIGNUP_BUTTON_TEXT;
@@ -51,11 +56,18 @@ const SignupForm: React.FC<Props> = (props) => {
 				error={errors?.name}
 			/>
 
-			<TextInput
+			<TextInput password
 				placeholder={LABELS.PASSWORD_PLACEHOLDER}
 				title={LABELS.PASSWORD_INPUT_FIELD_TITLE}
 				onChangeText={onChangePassword}
 				error={errors?.password}
+			/>
+
+			<TextInput password
+				placeholder={LABELS.CONFIRM_PASSWORD_PLACEHOLDER}
+				title={LABELS.CONFIRM_PASSWORD_INPUT_FIELD_TITLE}
+				onChangeText={onChangeConfirmPassword}
+				error={errors?.confirmPassword}
 			/>
 
 			<Button title={label} onPress={onPressSubmit} disabled={isClicked} />
