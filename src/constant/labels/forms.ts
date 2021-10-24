@@ -20,8 +20,9 @@ const LABELS = {
 	"REDEEM_BUTTON_TEXT_CLICKED": "Requesting redeem...",
 
 	"ROLL_NO_INPUT_FIELD_TITLE": "IITK Roll No.",
-	"NAME_INPUT_FIELD_TITLE": "Name",
+	"NAME_INPUT_FIELD_TITLE": "User Name",
 	"PASSWORD_INPUT_FIELD_TITLE": "Password",
+	"CONFIRM_PASSWORD_INPUT_FIELD_TITLE": "Confirm Password",
 	"OTP_INPUT_FIELD_TITLE": "Check your email for an OTP",
 	"COINS_INPUT_FIELD_TITLE": "No. of Coins",
 	"REMARKS_INPUT_FIELD_TITLE": "Remarks",
@@ -36,8 +37,9 @@ const LABELS = {
 	"SIGNIN_LINK": " Sign in",
 
 	"ROLL_NO_PLACEHOLDER": "Enter roll no.",
-	"NAME_PLACEHOLDER": "Enter name",
+	"NAME_PLACEHOLDER": "Enter user name",
 	"PASSWORD_PLACEHOLDER": "Enter Password",
+	"CONFIRM_PASSWORD_PLACEHOLDER": "Enter Password again",
 	"OTP_PLACEHOLDER": "Enter OTP ",
 	"REMARK_PLACEHOLDER": "Enter remarks",
 	"COINS_PLACEHOLDER": "Enter no. of coins",

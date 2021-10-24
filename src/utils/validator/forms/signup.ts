@@ -6,15 +6,17 @@ interface Errors {
 	name: string;
 	rollNo: string;
 	password: string;
+	confirmPassword: string;
 }
 
 const emptyError: Errors = {
 	name: "",
 	rollNo: "",
 	password: "",
+	confirmPassword: "",
 };
 
-function validate(name: string, rollNo: string, password: string): Errors {
+function validate(name: string, rollNo: string, password: string, confirmPassword: string,): Errors {
 	const error: Errors = { ...emptyError };
 
 	if (!fields.validateName(name)) {
@@ -23,6 +25,11 @@ function validate(name: string, rollNo: string, password: string): Errors {
 
 	if (!fields.validateRollNo(rollNo)) {
 		error.rollNo = LABELS.VALIDATION_ROLLNO_INVALID;
+	}
+
+	if (confirmPassword != password) {
+		error.confirmPassword = LABELS.VALDATION_PASSWORD_MISMATCH;
+		return error;
 	}
 
 	if (!fields.validatePassword(password)) {
@@ -37,6 +44,7 @@ function isError(error: Errors): boolean {
 	iserror = iserror || error.name !== emptyError.name;
 	iserror = iserror || error.rollNo !== emptyError.rollNo;
 	iserror = iserror || error.password !== emptyError.password;
+	iserror = iserror || error.confirmPassword !== emptyError.confirmPassword;
 	return iserror;
 }
 
