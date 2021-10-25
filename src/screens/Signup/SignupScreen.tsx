@@ -30,6 +30,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const [name, setName] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
+	const [confirmPassword, setConfirmPassword] = useState<string>("");
 	const [rollNo, setRollNo] = useState<string>("");
 	const [otp, setOTP] = useState<string>("");
 
@@ -42,7 +43,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const onPressSignup = () => {
 		setClickedSignup(true);
-		const currentSignupError = validator.forms.signup.validate(name, rollNo, password);
+		const currentSignupError = validator.forms.signup.validate(name, rollNo, password,confirmPassword);
 		setSignupFormError(currentSignupError);
 
 		if (validator.forms.signup.isError(currentSignupError)) {
@@ -90,7 +91,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 					<View style={styles.containerChildWrapper}>
 
-						<SignupForm setName={setName} setPassword={setPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} errors={signupFormError} isClicked={clickedSignup} />
+						<SignupForm setName={setName} setPassword={setPassword} setConfirmPassword={setConfirmPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} errors={signupFormError} isClicked={clickedSignup} />
 
 						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 

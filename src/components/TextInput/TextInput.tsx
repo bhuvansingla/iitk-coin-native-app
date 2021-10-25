@@ -7,7 +7,6 @@ import styles from "./TextInput.styles";
 export interface Props {
 	placeholder?: string;
 	title: string;
-	value?: string;
 	password?: boolean;
 	numeric?: boolean;
 	error?: string;
@@ -16,7 +15,7 @@ export interface Props {
 
 const TextInput: React.FC<Props> = (props) => {
 
-	const { onChangeText, value, placeholder, title, password, numeric, error } = props;
+	const { onChangeText, placeholder, title, password, numeric, error } = props;
 	const keyboardType = numeric ? "numeric" : "default";
 	const autoCapitalize = password ? "none" : "words";
 	
@@ -33,7 +32,6 @@ const TextInput: React.FC<Props> = (props) => {
 				onChangeText={onChangeText}
 				keyboardType={keyboardType}
 				autoCapitalize={autoCapitalize}
-				value={value}
 			/>
 
 			{Boolean(error) &&
