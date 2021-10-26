@@ -37,12 +37,12 @@ const LoginScreen: () => JSX.Element = () => {
 
 		const loginParams: LoginParams = { RollNo: rollNumber, Password: password };
 		loginCallback(loginParams).then((success) => {
+			setClicked(false);
 			if (success) {
 				dispatch(setIsAuthenticated(true));
 				dispatch(setRollNo(loginParams.RollNo));
 				dispatch(setCurrentScreen(ScreenType.HOME));
 			}
-			setClicked(false);
 		});
 	};
 

@@ -9,6 +9,7 @@ const BACKEND = {
 		"USERNAME": "/user/name",
 		"WALLET_TRANSFER": "/wallet/transfer",
 		"WALLET_BALANCE": "/wallet/balance",
+		"WALLET_TAX": "/wallet/transfer/tax",
 		"REDEEM_NEW": "/wallet/redeem/new",
 	},
 	ERROR: {

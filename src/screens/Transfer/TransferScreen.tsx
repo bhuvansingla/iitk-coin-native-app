@@ -10,7 +10,7 @@ import { LABELS } from "constant";
 import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { ScreenType } from "screens/screen.types";
 import { validator } from "utils";
-import { nameCallback, otpCallback , transferCallback } from "callbacks";
+import { nameCallback, otpCallback , transferCallback , taxCallback } from "callbacks";
 import { wallet } from "api";
 
 import styles from "../screen.styles";
@@ -56,20 +56,32 @@ const TransferScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		nameCallback(rollNo).then((name) => {setName(name);});
-		// TODO Get tax
-		setTax(1);
+		nameCallback(rollNo)
+			.then((name) => {setName(name);})
+			.catch(() => {
+				setClickedSend(false);
+			});
+
+		taxCallback({NumCoins: amount, ReceiverRollno: rollNo})
+			.then((tax) => {setTax(tax);})
+			.catch(() => {
+				setClickedSend(false);
+			});
 		setTransferStage(TransferStage.CONFIRM_DETAILS);
 	};
 
 	const onPressConfirmTransfer = () => {
 		setClickedConfirmDetails(true);
 
-		otpCallback({RollNo: rollNo}).then((success) => {
-			if (success) {
-				setTransferStage(TransferStage.VERIFY_OTP);
-			}
-		});
+		otpCallback({RollNo: rollNo})
+			.then((success) => {
+				if (success) {
+					setTransferStage(TransferStage.VERIFY_OTP);
+				}
+			})
+			.catch(() => {
+				setClickedConfirmDetails(false);
+			});
 	};
 
 	const onPressSubmit = () => {
@@ -89,15 +101,19 @@ const TransferScreen: () => JSX.Element = () => {
 			OTP: otp
 		};
 
-		transferCallback(params).then((txid) => {
-			if (txid) {
-				setTxnID(txid);
-				dispatch(setCoins(coins - amount));
-				setTransferStage(TransferStage.SUCCESS);
-			} else {
-				dispatch(setCurrentScreen(ScreenType.HOME));
-			}
-		});
+		transferCallback(params)
+			.then((txid) => {
+				if (txid) {
+					setTxnID(txid);
+					dispatch(setCoins(coins - amount));
+					setTransferStage(TransferStage.SUCCESS);
+				} else {
+					dispatch(setCurrentScreen(ScreenType.HOME));
+				}
+			})
+			.catch(() => {
+				setClickedVerifyOtp(false);
+			});
 	};
 
 	const onPressTransferSuccess = () => {

@@ -30,7 +30,7 @@ const HomeScreen: () => JSX.Element = () => {
 
 	const rollno: string = useSelector((state: AppState) => state.user.rollNo);
 	const username: string = useSelector((state: AppState) => state.user.name);
-	const coins: number = useSelector((state: AppState) => state.user.coins);
+	const coins: number = useSelector((state: AppState) => state.user.coins); 
 
 	// TODO: transaction history redux state and api
 	const [transaction, setTransaction] = useState<TransactionHistory[]>([]);
@@ -54,8 +54,8 @@ const HomeScreen: () => JSX.Element = () => {
 			TxnID: "4"
 		}];
 
-		balanceCallback(rollno).then((coins) => dispatch(setCoins(coins)));
-		nameCallback(rollno).then((name) => dispatch(setName(name)));
+		balanceCallback(rollno).then((coins) => { dispatch(setCoins(coins)); });
+		nameCallback(rollno).then((name) => { dispatch(setName(name)); });
 		setTransaction(transactionHistory);
 
 	}, [rollno, dispatch]);

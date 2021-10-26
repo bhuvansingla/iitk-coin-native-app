@@ -32,6 +32,7 @@ function App() {
 	
 	useEffect(() => {
 		isLoggedIn().then((rollno) => {
+			setCheckLoggedIn(true);
 			if (rollno) {
 				dispatch(setCurrentScreen(ScreenType.HOME));
 				dispatch(setIsAuthenticated(true));
@@ -39,7 +40,6 @@ function App() {
 			} else {
 				deleteToken();
 			}
-			setCheckLoggedIn(true);
 		});
 	});
 	
