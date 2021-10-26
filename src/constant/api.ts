@@ -1,5 +1,5 @@
 const BACKEND = {
-	BASE_URL: "",	
+	BASE_URL: "https://iitkcoin-op711.herokuapp.com",
 	ENDPOINT: {
 		"OTP": "/auth/otp",
 		"SIGNUP": "/auth/signup",

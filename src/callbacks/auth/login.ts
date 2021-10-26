@@ -3,7 +3,7 @@ import { showMessage } from "react-native-flash-message";
 import { saveToken } from "secure-store";
 import { auth } from "api";
 
-export const loginCallback = async (params: auth.LoginParams): Promise<boolean> => {
+export const login = async (params: auth.LoginParams): Promise<boolean> => {
 	const response = await auth.postLogin(params);
 	if (response.Status === 200) {
 		const tokenArr = response.Token.split(";");

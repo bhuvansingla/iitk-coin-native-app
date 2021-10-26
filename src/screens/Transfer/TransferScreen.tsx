@@ -10,7 +10,7 @@ import { LABELS } from "constant";
 import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { ScreenType } from "screens/screen.types";
 import { validator } from "utils";
-import { nameCallback, otpCallback , transferCallback , taxCallback } from "callbacks";
+import { getName, requestOtp , transfer , getTax } from "callbacks";
 import { wallet } from "api";
 
 import styles from "../screen.styles";
@@ -56,13 +56,13 @@ const TransferScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		nameCallback(rollNo)
+		getName(rollNo)
 			.then((name) => {setName(name);})
 			.catch(() => {
 				setClickedSend(false);
 			});
 
-		taxCallback({NumCoins: amount, ReceiverRollno: rollNo})
+		getTax({NumCoins: amount, ReceiverRollno: rollNo})
 			.then((tax) => {setTax(tax);})
 			.catch(() => {
 				setClickedSend(false);
@@ -73,7 +73,7 @@ const TransferScreen: () => JSX.Element = () => {
 	const onPressConfirmTransfer = () => {
 		setClickedConfirmDetails(true);
 
-		otpCallback({RollNo: rollNo})
+		requestOtp({RollNo: rollNo})
 			.then((success) => {
 				if (success) {
 					setTransferStage(TransferStage.VERIFY_OTP);
@@ -101,7 +101,7 @@ const TransferScreen: () => JSX.Element = () => {
 			OTP: otp
 		};
 
-		transferCallback(params)
+		transfer(params)
 			.then((txid) => {
 				if (txid) {
 					setTxnID(txid);

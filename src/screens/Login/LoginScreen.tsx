@@ -8,7 +8,7 @@ import LoginForm from "components/Forms/Login";
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 import { LoginParams } from "api/auth";
-import { loginCallback } from "callbacks";
+import { login } from "callbacks";
 import { validator } from "utils";
 
 import styles from "../screen.styles";
@@ -36,7 +36,7 @@ const LoginScreen: () => JSX.Element = () => {
 		}
 
 		const loginParams: LoginParams = { RollNo: rollNumber, Password: password };
-		loginCallback(loginParams).then((success) => {
+		login(loginParams).then((success) => {
 			setClicked(false);
 			if (success) {
 				dispatch(setIsAuthenticated(true));

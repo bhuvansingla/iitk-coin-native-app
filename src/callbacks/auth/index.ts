@@ -1,6 +1,6 @@
-import { loginCallback } from "./login";
-import { signupCallback } from "./signup";
-import { otpCallback } from "./otp";
+import { login } from "./login";
+import { signup } from "./signup";
+import { requestOtp } from "./otp";
 import { isLoggedIn } from "./checkLogin";
 
-export { loginCallback, signupCallback, otpCallback, isLoggedIn };
+export { login, signup, requestOtp, isLoggedIn };

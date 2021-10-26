@@ -9,7 +9,7 @@ import { ScreenType } from "screens/screen.types";
 import { NavCard, WalletBalance } from "components/Card";
 import { TransactionType, TransactionHistory, RedeemStatus } from "api/transaction-history";
 import LABELS from "constant/labels";
-import { balanceCallback, nameCallback } from "callbacks";
+import { getBalance, getName } from "callbacks";
 
 import styles from "../screen.styles";
 
@@ -54,8 +54,8 @@ const HomeScreen: () => JSX.Element = () => {
 			TxnID: "4"
 		}];
 
-		balanceCallback(rollno).then((coins) => { dispatch(setCoins(coins)); });
-		nameCallback(rollno).then((name) => { dispatch(setName(name)); });
+		getBalance(rollno).then((coins) => { dispatch(setCoins(coins)); });
+		getName(rollno).then((name) => { dispatch(setName(name)); });
 		setTransaction(transactionHistory);
 
 	}, [rollno, dispatch]);

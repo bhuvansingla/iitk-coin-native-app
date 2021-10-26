@@ -1,12 +1,12 @@
 import { showMessage } from "react-native-flash-message";
 
-import { getUsername } from "api/user";
+import { user } from "api";
 import { getToken } from "secure-store";
 
-export const nameCallback = async (rollno: string): Promise<string> => {
+export const getName = async (rollno: string): Promise<string> => {
 	const token = await getToken();
 	if(token) {
-		const res = await getUsername(rollno, token);
+		const res = await user.getUsername(rollno, token);
 		if(res.Status == 200){
 			return res.Payload;
 		} else {

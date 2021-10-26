@@ -10,7 +10,7 @@ import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { ScreenType } from "screens/screen.types";
 import { validator } from "utils";
 import RedeemForm from "components/Forms/Redeem";
-import { otpCallback, redeemNewCallback } from "callbacks";
+import { requestOtp, redeemRequest } from "callbacks";
 import { wallet } from "api";
 
 import styles from "../screen.styles";
@@ -52,7 +52,7 @@ const RedeemScreen: () => JSX.Element = () => {
 			return;
 		}
 		
-		otpCallback({RollNo: rollNo}).then((success) => {
+		requestOtp({RollNo: rollNo}).then((success) => {
 			if (success) {
 				setRedeemStage(RedeemStage.VERIFY_OTP);
 			}
@@ -76,7 +76,7 @@ const RedeemScreen: () => JSX.Element = () => {
 			OTP: otp
 		};
 
-		redeemNewCallback(params).then((txid) => {
+		redeemRequest(params).then((txid) => {
 			if (txid) {
 				setTxnID(txid);
 				setRedeemStage(RedeemStage.SUCCESS);

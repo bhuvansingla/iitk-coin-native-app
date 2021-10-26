@@ -3,7 +3,7 @@ import { showMessage } from "react-native-flash-message";
 import { wallet } from "api";
 import { getToken } from "secure-store";
 
-export const balanceCallback = async (rollno: string): Promise<number> => {
+export const getBalance = async (rollno: string): Promise<number> => {
 	const token = await getToken();
 	if(token) {
 		const res = await wallet.getWalletBalance(rollno, token);

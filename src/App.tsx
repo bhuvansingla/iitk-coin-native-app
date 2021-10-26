@@ -11,7 +11,6 @@ import { COLORS } from "styles";
 import store from "redux-store";
 import { setCurrentScreen, setIsAuthenticated, setRollNo } from "redux-store/actions";
 import { ScreenType } from "screens/screen.types";
-import { deleteToken } from "secure-store";
 import { isLoggedIn } from "callbacks";
 
 import RootScreen from "./screens";
@@ -31,14 +30,12 @@ function App() {
 	const [checkLoggedIn, setCheckLoggedIn] = useState(false);
 	
 	useEffect(() => {
-		isLoggedIn().then((rollno) => {
+		isLoggedIn().then(({Status, RollNo}) => {
 			setCheckLoggedIn(true);
-			if (rollno) {
+			if (Status) {
 				dispatch(setCurrentScreen(ScreenType.HOME));
 				dispatch(setIsAuthenticated(true));
-				dispatch(setRollNo(rollno));
-			} else {
-				deleteToken();
+				dispatch(setRollNo(RollNo));
 			}
 		});
 	});

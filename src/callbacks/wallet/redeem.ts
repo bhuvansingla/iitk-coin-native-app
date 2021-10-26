@@ -3,7 +3,7 @@ import { showMessage } from "react-native-flash-message";
 import { wallet } from "api";
 import { getToken } from "secure-store";
 
-export const redeemNewCallback = async (params: wallet.RedeemNewParams): Promise<string> => {
+export const redeemRequest = async (params: wallet.RedeemNewParams): Promise<string> => {
 	const token = await getToken();
 	if (token) {
 		const res = await wallet.postNewRedeem(params, token);

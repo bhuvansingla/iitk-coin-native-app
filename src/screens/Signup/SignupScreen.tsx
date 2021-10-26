@@ -9,7 +9,7 @@ import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 import { OTPParams, SignupParams } from "api/auth";
-import { otpCallback , signupCallback } from "callbacks";
+import { requestOtp , signup } from "callbacks";
 import { validator } from "utils";
 
 import styles from "../screen.styles";
@@ -53,7 +53,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 		// Make the API Call here to request OTP.
 		const otpParams: OTPParams = {RollNo: rollNo};
-		otpCallback(otpParams).then((success) => {
+		requestOtp(otpParams).then((success) => {
 			if(success) {
 				setSignupStage(SignupStage.VERIFY_OTP);
 			}
@@ -74,7 +74,7 @@ const SignupScreen: () => JSX.Element = () => {
 		// Make the signup API call here.
 		console.log(name, password, rollNo, otp);
 		const signupParams: SignupParams = { RollNo: rollNo, Password: password, OTP: otp };
-		signupCallback(signupParams).then((success) => {
+		signup(signupParams).then((success) => {
 			if(success) {
 				dispatch(setCurrentScreen(ScreenType.LOGIN));
 			}

@@ -3,7 +3,7 @@ import { showMessage } from "react-native-flash-message";
 import { wallet } from "api";
 import { getToken } from "secure-store";
 
-export const taxCallback = async (params: wallet.TransferTaxParams): Promise<number> => {
+export const getTax = async (params: wallet.TransferTaxParams): Promise<number> => {
 	const token = await getToken();
 	if(token) {
 		const res = await wallet.postTransferTax(params, token);

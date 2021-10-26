@@ -1,3 +1,3 @@
-import { nameCallback } from "./name";
+import { getName } from "./name";
 
-export { nameCallback };
+export { getName };

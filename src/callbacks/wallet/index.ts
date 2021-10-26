@@ -1,6 +1,6 @@
-import { balanceCallback } from "./balance";
-import { transferCallback } from "./transfer";
-import { redeemNewCallback } from "./redeem";
-import { taxCallback } from "./tax";
+import { getBalance } from "./balance";
+import { transfer } from "./transfer";
+import { redeemRequest } from "./redeem";
+import { getTax } from "./tax";
 
-export { balanceCallback, transferCallback, redeemNewCallback, taxCallback };
+export { getBalance, transfer, redeemRequest, getTax };
