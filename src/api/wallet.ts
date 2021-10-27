@@ -27,7 +27,7 @@ interface Response {
 }
 
 const getWalletBalance = async (rollno: string, token: string): Promise<Response> => {
-	let payload = "", status = 0;
+	let payload = "", status = -1;
 	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.WALLET_BALANCE, {
 		headers: {
 			cookie: token
@@ -62,7 +62,7 @@ const postWalletTransfer = async (params: WalletTransferParams, token: string): 
 			cookie: token
 		}
 	}).then((res) => {
-		payload = res.data.TxnID;
+		payload = res.data.id;
 		status = res.status;
 	}).catch(err => {
 		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
@@ -78,7 +78,7 @@ const postWalletTransfer = async (params: WalletTransferParams, token: string): 
 
 const postTransferTax = async (params: TransferTaxParams, token: string): Promise<Response> => {
 	let payload = "", status = -1;
-	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.REDEEM_NEW, {
+	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.WALLET_TAX, {
 		numCoins: params.NumCoins,
 		receiverRollno: params.ReceiverRollno
 	}, {
@@ -86,7 +86,7 @@ const postTransferTax = async (params: TransferTaxParams, token: string): Promis
 			cookie: token
 		}
 	}).then((res) => {
-		payload = res.data.Tax;
+		payload = res.data.tax;
 		status = res.status;
 	}).catch(err => {
 		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;

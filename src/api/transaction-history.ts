@@ -1,3 +1,7 @@
+import axios from "axios";
+
+import { API } from "constant";
+
 export enum TransactionType {
   REWARD = "REWARD",
   REDEEM = "REDEEM",
@@ -41,11 +45,37 @@ export interface RedeemHistory {
 
 export type TransactionHistory = RewardHistory | RedeemHistory | TransferHistory;
 
-// interface TransactionHistoryParams {
-// 	RollNo: number
-// }
+export interface TransactionHistoryParams {
+	RollNo: string
+}
 
-// interface TransactionHistoryResponse {
-// 	Payload: TransactionHistory[];
-// 	Status: number;
-// }
+export interface TransactionHistoryResponse {
+	Payload: TransactionHistory[];
+	Status: number;
+}
+
+const getTransactionHistory = async (params: TransactionHistoryParams, token: string): Promise<TransactionHistoryResponse> => {
+	let payload: TransactionHistory[] = []; 
+	let status = -1;
+	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.TRANSFER_HISTORY, {
+		headers: {
+			cookie: token
+		},
+		params: {
+			rollno: params.RollNo
+		}
+	}).then((res) => {
+		payload = <TransactionHistory[]>res.data.history;
+		status = res.status;
+	}).catch(err => {
+		payload = err?.response?.data.error ?? <TransactionHistory[]>[];
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
+	});
+	const response = {
+		Payload: payload,
+		Status: status
+	};
+	return response;
+};
+
+export { getTransactionHistory };

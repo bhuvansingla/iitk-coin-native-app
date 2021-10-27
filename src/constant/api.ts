@@ -11,6 +11,7 @@ const BACKEND = {
 		"WALLET_BALANCE": "/wallet/balance",
 		"WALLET_TAX": "/wallet/transfer/tax",
 		"REDEEM_NEW": "/wallet/redeem/new",
+		"TRANSFER_HISTORY": "/wallet/history"
 	},
 	ERROR: {
 		NETWORK: {

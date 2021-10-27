@@ -8,7 +8,7 @@ interface Response {
 }
 
 const getUsername = async (rollno: string, token: string): Promise<Response> => {
-	let payload = "", status = 0;
+	let payload = "", status = -1;
 	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.USERNAME, {
 		headers: {
 			cookie: token

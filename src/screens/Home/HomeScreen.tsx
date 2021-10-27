@@ -7,9 +7,9 @@ import { setCoins, setCurrentScreen, setName } from "redux-store/actions";
 import { History, Text } from "components";
 import { ScreenType } from "screens/screen.types";
 import { NavCard, WalletBalance } from "components/Card";
-import { TransactionType, TransactionHistory, RedeemStatus } from "api/transaction-history";
+import { TransactionHistory } from "api/transaction-history";
 import LABELS from "constant/labels";
-import { getBalance, getName } from "callbacks";
+import { getBalance, getHistory, getName } from "callbacks";
 
 import styles from "../screen.styles";
 
@@ -36,27 +36,9 @@ const HomeScreen: () => JSX.Element = () => {
 	const [transaction, setTransaction] = useState<TransactionHistory[]>([]);
 	
 	useEffect(() => {
-		// TODO: fetch transaction history
-		const transactionHistory: TransactionHistory[] = [{
-			Amount: 100, TimeStamp: 100, Type: TransactionType.REWARD, Remarks: "",
-			TxnID: "3"
-		}, 
-		{
-			Amount: 100, TimeStamp: 100, Type: TransactionType.TRANSFER, FromRollNo: "F", ToRollNo: "", Remarks: "", Tax: 10,
-			TxnID: "1"
-		}, 
-		{
-			Amount: 100, TimeStamp: 100, Type: TransactionType.REDEEM, Remarks: "", Status: RedeemStatus.APPROVED,
-			TxnID: "2"
-		}, 
-		{
-			Amount: 100, TimeStamp: 100, Type: TransactionType.TRANSFER, FromRollNo: "", ToRollNo: "F", Remarks: "", Tax: 10,
-			TxnID: "4"
-		}];
-
 		getBalance(rollno).then((coins) => { dispatch(setCoins(coins)); });
 		getName(rollno).then((name) => { dispatch(setName(name)); });
-		setTransaction(transactionHistory);
+		getHistory(rollno).then((historyList) => { setTransaction(historyList); });
 
 	}, [rollno, dispatch]);
 	

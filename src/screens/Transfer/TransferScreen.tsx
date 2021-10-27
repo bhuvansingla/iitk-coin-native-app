@@ -26,6 +26,7 @@ const TransferScreen: () => JSX.Element = () => {
 
 	const dispatch = useDispatch();
 
+	const senderRollNo: string = useSelector((state: AppState) => state.user.rollNo);
 	const coins: number = useSelector((state: AppState) => state.user.coins);
 	const [transferStage, setTransferStage] = useState<TransferStage>(TransferStage.FORM);
 
@@ -67,13 +68,16 @@ const TransferScreen: () => JSX.Element = () => {
 			.catch(() => {
 				setClickedSend(false);
 			});
-		setTransferStage(TransferStage.CONFIRM_DETAILS);
+		
+		if(tax !== -1 && name !== "") {
+			setTransferStage(TransferStage.CONFIRM_DETAILS);
+		}
 	};
 
 	const onPressConfirmTransfer = () => {
 		setClickedConfirmDetails(true);
 
-		requestOtp({RollNo: rollNo})
+		requestOtp({RollNo: senderRollNo})
 			.then((success) => {
 				if (success) {
 					setTransferStage(TransferStage.VERIFY_OTP);
@@ -93,7 +97,6 @@ const TransferScreen: () => JSX.Element = () => {
 			setClickedVerifyOtp(false);
 			return;
 		}
-
 		const params: wallet.WalletTransferParams = {
 			NumCoins: coins,
 			ReceiverRollno: rollNo,
