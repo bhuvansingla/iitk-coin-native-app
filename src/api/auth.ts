@@ -9,6 +9,7 @@ interface OTPParams {
 }
 
 interface SignupParams {
+	Name: string;
 	RollNo: string;
 	Password: string;
 	OTP: string;
@@ -34,7 +35,7 @@ const postOTP = async (params: OTPParams): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
 		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 
@@ -48,6 +49,7 @@ const postOTP = async (params: OTPParams): Promise<Response> => {
 const postSignup = async (params: SignupParams): Promise<Response> => {
 	let payload, status;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.SIGNUP, {
+		Name: params.Name,
 		RollNo: params.RollNo,
 		Password: params.Password,
 		OTP: params.OTP
@@ -55,7 +57,7 @@ const postSignup = async (params: SignupParams): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
 		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 	const response: Response = {
@@ -76,7 +78,7 @@ const postLogin = async (params: LoginParams): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
 		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 	const response: Response = {
@@ -97,7 +99,7 @@ const postLogout = async (token: string): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
 		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 	const response: Response = {
@@ -117,7 +119,7 @@ const postLoginStatus = async (token: string): Promise<Response> => {
 		payload = res.data;
 		status = res.status;
 	}).catch(err => {
-		payload = err?.response?.data ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
 		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
 	});
 	const response: Response = {

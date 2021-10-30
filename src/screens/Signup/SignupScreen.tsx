@@ -53,6 +53,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 		const otpParams: OTPParams = {RollNo: rollNo};
 		requestOtp(otpParams).then((success) => {
+			setClickedSignup(false);
 			if(success) {
 				setSignupStage(SignupStage.VERIFY_OTP);
 			}
@@ -71,8 +72,9 @@ const SignupScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		const signupParams: SignupParams = { RollNo: rollNo, Password: password, OTP: otp };
+		const signupParams: SignupParams = { Name: name, RollNo: rollNo, Password: password, OTP: otp };
 		signup(signupParams).then((success) => {
+			setClickedVerifyOtp(false);
 			if(success) {
 				dispatch(setCurrentScreen(ScreenType.LOGIN));
 			}

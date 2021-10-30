@@ -48,9 +48,9 @@ const TransferScreen: () => JSX.Element = () => {
 	const [verifyOTPError, setVerifyOTPError] = useState(validator.forms.verifyOTP.emptyError);
 
 	const getDetails = async (rollNo: string) => {
-		const name = getName(rollNo);
-		const tax = getTax({NumCoins: amount, ReceiverRollNo: rollNo});
-		return Promise.all([name, tax]);
+		const receiverName = getName(rollNo);
+		const transferTax = getTax({NumCoins: amount, ReceiverRollNo: rollNo});
+		return Promise.all([receiverName, transferTax]);
 	};
 
 	const onPressSend = () => {
@@ -62,10 +62,14 @@ const TransferScreen: () => JSX.Element = () => {
 			setClickedSend(false);
 			return;
 		}
-		getDetails(rollNo).then(([name, tax]) => {
-			setName(name);
-			setTax(tax);
-			setTransferStage(TransferStage.CONFIRM_DETAILS);
+		getDetails(rollNo).then(([receiverName, transferTax]) => {
+			setClickedSend(false);
+			setName(receiverName);
+			setTax(transferTax);
+			
+			if (receiverName !== "") {
+				setTransferStage(TransferStage.CONFIRM_DETAILS);
+			}
 		}).catch(() => {
 			setClickedSend(false);
 		});
@@ -76,6 +80,7 @@ const TransferScreen: () => JSX.Element = () => {
 
 		requestOtp({RollNo: senderRollNo})
 			.then((success) => {
+				setClickedConfirmDetails(false);
 				if (success) {
 					setTransferStage(TransferStage.VERIFY_OTP);
 				}
@@ -103,12 +108,11 @@ const TransferScreen: () => JSX.Element = () => {
 
 		transfer(params)
 			.then((txid) => {
+				setClickedVerifyOtp(false);
 				if (txid) {
 					setTxnID(txid);
 					dispatch(setCoins(coins - amount));
 					setTransferStage(TransferStage.SUCCESS);
-				} else {
-					dispatch(setCurrentScreen(ScreenType.HOME));
 				}
 			})
 			.catch(() => {

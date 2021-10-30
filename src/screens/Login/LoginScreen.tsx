@@ -43,6 +43,8 @@ const LoginScreen: () => JSX.Element = () => {
 				dispatch(setRollNo(loginParams.RollNo));
 				dispatch(setCurrentScreen(ScreenType.HOME));
 			}
+		}).catch(() => {
+			setClicked(false);
 		});
 	};
 

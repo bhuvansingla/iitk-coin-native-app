@@ -57,6 +57,7 @@ export interface TransactionHistoryResponse {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const parseHistoryList = (historyList: any[]): TransactionHistory[]  => {
+	if (historyList == null) return [];
 	const parsedHistoryList: TransactionHistory[] = [];
 	historyList.forEach(historyItem => {
 		let parsedHistoryItem: TransactionHistory;

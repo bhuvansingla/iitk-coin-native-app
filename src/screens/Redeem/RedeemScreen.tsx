@@ -53,6 +53,7 @@ const RedeemScreen: () => JSX.Element = () => {
 		}
 		
 		requestOtp({RollNo: rollNo}).then((success) => {
+			setClickedRequest(false);
 			if (success) {
 				setRedeemStage(RedeemStage.VERIFY_OTP);
 			}
@@ -79,14 +80,13 @@ const RedeemScreen: () => JSX.Element = () => {
 		};
 
 		redeemRequest(params).then((txid) => {
+			setClickedVerifyOtp(false);
 			if (txid) {
 				setTxnID(txid);
 				setRedeemStage(RedeemStage.SUCCESS);
-			} else {
-				dispatch(setCurrentScreen(ScreenType.HOME));
 			}
 		}).catch(() => {
-			setClickedRequest(false);
+			setClickedVerifyOtp(false);
 		});
 	};
 
