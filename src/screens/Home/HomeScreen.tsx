@@ -7,7 +7,7 @@ import { setCoins, setCurrentScreen, setName } from "redux-store/actions";
 import { History, Text } from "components";
 import { ScreenType } from "screens/screen.types";
 import { NavCard, WalletBalance } from "components/Card";
-import { TransactionHistory } from "api/transaction-history";
+import { history } from "api";
 import LABELS from "constant/labels";
 import { getBalance, getHistory, getName } from "callbacks";
 
@@ -28,19 +28,29 @@ const HomeScreen: () => JSX.Element = () => {
 		dispatch(setCurrentScreen(ScreenType.REDEEM));
 	};
 
-	const rollno: string = useSelector((state: AppState) => state.user.rollNo);
+	const rollNo: string = useSelector((state: AppState) => state.user.rollNo);
 	const username: string = useSelector((state: AppState) => state.user.name);
 	const coins: number = useSelector((state: AppState) => state.user.coins); 
 
-	// TODO: transaction history redux state and api
-	const [transaction, setTransaction] = useState<TransactionHistory[]>([]);
+	const [transaction, setTransaction] = useState<history.TransactionHistory[]>([]);
 	
-	useEffect(() => {
-		getBalance(rollno).then((coins) => { dispatch(setCoins(coins)); });
-		getName(rollno).then((name) => { dispatch(setName(name)); });
-		getHistory(rollno).then((historyList) => { setTransaction(historyList); });
+	const getDetails = async (rollNo: string): Promise<[history.TransactionHistory[], number, string]> => {
+		const historyList  = getHistory(rollNo);
+		const balance = getBalance(rollNo);
+		const name = getName(rollNo);
 
-	}, [rollno, dispatch]);
+		return Promise.all([historyList, balance, name]);
+	};
+
+	useEffect(() => {
+		getDetails(rollNo).then(([historyList, balance, name]) => {
+			setTransaction(historyList);
+			dispatch(setCoins(balance));
+			dispatch(setName(name));
+
+			// TODO: Set apploader to false
+		});
+	}, [rollNo, dispatch]);
 	
 	return (
 		<View style={styles.contentContainer}>

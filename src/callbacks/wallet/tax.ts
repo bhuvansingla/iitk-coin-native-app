@@ -16,5 +16,5 @@ export const getTax = async (params: wallet.TransferTaxParams): Promise<number> 
 			});
 		}
 	}
-	return -1;
+	return 0;
 };

@@ -32,7 +32,6 @@ const AccountScreen: () => JSX.Element = () => {
 	};
 
 	const onLogout = () => {
-		// TODO: call API for logout and clear secure store
 		getToken().then(token => {
 			if(token) {
 				postLogout(token).then((res) => {

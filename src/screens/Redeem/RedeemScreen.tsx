@@ -56,6 +56,8 @@ const RedeemScreen: () => JSX.Element = () => {
 			if (success) {
 				setRedeemStage(RedeemStage.VERIFY_OTP);
 			}
+		}).catch(() => {
+			setClickedRequest(false);
 		});
 	};
 
@@ -71,7 +73,7 @@ const RedeemScreen: () => JSX.Element = () => {
 
 		const params: wallet.RedeemNewParams = {
 			NumCoins: amount,
-			ReceiverRollno: rollNo,
+			ReceiverRollNo: rollNo,
 			Item: item,
 			OTP: otp
 		};
@@ -83,6 +85,8 @@ const RedeemScreen: () => JSX.Element = () => {
 			} else {
 				dispatch(setCurrentScreen(ScreenType.HOME));
 			}
+		}).catch(() => {
+			setClickedRequest(false);
 		});
 	};
 

@@ -8,15 +8,15 @@ interface CheckStatus {
 
 export const isLoggedIn = async (): Promise<CheckStatus> => {
 	const token = await getToken();
-	let rollno = "";
+	let rollNo = "";
 	let status = false;
 	if (token) {
 		await postLoginStatus(token).then((res) => {
 			if (res.Status === 200) {
-				rollno = res.Payload.rollno;
+				rollNo = res.Payload.rollNo;
 				status = true;
 			}
 		});
 	}
-	return { RollNo: rollno, Status:status };
+	return { RollNo: rollNo, Status:status };
 };

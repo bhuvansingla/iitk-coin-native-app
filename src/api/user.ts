@@ -7,14 +7,14 @@ interface Response {
 	Status: number;
 }
 
-const getUsername = async (rollno: string, token: string): Promise<Response> => {
-	let payload = "", status = -1;
+const getUsername = async (rollNo: string, token: string): Promise<Response> => {
+	let payload = "", status = 0;
 	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.USERNAME, {
 		headers: {
 			cookie: token
 		},
 		params: {
-			rollno: rollno
+			rollNo: rollNo
 		}
 	}).then((res) => {
 		payload = res.data.name;

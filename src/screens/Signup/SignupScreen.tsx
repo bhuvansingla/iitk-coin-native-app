@@ -51,12 +51,12 @@ const SignupScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		// Make the API Call here to request OTP.
 		const otpParams: OTPParams = {RollNo: rollNo};
 		requestOtp(otpParams).then((success) => {
 			if(success) {
 				setSignupStage(SignupStage.VERIFY_OTP);
 			}
+		}).catch(() => {
 			setClickedSignup(false);
 		});
 	};
@@ -71,13 +71,12 @@ const SignupScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		// Make the signup API call here.
-		console.log(name, password, rollNo, otp);
 		const signupParams: SignupParams = { RollNo: rollNo, Password: password, OTP: otp };
 		signup(signupParams).then((success) => {
 			if(success) {
 				dispatch(setCurrentScreen(ScreenType.LOGIN));
 			}
+		}).catch(() => {
 			setClickedVerifyOtp(false);
 		});
 	};

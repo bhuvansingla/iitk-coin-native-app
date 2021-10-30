@@ -4,19 +4,19 @@ import { API } from "constant";
 
 interface WalletTransferParams {
 	NumCoins: number;
-	ReceiverRollno: string;
+	ReceiverRollNo: string;
 	Remarks: string;
 	OTP: string;
 }
 
 interface TransferTaxParams {
 	NumCoins: number;
-	ReceiverRollno: string;
+	ReceiverRollNo: string;
 }
 
 interface RedeemNewParams {
 	NumCoins: number;
-	ReceiverRollno: string;
+	ReceiverRollNo: string;
 	Item: string;
 	OTP: string;
 }
@@ -26,14 +26,14 @@ interface Response {
 	Status: number;
 }
 
-const getWalletBalance = async (rollno: string, token: string): Promise<Response> => {
-	let payload = "", status = -1;
+const getWalletBalance = async (rollNo: string, token: string): Promise<Response> => {
+	let payload = "", status = 0;
 	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.WALLET_BALANCE, {
 		headers: {
 			cookie: token
 		},
 		params: {
-			rollno: rollno
+			rollNo: rollNo
 		}
 	}).then((res) => {
 		payload = res.data.coins;
@@ -51,10 +51,10 @@ const getWalletBalance = async (rollno: string, token: string): Promise<Response
 };
 
 const postWalletTransfer = async (params: WalletTransferParams, token: string): Promise<Response> => {
-	let payload = "", status = -1;
+	let payload = "", status = 0;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.WALLET_TRANSFER, {
 		numCoins: params.NumCoins,
-		receiverRollno: params.ReceiverRollno,
+		receiverRollNo: params.ReceiverRollNo,
 		remarks: params.Remarks,
 		otp: params.OTP
 	}, {
@@ -77,10 +77,10 @@ const postWalletTransfer = async (params: WalletTransferParams, token: string): 
 };
 
 const postTransferTax = async (params: TransferTaxParams, token: string): Promise<Response> => {
-	let payload = "", status = -1;
+	let payload = "", status = 0;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.WALLET_TAX, {
 		numCoins: params.NumCoins,
-		receiverRollno: params.ReceiverRollno
+		receiverRollNo: params.ReceiverRollNo
 	}, {
 		headers: {
 			cookie: token
@@ -101,10 +101,10 @@ const postTransferTax = async (params: TransferTaxParams, token: string): Promis
 };
 
 const postNewRedeem = async (params: RedeemNewParams, token: string): Promise<Response> => {
-	let payload = "", status = -1;
+	let payload = "", status = 0;
 	await axios.post(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.REDEEM_NEW, {
 		numCoins: params.NumCoins,
-		receiverRollno: params.ReceiverRollno,
+		receiverRollNo: params.ReceiverRollNo,
 		item: params.Item,
 		otp: params.OTP
 	}, {
@@ -112,7 +112,7 @@ const postNewRedeem = async (params: RedeemNewParams, token: string): Promise<Re
 			cookie: token
 		}
 	}).then((res) => {
-		payload = res.data.TxnID;
+		payload = res.data.id;
 		status = res.status;
 	}).catch(err => {
 		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;

@@ -47,6 +47,12 @@ const TransferScreen: () => JSX.Element = () => {
 	const [transferFormError, setTransferFormError] = useState(validator.forms.transfer.emptyError);
 	const [verifyOTPError, setVerifyOTPError] = useState(validator.forms.verifyOTP.emptyError);
 
+	const getDetails = async (rollNo: string) => {
+		const name = getName(rollNo);
+		const tax = getTax({NumCoins: amount, ReceiverRollNo: rollNo});
+		return Promise.all([name, tax]);
+	};
+
 	const onPressSend = () => {
 		setClickedSend(true);
 		const currentTransferFormError = validator.forms.transfer.validate(rollNo, remark, amount, coins);
@@ -56,22 +62,13 @@ const TransferScreen: () => JSX.Element = () => {
 			setClickedSend(false);
 			return;
 		}
-
-		getName(rollNo)
-			.then((name) => {setName(name);})
-			.catch(() => {
-				setClickedSend(false);
-			});
-
-		getTax({NumCoins: amount, ReceiverRollno: rollNo})
-			.then((tax) => {setTax(tax);})
-			.catch(() => {
-				setClickedSend(false);
-			});
-		
-		if(tax !== -1 && name !== "") {
+		getDetails(rollNo).then(([name, tax]) => {
+			setName(name);
+			setTax(tax);
 			setTransferStage(TransferStage.CONFIRM_DETAILS);
-		}
+		}).catch(() => {
+			setClickedSend(false);
+		});
 	};
 
 	const onPressConfirmTransfer = () => {
@@ -98,8 +95,8 @@ const TransferScreen: () => JSX.Element = () => {
 			return;
 		}
 		const params: wallet.WalletTransferParams = {
-			NumCoins: coins,
-			ReceiverRollno: rollNo,
+			NumCoins: amount,
+			ReceiverRollNo: rollNo,
 			Remarks: remark,
 			OTP: otp
 		};

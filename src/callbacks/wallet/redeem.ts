@@ -8,7 +8,6 @@ export const redeemRequest = async (params: wallet.RedeemNewParams): Promise<str
 	if (token) {
 		const res = await wallet.postNewRedeem(params, token);
 		if (res.Status === 200) {
-			// TODO: What exactly is this?
 			return res.Payload;
 		}else {
 			showMessage({
