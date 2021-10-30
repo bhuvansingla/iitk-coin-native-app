@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { View } from "react-native";
 
 import { AppState } from "redux-store/reducers";
-import { setCurrentScreen, setName } from "redux-store/actions";
+import { setCoins, setCurrentScreen, setName } from "redux-store/actions";
 import { History, Text } from "components";
 import { ScreenType } from "screens/screen.types";
 import { NavCard, WalletBalance } from "components/Card";
-import { TransactionType, TransactionHistory, RedeemStatus } from "api/transaction-history";
+import { history } from "api";
 import LABELS from "constant/labels";
+import { getBalance, getHistory, getName } from "callbacks";
 
 import styles from "../screen.styles";
 
@@ -27,33 +28,29 @@ const HomeScreen: () => JSX.Element = () => {
 		dispatch(setCurrentScreen(ScreenType.REDEEM));
 	};
 
+	const rollNo: string = useSelector((state: AppState) => state.user.rollNo);
 	const username: string = useSelector((state: AppState) => state.user.name);
-	dispatch(setName("XYZ")); // TODO: Remove this later.
-	const coins: number = useSelector((state: AppState) => state.user.coins);
+	const coins: number = useSelector((state: AppState) => state.user.coins); 
+
+	const [transaction, setTransaction] = useState<history.TransactionHistory[]>([]);
 	
-	// TODO: transaction history redux state and api
-	const [transaction, setTransaction] = useState<TransactionHistory[]>([]);
-	
+	const getDetails = async (rollNo: string): Promise<[history.TransactionHistory[], number, string]> => {
+		const historyList  = getHistory(rollNo);
+		const balance = getBalance(rollNo);
+		const name = getName(rollNo);
+
+		return Promise.all([historyList, balance, name]);
+	};
+
 	useEffect(() => {
-		// TODO: fetch transaction history
-		const transactionHistory: TransactionHistory[] = [{
-			Amount: 100, TimeStamp: 100, Type: TransactionType.REWARD, Remarks: "",
-			TxnID: "3"
-		}, 
-		{
-			Amount: 100, TimeStamp: 100, Type: TransactionType.TRANSFER, FromRollNo: "F", ToRollNo: "", Remarks: "", Tax: 10,
-			TxnID: "1"
-		}, 
-		{
-			Amount: 100, TimeStamp: 100, Type: TransactionType.REDEEM, Remarks: "", Status: RedeemStatus.APPROVED,
-			TxnID: "2"
-		}, 
-		{
-			Amount: 100, TimeStamp: 100, Type: TransactionType.TRANSFER, FromRollNo: "", ToRollNo: "F", Remarks: "", Tax: 10,
-			TxnID: "4"
-		}];
-		setTransaction(transactionHistory);
-	}, []);
+		getDetails(rollNo).then(([historyList, balance, name]) => {
+			setTransaction(historyList);
+			dispatch(setCoins(balance));
+			dispatch(setName(name));
+
+			// TODO: Set apploader to false
+		});
+	}, [rollNo, dispatch]);
 	
 	return (
 		<View style={styles.contentContainer}>

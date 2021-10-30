@@ -32,7 +32,7 @@ function validate(name: string, rollNo: string, password: string, confirmPasswor
 		return error;
 	}
 
-	if (!fields.validatePassword(password)) {
+	if (!fields.validateSignupPassword(password)) {
 		error.password = LABELS.VALIDATION_PASSWORD_INVALID;
 	}
 

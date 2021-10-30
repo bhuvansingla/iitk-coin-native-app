@@ -9,8 +9,7 @@ import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 import { OTPParams, SignupParams } from "api/auth";
-import { otpCallback } from "callbacks/otp";
-import { signupCallback } from "callbacks/signup";
+import { requestOtp , signup } from "callbacks";
 import { validator } from "utils";
 
 import styles from "../screen.styles";
@@ -52,12 +51,13 @@ const SignupScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		// Make the API Call here to request OTP.
 		const otpParams: OTPParams = {RollNo: rollNo};
-		otpCallback(otpParams).then((success) => {
+		requestOtp(otpParams).then((success) => {
+			setClickedSignup(false);
 			if(success) {
 				setSignupStage(SignupStage.VERIFY_OTP);
 			}
+		}).catch(() => {
 			setClickedSignup(false);
 		});
 	};
@@ -72,13 +72,13 @@ const SignupScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		// Make the signup API call here.
-		console.log(name, password, rollNo, otp);
-		const signupParams: SignupParams = { RollNo: rollNo, Password: password, OTP: otp };
-		signupCallback(signupParams).then((success) => {
+		const signupParams: SignupParams = { Name: name, RollNo: rollNo, Password: password, OTP: otp };
+		signup(signupParams).then((success) => {
+			setClickedVerifyOtp(false);
 			if(success) {
 				dispatch(setCurrentScreen(ScreenType.LOGIN));
 			}
+		}).catch(() => {
 			setClickedVerifyOtp(false);
 		});
 	};

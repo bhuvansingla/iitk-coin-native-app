@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { registerRootComponent } from "expo";
 import { Provider, useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
@@ -9,10 +9,9 @@ import FlashMessage from "react-native-flash-message";
 
 import { COLORS } from "styles";
 import store from "redux-store";
-import { postLoginStatus } from "api/auth";
-import { deleteToken, getToken } from "secure-store";
-import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
+import { setCurrentScreen, setIsAuthenticated, setRollNo } from "redux-store/actions";
 import { ScreenType } from "screens/screen.types";
+import { isLoggedIn } from "callbacks";
 
 import RootScreen from "./screens";
 
@@ -28,35 +27,28 @@ function App() {
 	});
 
 	const dispatch = useDispatch();
+	const [checkLoggedIn, setCheckLoggedIn] = useState(false);
+	
 	useEffect(() => {
-		async function checkToken() {
-			const token = await getToken();
-			if (token) {
-				await postLoginStatus(token).then((res) => {
-					if (res.Status === 200) {
-						dispatch(setIsAuthenticated(true));
-						dispatch(setCurrentScreen(ScreenType.HOME));
-						console.log("Logged in");
-					} else {
-						console.log("Not logged in");
-						deleteToken().then(() => console.log("Token deleted"));
-					}
-				});
-			} else {
-				console.log("No Token");
+		isLoggedIn().then(({Status, RollNo}) => {
+			setCheckLoggedIn(true);
+			if (Status) {
+				dispatch(setCurrentScreen(ScreenType.HOME));
+				dispatch(setIsAuthenticated(true));
+				dispatch(setRollNo(RollNo));
 			}
-		}
-		checkToken();
+		});
 	});
 	
 	return (
-		(!fontsLoaded) ? <AppLoading />
-			: (
+		(fontsLoaded && checkLoggedIn) ? 
+			(
 				<View style={styles.container}>
 					<RootScreen />
 					<FlashMessage position="bottom" floating={true} icon="auto" style={styles.flash} />
 				</View>
-			)
+			) 
+			: <AppLoading />
 	);
 }
 

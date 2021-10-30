@@ -7,6 +7,8 @@ import { Button, Text, WalletBalance, UserInfo } from "components";
 import { ScreenType } from "screens/screen.types";
 import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
 import { LABELS } from "constant";
+import { deleteToken, getToken } from "secure-store";
+import { postLogout } from "api/auth";
 
 import styles from "../screen.styles";
 
@@ -21,9 +23,8 @@ const AccountScreen: () => JSX.Element = () => {
 	const [email, setEmail] = useState("");
 	
 	useEffect(() => {
-		// call API for email id
-		setEmail("harshitr20@iitk.ac.in");
-	}, []);
+		setEmail(`${rollNo}${LABELS.ACCOUNT_MAIL_DOMAIN}`);
+	}, [rollNo]);
 
 	const onClickReport = () => {
 		// send email to admin
@@ -31,13 +32,20 @@ const AccountScreen: () => JSX.Element = () => {
 	};
 
 	const onLogout = () => {
-		// TODO: call API for logout and clear secure store
+		getToken().then(token => {
+			if(token) {
+				postLogout(token).then((res) => {
+					if(res.Status == 200){
+						deleteToken();
+					}	
+				});
+			}
+		});
 		dispatch(setIsAuthenticated(false));
 		dispatch(setCurrentScreen(ScreenType.LOGIN));
 	};
 
 	const onPressBack = () => {
-		console.log("back");
 		dispatch(setCurrentScreen(ScreenType.HOME));
 	};
 

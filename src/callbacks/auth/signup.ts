@@ -2,9 +2,9 @@ import { showMessage } from "react-native-flash-message";
 
 import { auth } from "api";
 
-export const otpCallback = async (params: auth.OTPParams): Promise<boolean> => {
-	const response = await auth.postOTP(params);
-	if (response.Status == 200 || response.Status == 429) {
+export const signup = async (params: auth.SignupParams): Promise<boolean> => {
+	const response = await auth.postSignup(params);
+	if (response.Status === 200) {
 		return true;
 	} else {
 		showMessage({
