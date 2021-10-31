@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "iitk-coin-native-app",
-    "slug": "iitk-coin-native-app",
+    "name": "IITK-Coin",
+    "slug": "IITK-Coin",
     "version": "1.0.0",
     "orientation": "portrait",
     "entryPoint": "./src/App.tsx",
@@ -18,13 +18,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "icon": "./src/assets/ios-icon.png",
+      "bundleIdentifier": "com.iitkcoin.iitkcoin"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./src/assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+      "package": "com.iitkcoin.iitkcoin",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
