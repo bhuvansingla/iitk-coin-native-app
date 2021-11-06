@@ -6,6 +6,7 @@ import HistoryListItem from "components/Card/HistoryListItem";
 
 export interface Props {
 	history: history.TransactionHistory[];
+	isFetched?: boolean;
 }
 
 const noHistoryParams: history.RewardHistory = {

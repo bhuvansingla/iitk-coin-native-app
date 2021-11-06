@@ -32,6 +32,7 @@ const HomeScreen: () => JSX.Element = () => {
 	const username: string = useSelector((state: AppState) => state.user.name);
 	const coins: number = useSelector((state: AppState) => state.user.coins); 
 
+	const [isFetched, setIsFetched] = useState(false);
 	const [transaction, setTransaction] = useState<history.TransactionHistory[]>([]);
 	
 	const getDetails = async (rollNo: string): Promise<[history.TransactionHistory[], number, string]> => {
@@ -47,26 +48,25 @@ const HomeScreen: () => JSX.Element = () => {
 			setTransaction(historyList);
 			dispatch(setCoins(balance));
 			dispatch(setName(name));
-
-			// TODO: Set apploader to false
+			setIsFetched(true);
 		});
 	}, [rollNo, dispatch]);
 	
 	return (
 		<View style={styles.contentContainer}>
 
-			<Text.Heading title={`${LABELS.GREET_MESSAGE} ${username} ${LABELS.GREET_EMOTE}`} />
-			<WalletBalance coins={coins} />
+			<Text.Heading title={`${LABELS.GREET_MESSAGE} ${username} ${LABELS.GREET_EMOTE}`} isFetched={isFetched} />
+			<WalletBalance coins={coins} isFetched={isFetched}/>
 			<NavCard 
 				accountAction={navigateToAccount} 
 				sendAction={navigateToTransfer}
-				redeemAction= {navigateToRedeem} />
+				redeemAction= {navigateToRedeem} 
+			/>
 			
 			<View style={styles.titleLeft}>
 				<Text.Title darkgrey bold>{LABELS.PAST_TRANSACTIONS}</Text.Title>
 			</View>
-
-			<History history={transaction} />
+			<History history={transaction} isFetched={isFetched} />
 		</View>
 	);
 };

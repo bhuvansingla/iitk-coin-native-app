@@ -4,7 +4,7 @@ import { Provider, useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import { useFonts, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold } from "@expo-google-fonts/open-sans";
-import { FontAwesome, AntDesign, Ionicons } from "@expo/vector-icons";
+import { FontAwesome, AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import FlashMessage from "react-native-flash-message";
 
 import { COLORS } from "styles";
@@ -24,6 +24,7 @@ function App() {
 		...FontAwesome.font,
 		...AntDesign.font,
 		...Ionicons.font,
+		...MaterialIcons.font,
 	});
 
 	const dispatch = useDispatch();
