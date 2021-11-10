@@ -23,7 +23,7 @@ const WalletBalance: React.FC<Props> = ({ coins = 0 }) => {
 				<View style={styles.row}>
 					<Text.Title bold white style={styles.shadowCoinCount} >{coins}</Text.Title>
 					<View style={styles.coinMargin}>
-						<Text.Title semibold white style={styles.shadow}>{coins > 1 ? LABELS.COINS : LABELS.COIN}</Text.Title>
+						<Text.Title semibold white style={styles.shadow}>{LABELS.SPACE}{coins == 1 ? LABELS.COIN : LABELS.COINS}</Text.Title>
 					</View>
 				</View>
 			</View>

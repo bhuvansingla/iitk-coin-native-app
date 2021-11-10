@@ -42,7 +42,7 @@ const MyBottomSheet: React.FC<Props> = ({
 				backdropComponent={CustomBackdrop}
 				onChange={handleSheetChanges}
 			>
-				<BottomSheetScrollView>{children}</BottomSheetScrollView>
+				<BottomSheetScrollView keyboardShouldPersistTaps="always">{children}</BottomSheetScrollView>
 			</BottomSheet>
 		</View>
 	);

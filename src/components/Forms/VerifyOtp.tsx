@@ -32,6 +32,8 @@ const VerifyOtpForm: React.FC<Props> = (props) => {
 				title={LABELS.OTP_INPUT_FIELD_TITLE}
 				onChangeText={onChangeOTP}
 				error={errors?.otp}
+				last={true}
+				onSubmitEditing={onPressSubmit}
 			/>
 
 			<Button title={label} onPress={onPressSubmit} disabled={isClicked}/>

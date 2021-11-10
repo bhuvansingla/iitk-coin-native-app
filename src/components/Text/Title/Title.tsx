@@ -16,11 +16,12 @@ interface Props {
 	semibold?: boolean;
 	footer?: boolean;
 	red?: boolean;
+	small?: boolean;
 }
 
 export default function Title(props: Props): React.ReactElement {
 	const customStyle = [styles.default, props.style];
-	const { black, link, darkgrey, bold, white, center, semibold, footer, red } = props;
+	const { black, link, darkgrey, bold, white, center, semibold, footer, red, small } = props;
 
 	if (black) {
 		customStyle.push(mainStyle.black);
@@ -56,6 +57,10 @@ export default function Title(props: Props): React.ReactElement {
 
 	if (red) {
 		customStyle.push(mainStyle.red);
+	}
+	
+	if(small) {
+		customStyle.push(mainStyle.small);
 	}
 
 	return <Text {...props} style={customStyle} />;

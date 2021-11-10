@@ -28,7 +28,7 @@ const TransferForm: React.FC<Props> = (props) => {
 	};
 
 	const onChangeRemark = (remark: string) => {
-		setRemark(remark);
+		setRemark(remark.trim());
 	};
 
 	const label = isClicked ? LABELS.TRANSFER_BUTTON_TEXT_CLICKED : LABELS.TRANSFER_BUTTON_TEXT;
@@ -56,9 +56,11 @@ const TransferForm: React.FC<Props> = (props) => {
 				title={LABELS.REMARKS_INPUT_FIELD_TITLE}
 				onChangeText={onChangeRemark}
 				error={errors?.remarks}
+				last={true}
+				onSubmitEditing={onPressSend}
 			/>
 
-			<Button title={label} onPress={() => onPressSend()} disabled={isClicked}/>
+			<Button title={label} onPress={onPressSend} disabled={isClicked}/>
 
 		</View>
 

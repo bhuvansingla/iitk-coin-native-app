@@ -14,6 +14,7 @@ const COLORS = {
 	GREEN: "#12AC3C",
 	GREEN_BG: "#D5FD56",
 	YELLOW: "#FECC18",
+	DARK_YELLOW: "#E3B71B",
 };
 
 export default COLORS;
