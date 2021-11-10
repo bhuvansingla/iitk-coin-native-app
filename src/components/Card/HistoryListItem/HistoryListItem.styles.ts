@@ -9,43 +9,38 @@ const styles = StyleSheet.create({
 		height: "100%",
 		
 		justifyContent: "flex-start",
-		paddingHorizontal: 20,
 		position: "relative",
+		width: "115%",
 		zIndex: 2,
 	},
 	content: {
 		zIndex: -1,
 	},
 	detailsContainer: {
-		backgroundColor: COLORS.DARK_TEAL,
-		borderRadius: 20,
-
-		elevation: 4,
+		backgroundColor: COLORS.GREY,
+		borderRadius: 2,
 		margin: 0,
 
 		overflow: "hidden",
-		paddingBottom: 5,
-		paddingLeft: 40,
-		paddingRight: 20,
-		paddingTop: 40,
-
-		shadowColor: COLORS.BLACK,
-		shadowOffset: { width: 0, height: 4 },
-		shadowOpacity: 0.5,
-		shadowRadius: 20,
-		top: -40,
-
+		paddingBottom: 8,
+		paddingLeft: 25,
+		paddingRight: 25,
+		paddingTop: 8,
 		width: "100%",
-		zIndex: -1,
+	},
+	footer: {
+		marginTop:62,
+		position: "absolute",
 	},
 	left: {
 		alignItems: "center",
 		justifyContent: "center",
+		paddingLeft: 25,
 		zIndex: 1,
 	},
 	mainContainer: {
 		flex: 0,
-		paddingVertical: 5,
+		paddingVertical: 0,
 		width: "100%",
 	},
 	right: {
@@ -53,31 +48,22 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: "row",
 		justifyContent: "flex-end",
+		paddingRight: 25,
 	},
 	ripple: {
 		alignItems: "center",
-		backgroundColor: COLORS.WHITE,
-		borderRadius: 20,
-
-		elevation: 4,
+		backgroundColor: COLORS.WHITE,	
+		borderRadius: 2,
 		flex: 1,
 		flexDirection: "column",
 		marginBottom: 0,
-
-		marginTop: 7,
-		maxHeight: 185,
-		minHeight: 100,
-		paddingVertical: 20,
-		shadowColor: COLORS.BLACK,
-
-		shadowOffset: { width: 0, height: 4 },
-		shadowOpacity: 0.5,
-		shadowRadius: 20,
+		maxHeight: 150,
+		minHeight: 70,
 		width: "100%",
 	},
 	rippleWrapper: {
-		maxHeight: 200,
-		minHeight: 115,
+		maxHeight: 165,
+		minHeight: 85,
 		width: "100%",
 	},
 	text: {

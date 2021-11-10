@@ -17,7 +17,7 @@ interface Props {
 const RedeemSuccess: React.FC<Props> = ({txnID, onPressRedeemSuccess}) => {
 	return (
 		<View style={styles.container}>
-			<AntDesign name="gift" size={80} color={COLORS.RED} />
+			<AntDesign name="gift" size={80} color={COLORS.DARK_YELLOW} />
 			<Text.Title style={styles.title}>{LABELS.REDEEM_REQUESTED}</Text.Title>
 			<Text.Title style={styles.txnID}>{LABELS.REDEEM_ID}{txnID}</Text.Title>
 			<Button title={LABELS.REDEEM_FINAL} onPress={onPressRedeemSuccess} />
