@@ -57,10 +57,10 @@ const HomeScreen: () => JSX.Element = () => {
 	return (
 		<Animatable.View duration={800} easing="ease-out-cubic" animation="slideInUp">
 			<View style={styles.contentContainer}>
-
 				<Text.Heading title={`${LABELS.GREET_MESSAGE} ${username.split(" ")[0]}${LABELS.GREET_EMOTE}`} isFetched={isFetched}/>
 
 				<WalletBalance coins={coins} isFetched={isFetched}/>
+
 				<NavCard
 					accountAction={navigateToAccount}
 					sendAction={navigateToTransfer}
