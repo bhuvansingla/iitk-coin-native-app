@@ -30,5 +30,5 @@ export const HistoryList: React.FC<Props> = ({ history }: Props) => {
 };
 
 export const NoHistory: () => JSX.Element = () => {
-	return <HistoryListItem key="noHistory" details={noHistoryParams} />;
+	return <View><HistoryListItem key="noHistory" details={noHistoryParams} /></View>;
 };

@@ -4,6 +4,8 @@ import { COLORS, FONT } from "styles";
 
 export default StyleSheet.create({
 	container: {
+		marginBottom: 17,
+		marginTop: 20,
 		width: "100%",
 	},
 	shimmer : {

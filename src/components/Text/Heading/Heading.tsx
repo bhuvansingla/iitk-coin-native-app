@@ -17,22 +17,24 @@ const Heading: React.FC<Props> = (props) => {
 	const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 	const isLoaded = isFetched === undefined ? true : isFetched;
 
-	return (
-		<View style={styles.wrapper}>
-			<ShimmerPlaceholder
-				visible={isLoaded}
-				style = {styles.shimmer}
-			>
-				{isLoaded &&
-				<View style={styles.container}>
-					<Text bold style={styles.text}>
-						{title}
-					</Text>
-				</View>
-				}
-			</ShimmerPlaceholder>
-		</View>
-	);
+	if (isLoaded) {
+		return (
+			<View style={styles.container}>
+				<Text bold style={styles.text}>
+					{title}
+				</Text>
+			</View>
+		);
+	} else {
+		return (
+			<View style={styles.wrapper}>
+				<ShimmerPlaceholder
+					visible={isLoaded}
+					style={styles.shimmer}
+				/>
+			</View>
+		);
+	}
 };
 
 export default Heading;

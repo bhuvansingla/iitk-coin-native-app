@@ -45,6 +45,7 @@ const HomeScreen: () => JSX.Element = () => {
 	};
 
 	useEffect(() => {
+		setIsFetched(false);
 		getDetails(rollNo).then(([historyList, balance, name]) => {
 			setTransaction(historyList);
 			dispatch(setCoins(balance));

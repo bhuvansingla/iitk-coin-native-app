@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 		elevation: 10,
 		flexDirection: "row",
+		marginBottom: 20,
 		maxHeight: 200,
 		minHeight: 100,
 		position: "relative",

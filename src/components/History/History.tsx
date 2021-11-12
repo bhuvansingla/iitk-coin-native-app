@@ -18,18 +18,19 @@ const History: React.FC<Props> = (props) => {
 		historyComponent = <HistoryList history={history} />;
 	}
 
-	return (
-		<View style={styles.wrapper} >
-			<ShimmerPlaceholder
-				visible = {isLoaded}
-				style = {styles.shimmer}
-			>
-				{isLoaded &&
-					historyComponent
-				}
-			</ShimmerPlaceholder>
-		</View>
-	);
+	if (isLoaded) {
+		return historyComponent;
+	} else {
+		return (
+			<View style={styles.wrapper} >
+				<ShimmerPlaceholder
+					visible={isLoaded}
+					style={styles.shimmer}
+				/>
+			</View>
+		);
+	}
+	
 };
 
 export default History;
