@@ -1,5 +1,5 @@
 const LABELS = {
-	"ACCOUNT_TITLE": "Account 🐥",
+	"ACCOUNT_TITLE": "ACCOUNT",
 	"ACCOUNT_WELCOME": "Welcome",
 	"ACCOUNT_ROLL_NO": "Roll Number",
 	"ACCOUNT_EMAIL": "Email ID",

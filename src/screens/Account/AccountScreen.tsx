@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Linking } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import * as Animatable from "react-native-animatable";
 
 import { AppState } from "redux-store/reducers";
 import { Button, Text, WalletBalance, UserInfo } from "components";
@@ -21,7 +22,7 @@ const AccountScreen: () => JSX.Element = () => {
 	const coins: number = useSelector((state: AppState) => state.user.coins);
 
 	const [email, setEmail] = useState("");
-	
+
 	useEffect(() => {
 		setEmail(`${rollNo}${LABELS.ACCOUNT_MAIL_DOMAIN}`);
 	}, [rollNo]);
@@ -33,11 +34,11 @@ const AccountScreen: () => JSX.Element = () => {
 
 	const onLogout = () => {
 		getToken().then(token => {
-			if(token) {
+			if (token) {
 				postLogout(token).then((res) => {
-					if(res.Status == 200){
+					if (res.Status == 200) {
 						deleteToken();
-					}	
+					}
 				});
 			}
 		});
@@ -50,19 +51,21 @@ const AccountScreen: () => JSX.Element = () => {
 	};
 
 	return (
-		<View style={styles.contentContainer}>
+		<Animatable.View duration={800} easing="ease-out-cubic" animation="slideInUp">
+			<View style={styles.contentContainer}>
 
-			<Text.PageTitle title={LABELS.ACCOUNT_TITLE} onPressBack={onPressBack} />
+				<Text.PageTitle title={LABELS.ACCOUNT_TITLE} onPressBack={onPressBack} />
 
-			<WalletBalance coins={coins} />
+				<WalletBalance coins={coins} />
 
-			<UserInfo name={username} email={email} rollNo={rollNo} />
-			
-			<Button red title={LABELS.ACCOUNT_LOGOUT} onPress={onLogout} />
-			
-			<Button yellow title={LABELS.ACCOUNT_REPORT_ERROR} onPress={onClickReport} />
+				<UserInfo name={username} email={email} rollNo={rollNo} />
 
-		</View>
+				<Button red title={LABELS.ACCOUNT_LOGOUT} onPress={onLogout} />
+
+				<Button yellow title={LABELS.ACCOUNT_REPORT_ERROR} onPress={onClickReport} />
+
+			</View>
+		</Animatable.View>
 	);
 };
 
