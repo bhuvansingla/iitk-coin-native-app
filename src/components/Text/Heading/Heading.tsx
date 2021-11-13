@@ -12,12 +12,11 @@ interface Props {
 
 const Heading: React.FC<Props> = (props) => {
 
-	const { title, isFetched } = props;
+	const { title, isFetched=true } = props;
 
 	const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
-	const isLoaded = isFetched === undefined ? true : isFetched;
 
-	if (isLoaded) {
+	if (isFetched) {
 		return (
 			<View style={styles.container}>
 				<Text bold style={styles.text}>
@@ -29,7 +28,7 @@ const Heading: React.FC<Props> = (props) => {
 		return (
 			<View style={styles.wrapper}>
 				<ShimmerPlaceholder
-					visible={isLoaded}
+					visible={isFetched}
 					style={styles.shimmer}
 				/>
 			</View>

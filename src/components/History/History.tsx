@@ -8,23 +8,22 @@ import styles from "./History.styles";
 
 const History: React.FC<Props> = (props) => {
 
-	const { history, isFetched } = props;
+	const { history, isFetched=true } = props;
 
 	const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
-	const isLoaded = isFetched===undefined ? true : isFetched;
 
 	let historyComponent = <NoHistory />;
 	if (history.length > 0) {
 		historyComponent = <HistoryList history={history} />;
 	}
 
-	if (isLoaded) {
+	if (isFetched) {
 		return historyComponent;
 	} else {
 		return (
 			<View style={styles.wrapper} >
 				<ShimmerPlaceholder
-					visible={isLoaded}
+					visible={isFetched}
 					style={styles.shimmer}
 				/>
 			</View>

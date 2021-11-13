@@ -17,12 +17,11 @@ interface Props {
 
 const WalletBalance: React.FC<Props> = (props) => {
 
-	const { coins, isFetched } = props;
+	const { coins, isFetched=true } = props;
 
 	const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
-	const isLoaded = isFetched === undefined ? true : isFetched;
 
-	if (isLoaded) {
+	if (isFetched) {
 		return (
 			<View style={styles.container}>
 				<View style={styles.left}>
@@ -43,7 +42,7 @@ const WalletBalance: React.FC<Props> = (props) => {
 		return (
 			<View style={styles.wrapper}>
 				<ShimmerPlaceholder
-					visible={isLoaded}
+					visible={isFetched}
 					style={styles.shimmer}
 				/>
 			</View>
