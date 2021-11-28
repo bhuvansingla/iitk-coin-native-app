@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View } from "react-native";
+import * as Animatable from "react-native-animatable";
 
 import { AppState } from "redux-store/reducers";
 import { setCurrentScreen, setIsAuthenticated } from "redux-store/actions";
@@ -51,8 +52,8 @@ const RedeemScreen: () => JSX.Element = () => {
 			setClickedRequest(false);
 			return;
 		}
-		
-		requestOtp({RollNo: rollNo}).then((success) => {
+
+		requestOtp({ RollNo: rollNo }).then((success) => {
 			setClickedRequest(false);
 			if (success) {
 				setRedeemStage(RedeemStage.VERIFY_OTP);
@@ -106,31 +107,34 @@ const RedeemScreen: () => JSX.Element = () => {
 	};
 
 	return (
-		<View style={styles.contentContainer}>
-			<Text.PageTitle title={LABELS.REDEEM_FORM_TITLE} onPressBack={onPressBack} />
+		<Animatable.View duration={800} easing="ease-out-cubic" animation="slideInUp">
+			<View style={styles.contentContainer}>
+				<Text.PageTitle title={LABELS.REDEEM_FORM_TITLE} onPressBack={onPressBack} />
 
-			<WalletBalance coins={coins} />
+				<WalletBalance coins={coins} />
 
-			<View style={styles.containerChildWrapper}>
+				<View style={styles.containerChildWrapper}>
 
-				{redeemStage === RedeemStage.FORM &&
-					<React.Fragment>
-						<RedeemForm onPressRequest={onPressRequest} setAmount={setAmount} setItem={setItem} errors={redeemFormError} isClicked={clickedRequest} />
-					</React.Fragment>
-				}
-				{redeemStage === RedeemStage.VERIFY_OTP &&
-					<React.Fragment>
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} isClicked={clickedVerifyOtp} />
-					</React.Fragment>
-				}
-				{redeemStage === RedeemStage.SUCCESS &&
-					<React.Fragment>
-						<Redeem.RedeemSuccess txnID={txnID} onPressRedeemSuccess={onPressRedeemSuccess} />
-					</React.Fragment>
-				}
+					{redeemStage === RedeemStage.FORM &&
+						<React.Fragment>
+							<RedeemForm onPressRequest={onPressRequest} setAmount={setAmount} setItem={setItem} errors={redeemFormError} isClicked={clickedRequest} />
+						</React.Fragment>
+					}
+					{redeemStage === RedeemStage.VERIFY_OTP &&
+						<React.Fragment>
+							<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} isClicked={clickedVerifyOtp} />
+							<Text.Footer title={LABELS.OTP_INPUT_FOOTER} link={LABELS.OTP_INPUT_LINK} onPress={() => onPressRequest()} />
+						</React.Fragment>
+					}
+					{redeemStage === RedeemStage.SUCCESS &&
+						<React.Fragment>
+							<Redeem.RedeemSuccess txnID={txnID} onPressRedeemSuccess={onPressRedeemSuccess} />
+						</React.Fragment>
+					}
 
+				</View>
 			</View>
-		</View>
+		</Animatable.View>
 	);
 };
 

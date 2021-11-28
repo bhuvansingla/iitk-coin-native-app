@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { View } from "react-native";
+import * as Animatable from "react-native-animatable";
 
 import { setCurrentScreen } from "redux-store/actions";
 import { Text } from "components";
@@ -9,7 +10,7 @@ import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { LABELS } from "constant";
 import { ScreenType } from "screens/screen.types";
 import { OTPParams, SignupParams } from "api/auth";
-import { requestOtp , signup } from "callbacks";
+import { requestOtp, signup } from "callbacks";
 import { validator } from "utils";
 
 import styles from "../screen.styles";
@@ -43,7 +44,7 @@ const SignupScreen: () => JSX.Element = () => {
 
 	const onPressSignup = () => {
 		setClickedSignup(true);
-		const currentSignupError = validator.forms.signup.validate(name, rollNo, password,confirmPassword);
+		const currentSignupError = validator.forms.signup.validate(name, rollNo, password, confirmPassword);
 		setSignupFormError(currentSignupError);
 
 		if (validator.forms.signup.isError(currentSignupError)) {
@@ -51,10 +52,10 @@ const SignupScreen: () => JSX.Element = () => {
 			return;
 		}
 
-		const otpParams: OTPParams = {RollNo: rollNo};
+		const otpParams: OTPParams = { RollNo: rollNo };
 		requestOtp(otpParams).then((success) => {
 			setClickedSignup(false);
-			if(success) {
+			if (success) {
 				setSignupStage(SignupStage.VERIFY_OTP);
 			}
 		}).catch(() => {
@@ -75,7 +76,7 @@ const SignupScreen: () => JSX.Element = () => {
 		const signupParams: SignupParams = { Name: name, RollNo: rollNo, Password: password, OTP: otp };
 		signup(signupParams).then((success) => {
 			setClickedVerifyOtp(false);
-			if(success) {
+			if (success) {
 				dispatch(setCurrentScreen(ScreenType.LOGIN));
 			}
 		}).catch(() => {
@@ -84,36 +85,38 @@ const SignupScreen: () => JSX.Element = () => {
 	};
 
 	return (
-		<View style={styles.contentContainer}>
-			{signupStage === SignupStage.SIGNUP_DETAILS &&
-				<React.Fragment>
+		<Animatable.View duration={800} easing="ease-out-cubic" animation="slideInUp">
+			<View style={styles.contentContainer}>
+				{signupStage === SignupStage.SIGNUP_DETAILS &&
+					<React.Fragment>
 
-					<Text.Heading title={LABELS.SIGNUP_FORM_TITLE} />
+						<Text.Heading title={LABELS.SIGNUP_FORM_TITLE} />
 
-					<View style={styles.containerChildWrapper}>
+						<View style={styles.containerChildWrapper}>
 
-						<SignupForm setName={setName} setPassword={setPassword} setConfirmPassword={setConfirmPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} errors={signupFormError} isClicked={clickedSignup} />
+							<SignupForm setName={setName} setPassword={setPassword} setConfirmPassword={setConfirmPassword} setRollNo={setRollNo} onPressSubmit={onPressSignup} errors={signupFormError} isClicked={clickedSignup} />
 
-						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
+							<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 
-					</View>
-				</React.Fragment>
-			}
-			{signupStage === SignupStage.VERIFY_OTP &&
-				<React.Fragment>
+						</View>
+					</React.Fragment>
+				}
+				{signupStage === SignupStage.VERIFY_OTP &&
+					<React.Fragment>
 
-					<Text.Heading title={LABELS.VERIFY_OTP_FORM_TITLE} />
+						<Text.Heading title={LABELS.VERIFY_OTP_FORM_TITLE} />
 
-					<View style={styles.containerChildWrapper}>
+						<View style={styles.containerChildWrapper}>
 
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} errors={verifyOTPError} isClicked={clickedVerifyOtp}/>
+							<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressVerifyOtp} errors={verifyOTPError} isClicked={clickedVerifyOtp} />
 
-						<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
+							<Text.Footer title={LABELS.SIGNIN_FOOTER} link={LABELS.SIGNIN_LINK} onPress={() => onPressFooter()} />
 
-					</View>
-				</React.Fragment>
-			}
-		</View>
+						</View>
+					</React.Fragment>
+				}
+			</View>
+		</Animatable.View>
 	);
 };
 

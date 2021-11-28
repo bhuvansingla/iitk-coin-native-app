@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View } from "react-native";
+import * as Animatable from "react-native-animatable";
 
 import { AppState } from "redux-store/reducers";
 import { setCurrentScreen, setCoins, setIsAuthenticated } from "redux-store/actions";
@@ -30,9 +31,9 @@ const TransferScreen: () => JSX.Element = () => {
 	const coins: number = useSelector((state: AppState) => state.user.coins);
 	const [transferStage, setTransferStage] = useState<TransferStage>(TransferStage.FORM);
 
-	const[clickedSend, setClickedSend] = useState(false);
-	const[clickedConfirmDetails, setClickedConfirmDetails] = useState(false);
-	const[clickedVerifyOtp, setClickedVerifyOtp] = useState(false);
+	const [clickedSend, setClickedSend] = useState(false);
+	const [clickedConfirmDetails, setClickedConfirmDetails] = useState(false);
+	const [clickedVerifyOtp, setClickedVerifyOtp] = useState(false);
 
 	const [rollNo, setRollNo] = useState<string>("");
 	const [name, setName] = useState<string>("");
@@ -49,7 +50,7 @@ const TransferScreen: () => JSX.Element = () => {
 
 	const getDetails = async (rollNo: string) => {
 		const receiverName = getName(rollNo);
-		const transferTax = getTax({NumCoins: amount, ReceiverRollNo: rollNo});
+		const transferTax = getTax({ NumCoins: amount, ReceiverRollNo: rollNo });
 		return Promise.all([receiverName, transferTax]);
 	};
 
@@ -74,7 +75,7 @@ const TransferScreen: () => JSX.Element = () => {
 			setClickedSend(false);
 			setName(receiverName);
 			setTax(transferTax);
-			
+
 			if (receiverName !== "") {
 				setTransferStage(TransferStage.CONFIRM_DETAILS);
 			}
@@ -86,7 +87,7 @@ const TransferScreen: () => JSX.Element = () => {
 	const onPressConfirmTransfer = () => {
 		setClickedConfirmDetails(true);
 
-		requestOtp({RollNo: senderRollNo})
+		requestOtp({ RollNo: senderRollNo })
 			.then((success) => {
 				setClickedConfirmDetails(false);
 				if (success) {
@@ -144,36 +145,38 @@ const TransferScreen: () => JSX.Element = () => {
 	};
 
 	return (
-		<View style={styles.contentContainer}>
-			<Text.PageTitle title={LABELS.TRANSFER_FORM_TITLE} onPressBack={onPressBack} />
+		<Animatable.View duration={800} easing="ease-out-cubic" animation="slideInUp">
+			<View style={styles.contentContainer}>
+				<Text.PageTitle title={LABELS.TRANSFER_FORM_TITLE} onPressBack={onPressBack} />
 
-			<WalletBalance coins={coins} />
+				<WalletBalance coins={coins} />
 
-			<View style={styles.containerChildWrapper}>
+				<View style={styles.containerChildWrapper}>
 
-				{transferStage === TransferStage.FORM &&
-					<React.Fragment>
-						<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} errors={transferFormError} isClicked={clickedSend}/>
-					</React.Fragment>
-				}
-				{transferStage === TransferStage.CONFIRM_DETAILS &&
-					<React.Fragment>
-						<Transfer.ConfirmDetails name={name} rollNo={rollNo} amount={amount} tax={tax} onPressConfirmTransfer={onPressConfirmTransfer} isClicked={clickedConfirmDetails}/>
-					</React.Fragment>
-				}
-				{transferStage === TransferStage.VERIFY_OTP &&
-					<React.Fragment>
-						<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} isClicked={clickedVerifyOtp}/>
-					</React.Fragment>
-				}
-				{transferStage === TransferStage.SUCCESS &&
-					<React.Fragment>
-						<Transfer.TransferSuccess txnID={txnID} onPressTransferSuccess={onPressTransferSuccess} />
-					</React.Fragment>
-				}
+					{transferStage === TransferStage.FORM &&
+						<React.Fragment>
+							<TransferForm onPressSend={onPressSend} setAmount={setAmount} setRemark={setRemark} setRollNo={setRollNo} errors={transferFormError} isClicked={clickedSend} />
+						</React.Fragment>
+					}
+					{transferStage === TransferStage.CONFIRM_DETAILS &&
+						<React.Fragment>
+							<Transfer.ConfirmDetails name={name} rollNo={rollNo} amount={amount} tax={tax} onPressConfirmTransfer={onPressConfirmTransfer} isClicked={clickedConfirmDetails} />
+						</React.Fragment>
+					}
+					{transferStage === TransferStage.VERIFY_OTP &&
+						<React.Fragment>
+							<VerifyOtpForm setOTP={setOTP} onPressSubmit={onPressSubmit} errors={verifyOTPError} isClicked={clickedVerifyOtp} />
+						</React.Fragment>
+					}
+					{transferStage === TransferStage.SUCCESS &&
+						<React.Fragment>
+							<Transfer.TransferSuccess txnID={txnID} onPressTransferSuccess={onPressTransferSuccess} />
+						</React.Fragment>
+					}
 
+				</View>
 			</View>
-		</View>
+		</Animatable.View>
 	);
 };
 

@@ -9,6 +9,8 @@ const LABELS = {
 	"HISTORY_STATUS" : "Redeem Status",
 	"HISTORY_REMARKS" : "Remarks" ,
 	"HISTORY_REWARD_AMOUNT" : "Reward Amount",
+	"HISTORY_SHOW_DETAILS" : "Tap to show details",
+	"HISTORY_HIDE_DETAILS" : "Tap to hide details",
 	"HISTORY_PLUS": "+",
 	"HISTORY_MINUS": "-",
 };

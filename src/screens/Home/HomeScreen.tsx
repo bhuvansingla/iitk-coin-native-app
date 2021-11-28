@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View } from "react-native";
+import * as Animatable from "react-native-animatable";
 
 import { AppState } from "redux-store/reducers";
 import { setCoins, setCurrentScreen, setIsAuthenticated, setName } from "redux-store/actions";
@@ -30,12 +31,13 @@ const HomeScreen: () => JSX.Element = () => {
 
 	const rollNo: string = useSelector((state: AppState) => state.user.rollNo);
 	const username: string = useSelector((state: AppState) => state.user.name);
-	const coins: number = useSelector((state: AppState) => state.user.coins); 
+	const coins: number = useSelector((state: AppState) => state.user.coins);
 
+	const [isFetched, setIsFetched] = useState(false);
 	const [transaction, setTransaction] = useState<history.TransactionHistory[]>([]);
-	
+
 	const getDetails = async (rollNo: string): Promise<[history.TransactionHistory[], number, string]> => {
-		const historyList  = getHistory(rollNo);
+		const historyList = getHistory(rollNo);
 		const balance = getBalance(rollNo);
 		const name = getName(rollNo);
 
@@ -43,6 +45,7 @@ const HomeScreen: () => JSX.Element = () => {
 	};
 
 	useEffect(() => {
+		setIsFetched(false);
 		getDetails(rollNo).then(([historyList, balance, name]) => {
 			if(historyList === [] || balance === 0 || name === "") {
 				isLoggedIn().then(({Status}) => {
@@ -55,27 +58,29 @@ const HomeScreen: () => JSX.Element = () => {
 			setTransaction(historyList);
 			dispatch(setCoins(balance));
 			dispatch(setName(name));
-
-			// TODO: Set apploader to false
+			setIsFetched(true);
 		});
 	}, [rollNo, dispatch]);
-	
+
 	return (
-		<View style={styles.contentContainer}>
+		<Animatable.View duration={800} easing="ease-out-cubic" animation="slideInUp">
+			<View style={styles.contentContainer}>
+				<Text.Heading title={`${LABELS.GREET_MESSAGE} ${username.split(" ")[0]}${LABELS.GREET_EMOTE}`} isFetched={isFetched}/>
 
-			<Text.Heading title={`${LABELS.GREET_MESSAGE} ${username} ${LABELS.GREET_EMOTE}`} />
-			<WalletBalance coins={coins} />
-			<NavCard 
-				accountAction={navigateToAccount} 
-				sendAction={navigateToTransfer}
-				redeemAction= {navigateToRedeem} />
-			
-			<View style={styles.titleLeft}>
-				<Text.Title darkgrey bold>{LABELS.PAST_TRANSACTIONS}</Text.Title>
+				<WalletBalance coins={coins} isFetched={isFetched}/>
+
+				<NavCard
+					accountAction={navigateToAccount}
+					sendAction={navigateToTransfer}
+					redeemAction={navigateToRedeem} />
+
+				<View style={styles.titleLeft}>
+					<Text.Title darkgrey bold>{LABELS.PAST_TRANSACTIONS}</Text.Title>
+				</View>
+
+				<History history={transaction} isFetched={isFetched}/>
 			</View>
-
-			<History history={transaction} />
-		</View>
+		</Animatable.View>
 	);
 };
 

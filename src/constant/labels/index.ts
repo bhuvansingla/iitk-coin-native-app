@@ -24,7 +24,7 @@ const LABELS = {
 	"SEND": "Send",
 	"REDEEM": "Redeem",
 
-	"PAST_TRANSACTIONS": "PAST TRANSACTIONS",
+	"PAST_TRANSACTIONS": "HISTORY",
 	"GREET_MESSAGE": "Hi,",
 	"GREET_EMOTE": "! 👋"
 	
