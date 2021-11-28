@@ -31,6 +31,9 @@ function App() {
 	const [checkLoggedIn, setCheckLoggedIn] = useState(false);
 	
 	useEffect(() => {
+		setCheckLoggedIn(false);
+		dispatch(setCurrentScreen(ScreenType.LOGIN));
+		dispatch(setIsAuthenticated(false));
 		isLoggedIn().then(({Status, RollNo}) => {
 			setCheckLoggedIn(true);
 			if (Status) {
@@ -39,7 +42,7 @@ function App() {
 				dispatch(setRollNo(RollNo));
 			}
 		});
-	});
+	}, [dispatch]);
 	
 	return (
 		(fontsLoaded && checkLoggedIn) ? 

@@ -1,3 +1,10 @@
-import { saveToken, getToken, deleteToken } from "./login/loginToken";
+import { getAccessToken, getRefreshToken, deleteAccessToken, deleteRefreshToken, saveAccessToken, saveRefreshToken } from "./login";
 
-export { saveToken, getToken, deleteToken };
+export { 
+	getAccessToken,
+	getRefreshToken,
+	deleteAccessToken,
+	deleteRefreshToken,
+	saveAccessToken,
+	saveRefreshToken
+};
