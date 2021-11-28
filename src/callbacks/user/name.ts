@@ -1,10 +1,10 @@
 import { showMessage } from "react-native-flash-message";
 
 import { user } from "api";
-import { getToken } from "secure-store";
+import { getAccessToken } from "secure-store";
 
 export const getName = async (rollNo: string): Promise<string> => {
-	const token = await getToken();
+	const token = await getAccessToken();
 	if(token) {
 		const res = await user.getUsername(rollNo, token);
 		if(res.Status == 200){

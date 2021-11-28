@@ -1,10 +1,10 @@
 import { showMessage } from "react-native-flash-message";
 
 import { history } from "api";
-import { getToken } from "secure-store";
+import { getAccessToken } from "secure-store";
 
 export const getHistory = async (rollNo: string): Promise<history.TransactionHistory[]> => {
-	const token = await getToken();
+	const token = await getAccessToken();
 	if(token) {
 		const res = await history.getTransactionHistory({ RollNo: rollNo }, token);
 		if(res.Status == 200){

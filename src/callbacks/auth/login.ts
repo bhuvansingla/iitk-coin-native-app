@@ -1,6 +1,6 @@
 import { showMessage } from "react-native-flash-message";
 
-import { saveToken } from "secure-store";
+import { saveAccessToken } from "secure-store";
 import { auth } from "api";
 
 export const login = async (params: auth.LoginParams): Promise<boolean> => {
@@ -8,7 +8,7 @@ export const login = async (params: auth.LoginParams): Promise<boolean> => {
 	if (response.Status === 200) {
 		const tokenArr = response.Token.split(";");
 		if (tokenArr.length > 0) {
-			saveToken(tokenArr[0]); // Save new token
+			saveAccessToken(tokenArr[0]);
 		}
 		return true;
 	} else {
