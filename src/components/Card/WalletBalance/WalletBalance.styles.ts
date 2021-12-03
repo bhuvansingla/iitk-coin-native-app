@@ -57,6 +57,17 @@ const styles = StyleSheet.create({
 		textShadowColor: COLORS.BLACK_25_PERCENT,
 		textShadowOffset: { width: 0, height: 2 },
 		textShadowRadius: 4
+	},
+	shimmer: {
+		borderRadius: 20,
+		marginBottom: 20,
+		maxHeight: 200,
+		minHeight: 100,
+		width: "100%",
+	},
+	wrapper: {
+		minHeight: 120,
+		width: "100%",
 	}
 });
 

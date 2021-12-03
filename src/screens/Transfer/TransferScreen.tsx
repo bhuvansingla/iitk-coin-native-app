@@ -11,7 +11,7 @@ import { LABELS } from "constant";
 import VerifyOtpForm from "components/Forms/VerifyOtp";
 import { ScreenType } from "screens/screen.types";
 import { validator } from "utils";
-import { getName, requestOtp, transfer, getTax } from "callbacks";
+import { getName, requestOtp , transfer , getTax } from "callbacks";
 import { wallet } from "api";
 
 import styles from "../screen.styles";

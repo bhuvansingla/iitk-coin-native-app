@@ -6,6 +6,7 @@ const BACKEND = {
 		"LOGIN": "/auth/login",
 		"LOGOUT": "/auth/logout",
 		"CHECK_LOGIN": "/auth/check",
+		"REFRESH_TOKEN": "/auth/refresh",
 		"USERNAME": "/user/name",
 		"WALLET_TRANSFER": "/wallet/transfer",
 		"WALLET_BALANCE": "/wallet/balance",
@@ -18,6 +19,10 @@ const BACKEND = {
 			"PAYLOAD": "Oops! Server didn't Respond. Please try again later.",
 			"STATUS": 500
 		},
+		EXPIRED: {
+			"PAYLOAD": "Oops! Session Expired. Please login again.",
+			"STATUS": 401
+		}
 	},
 };
 
