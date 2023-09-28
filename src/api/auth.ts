@@ -129,13 +129,37 @@ const postLoginStatus = async (token: string): Promise<Response> => {
 	return response;
 };
 
+const getTokenRefreshed = async (accessToken: string, refreshToken: string): Promise<Response> => {
+	let payload, status, token;
+	await axios.get(API.BACKEND.BASE_URL + API.BACKEND.ENDPOINT.REFRESH_TOKEN, {
+		headers: {
+			"cookie": accessToken + ";" + refreshToken
+		}
+	}).then(res => {
+		token = res.headers["set-cookie"][0];
+		payload = res.data;
+		status = res.status;
+	}).catch(err => {
+		payload = err?.response?.data.error ?? API.BACKEND.ERROR.NETWORK.PAYLOAD;
+		status = err?.response?.status ?? API.BACKEND.ERROR.NETWORK.STATUS;
+	});
+	const response: Response = {
+		Payload: payload,
+		Status: status,
+		Token: token
+	};
+	return response;
+};
+
 export {
 	OTPParams,
 	SignupParams,
 	LoginParams,
+	Response,
 	postOTP,
 	postSignup,
 	postLogin,
 	postLogout,
-	postLoginStatus
+	postLoginStatus,
+	getTokenRefreshed
 };

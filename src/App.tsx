@@ -4,8 +4,10 @@ import { Provider, useDispatch } from "react-redux";
 import { StyleSheet, View } from "react-native";
 import AppLoading from "expo-app-loading";
 import { useFonts, OpenSans_400Regular, OpenSans_600SemiBold, OpenSans_700Bold } from "@expo-google-fonts/open-sans";
-import { FontAwesome, AntDesign, Ionicons } from "@expo/vector-icons";
+import { FontAwesome, AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import FlashMessage from "react-native-flash-message";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { COLORS } from "styles";
 import store from "redux-store";
@@ -24,13 +26,17 @@ function App() {
 		...FontAwesome.font,
 		...AntDesign.font,
 		...Ionicons.font,
+		...MaterialIcons.font,
 	});
 
 	const dispatch = useDispatch();
 	const [checkLoggedIn, setCheckLoggedIn] = useState(false);
-	
+
 	useEffect(() => {
-		isLoggedIn().then(({Status, RollNo}) => {
+		setCheckLoggedIn(false);
+		dispatch(setCurrentScreen(ScreenType.LOGIN));
+		dispatch(setIsAuthenticated(false));
+		isLoggedIn().then(({ Status, RollNo }) => {
 			setCheckLoggedIn(true);
 			if (Status) {
 				dispatch(setCurrentScreen(ScreenType.HOME));
@@ -38,8 +44,8 @@ function App() {
 				dispatch(setRollNo(RollNo));
 			}
 		});
-	});
-	
+	}, [dispatch]);
+
 	return (
 		(fontsLoaded && checkLoggedIn) ? 
 			(
@@ -62,14 +68,19 @@ const styles = StyleSheet.create({
 	flash: {
 		alignItems: "center",
 		borderRadius: 20,
-	}
+	},
 });
 
 const AppWrapper = () => {
 	return (
-		<Provider store={store}>
-			<App />
-		</Provider>
+		// eslint-disable-next-line react-native/no-inline-styles
+		<GestureHandlerRootView style={{ flex: 1 }}>
+			<BottomSheetModalProvider>
+				<Provider store={store}>
+					<App />
+				</Provider>
+			</BottomSheetModalProvider>
+		</GestureHandlerRootView>
 	);
 };
 

@@ -1,5 +1,7 @@
 import { postLoginStatus } from "api/auth";
-import { getToken } from "secure-store";
+import { getAccessToken } from "secure-store";
+
+import { refreshToken } from "./refresh";
 
 interface CheckStatus {
 	RollNo: string;
@@ -7,7 +9,8 @@ interface CheckStatus {
 }
 
 export const isLoggedIn = async (): Promise<CheckStatus> => {
-	const token = await getToken();
+	await refreshToken();
+	const token = await getAccessToken();
 	let rollNo = "";
 	let status = false;
 	if (token) {
